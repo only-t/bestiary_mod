@@ -4964,7 +4964,7 @@ local data = {
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
-                    health = 10000,
+                    health = 7000,
                     damage = 125,
                     speed = "20-22",
                     diet = "none",
@@ -5051,7 +5051,7 @@ local data = {
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
-                    health = 10000,
+                    health = 7000,
                     damage = 125,
                     speed = "23-25",
                     diet = "none",
