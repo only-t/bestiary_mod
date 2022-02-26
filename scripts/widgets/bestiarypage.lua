@@ -211,6 +211,10 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 						widget.cell_root.monster:GetAnimState():OverrideSymbol("mouth", "tree_leaf_poison_build", "mouth")
 					elseif data.prefab == "deer_blue" then
 						widget.cell_root.monster:GetAnimState():OverrideSymbol("swap_antler_red", "deer_build", "swap_antler_blue")
+					elseif data.prefab == "deer" then
+						widget.cell_root.monster:GetAnimState():Hide("swap_antler")
+						widget.cell_root.monster:GetAnimState():Hide("CHAIN")
+						widget.cell_root.monster:GetAnimState():OverrideSymbol("swap_neck_collar", "deer_build", "swap_neck")
 					elseif data.prefab == "stalker_forest" then
 						widget.cell_root.monster:GetAnimState():AddOverrideBuild("stalker_forest_build")
 					elseif data.prefab == "stalker" then

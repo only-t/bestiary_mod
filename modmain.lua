@@ -65,7 +65,8 @@ AddPlayerPostInit(function(inst)
 				(not guy.components.childspawner and
 				guy.components.health and
 				guy.components.combat) or
-				guy.prefab == "fireflies" -- They don't have either health nor combat
+				guy.prefab == "fireflies" or -- They don't have either health nor combat
+				guy.prefab == "pigking" -- They don't have either health nor combat
 			end
 		)
 	
@@ -75,7 +76,7 @@ AddPlayerPostInit(function(inst)
 	end
 	
 	local function CheckCatchedMob(inst, data)
-		if data.target then
+		if data.target and data.action == GLOBAL.ACTIONS.NET then
 			inst.components.bestiaryupdater:DiscoverMob(data.target.discoverable_prefab or data.target.prefab) -- If catched without discovering first
 			inst.components.bestiaryupdater:LearnMob(data.target.discoverable_prefab or data.target.prefab)
 		end
@@ -101,6 +102,15 @@ AddPlayerPostInit(function(inst)
 	inst:DoPeriodicTask(2, CheckNearbyMobs)
 	inst:ListenForEvent("killed", CheckKilledMob)
 	inst:ListenForEvent("finishedwork", CheckCatchedMob)
+end)
+
+AddPrefabPostInit("pigking", function(inst)
+	inst:ListenForEvent("trade", function(inst, data)
+		if data.giver then
+			data.giver.components.bestiaryupdater:DiscoverMob(data.victim.discoverable_prefab or data.victim.prefab) -- If traded with without discovering first
+			data.giver.components.bestiaryupdater:LearnMob(data.victim.discoverable_prefab or data.victim.prefab)
+		end
+	end)
 end)
 
 AddPrefabPostInit("killerbee", function(inst)

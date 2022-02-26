@@ -152,7 +152,7 @@ local data = {
 
                 stats = {
                     health = 15000,
-                    damage = 75,
+                    damage = 37.5,
                     speed = 2.75,
                     diet = "none",
 
@@ -262,7 +262,7 @@ local data = {
                         }
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.BEARDLING
                 }
             }
         }
@@ -714,7 +714,7 @@ local data = {
                 }
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.REDBIRD
         }
     },
     {
@@ -839,7 +839,7 @@ local data = {
                 }
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.PUFFIN
         }
     },
     {
@@ -1413,7 +1413,7 @@ local data = {
                         { prefab = "trunk_winter", amount = 1, chance = 1 },
                     },
 
-                    info = BESTIARYINFO.KOALEFANT_WINTER
+                    info = BESTIARYINFO.KOALEFANT
                 }
             }
         }
@@ -1474,7 +1474,7 @@ local data = {
                 { prefab = "walrushat", amount = 1, chance = 0.25 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.WALRUS
         }
     },
     {
@@ -1528,7 +1528,7 @@ local data = {
                 { prefab = "mandrake", amount = 1, chance = 1 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.MANDRAKE
         }
     },
     {
@@ -1556,7 +1556,7 @@ local data = {
                 { prefab = "froglegs", amount = 1, chance = 1 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.MERM
         }
     },
     {
@@ -1584,7 +1584,7 @@ local data = {
                 { prefab = "lureplantbulb", amount = 1, chance = 1 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.LUREPLANT
         }
     },
     {
@@ -1634,7 +1634,7 @@ local data = {
                 { prefab = "mosquitosack", amount = 1, chance = 1 }
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.MOSQUITO
         }
     },
     {
@@ -1663,7 +1663,7 @@ local data = {
                 { prefab = "drumstick", amount = 1, chance = 0.1 }
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.PENGUIN
         }
     },
     {
@@ -1691,7 +1691,7 @@ local data = {
                 { prefab = "pigskin", amount = 1, chance = 0.25 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.PIG
         }
     },
     {
@@ -2564,7 +2564,7 @@ local data = {
                 { prefab = "smallmeat", amount = 1, chance = 1 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.MOLE
         }
     },
     {
@@ -2633,33 +2633,116 @@ local data = {
         }
     },
     {
-        name = "Mosling",
-        prefab = "mossling",
-        bank = "mossling",
-        build = "mossling_build",
-        anim_idle = "idle",
-        anim_action = "taunt",
-        facing = FACING_DOWN,
         scale = 0.4,
         scale_small = 0.4*scaling,
-        intent = STRINGS.BESTIARY_NEUTRAL,
-        type = STRINGS.BESTIARY_MONSTER,
+        type = STRINGS.BESTIARY_ANIMAL,
         theme = "plain",
-
-        stats = {
-            health = 525,
-            damage = 50,
-            speed = 5,
-            diet = { "meat", "veggies", "seeds" },
-
-            drops = {
-                { prefab = "meat", amount = 1, chance = 1 },
-                { prefab = "drumstick", amount = 1, chance = 1 },
-                { prefab = "goose_feather", amount = 2, chance = 1 },
-                { prefab = "goose_feather", amount = 1, chance = 0.33 },
+        
+        forms = {
+            {
+                name = "Mosling",
+                prefab = "mossling",
+                bank = "mossling",
+                build = "mossling_build",
+                anim_idle = "idle",
+                anim_action = "hit",
+                facing = FACING_DOWN,
+                intent = STRINGS.BESTIARY_NEUTRAL,
+        
+                stats = {
+                    health = 525,
+                    damage = 0,
+                    speed = 5,
+                    diet = { "meat", "veggies", "seeds" },
+        
+                    drops = {
+                        { prefab = "meat", amount = 1, chance = 1 },
+                        { prefab = "drumstick", amount = 1, chance = 1 },
+                        { prefab = "goose_feather", amount = 2, chance = 1 },
+                        { prefab = "goose_feather", amount = 1, chance = 0.33 },
+                    },
+        
+                    info = BESTIARYINFO.MOSSLING
+                }
             },
-
-            info = BESTIARYINFO.RABBIT
+            {
+                name = "Mosling",
+                prefab = "mossling",
+                bank = "mossling",
+                build = "mossling_angry_build",
+                anim_idle = "idle",
+                anim_action = "taunt",
+                facing = FACING_DOWN,
+                intent = STRINGS.BESTIARY_AGGRESSIVE,
+        
+                stats = {
+                    health = 525,
+                    damage = 50,
+                    speed = 5,
+                    diet = { "meat", "veggies", "seeds" },
+        
+                    drops = {
+                        { prefab = "meat", amount = 1, chance = 1 },
+                        { prefab = "drumstick", amount = 1, chance = 1 },
+                        { prefab = "goose_feather", amount = 2, chance = 1 },
+                        { prefab = "goose_feather", amount = 1, chance = 0.33 },
+                    },
+        
+                    info = BESTIARYINFO.MOSSLING
+                }
+            },
+            {
+                name = "Mosling",
+                prefab = "mossling",
+                bank = "mossling",
+                build = "mossling_yule_build",
+                anim_idle = "idle",
+                anim_action = "hit",
+                facing = FACING_DOWN,
+                intent = STRINGS.BESTIARY_NEUTRAL,
+        
+                stats = {
+                    health = 525,
+                    damage = 0,
+                    speed = 5,
+                    diet = { "meat", "veggies", "seeds" },
+        
+                    drops = {
+                        { prefab = "meat", amount = 1, chance = 1 },
+                        { prefab = "drumstick", amount = 1, chance = 1 },
+                        { prefab = "goose_feather", amount = 2, chance = 1 },
+                        { prefab = "goose_feather", amount = 1, chance = 0.33 },
+                    },
+        
+                    info = BESTIARYINFO.MOSSLING
+                }
+            },
+            {
+                name = "Mosling",
+                prefab = "mossling",
+                bank = "mossling",
+                build = "mossling_yule_angry_build",
+                anim_idle = "idle",
+                anim_action = "taunt",
+                facing = FACING_DOWN,
+                intent = STRINGS.BESTIARY_AGGRESSIVE,
+        
+                stats = {
+                    health = 525,
+                    damage = 50,
+                    speed = 5,
+                    diet = { "meat", "veggies", "seeds" },
+        
+                    drops = {
+                        { prefab = "meat", amount = 1, chance = 1 },
+                        { prefab = "drumstick", amount = 1, chance = 1 },
+                        { prefab = "goose_feather", amount = 2, chance = 1 },
+                        { prefab = "goose_feather", amount = 1, chance = 0.33 },
+                    },
+        
+                    info = BESTIARYINFO.MOSSLING
+                }
+            }
         }
     },
     {
@@ -2689,7 +2772,7 @@ local data = {
                 { prefab = "acorn", amount = 3, chance = 1 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.POISON_TREE
         }
     },
     {
@@ -3000,59 +3083,60 @@ local data = {
         }
     },
     {
-        name = "Red Gem Deer",
-        prefab = "deer_red",
-        bank = "deer",
-        build = "deer_build",
-        anim_idle = "idle_loop",
-        anim_action = "atk",
-        facing = FACING_DOWNRIGHT,
         scale = 0.4,
         scale_small = 0.4*scaling,
-        intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "winter",
 
-        stats = {
-            health = 1500,
-            damage = 50,
-            speed = 8,
-            diet = "none",
-
-            drops = {
-                { prefab = "meat", amount = 2, chance = 1 },
-                { prefab = "redgem", amount = 1, chance = 1 },
+        forms = {
+            {
+                name = "Red Gem Deer",
+                prefab = "deer_red",
+                bank = "deer",
+                build = "deer_build",
+                anim_idle = "idle_loop",
+                anim_action = "atk",
+                facing = FACING_DOWNRIGHT,
+                intent = STRINGS.BESTIARY_AGGRESSIVE,
+        
+                stats = {
+                    health = 1500,
+                    damage = 50,
+                    speed = 8,
+                    diet = "none",
+        
+                    drops = {
+                        { prefab = "meat", amount = 2, chance = 1 },
+                        { prefab = "redgem", amount = 1, chance = 1 },
+                    },
+        
+                    info = BESTIARYINFO.REDGEMDEER
+                }
             },
-
-            info = BESTIARYINFO.RABBIT
-        }
-    },
-    {
-        name = "Blue Gem Deer",
-        prefab = "deer_blue",
-        bank = "deer",
-        build = "deer_build",
-        anim_idle = "idle_loop",
-        anim_action = "atk",
-        facing = FACING_DOWNRIGHT,
-        scale = 0.4,
-        scale_small = 0.4*scaling,
-        intent = STRINGS.BESTIARY_AGGRESSIVE,
-        type = STRINGS.BESTIARY_ANIMAL,
-        theme = "winter",
-
-        stats = {
-            health = 1500,
-            damage = 50,
-            speed = 8,
-            diet = "none",
-            
-            drops = {
-                { prefab = "meat", amount = 2, chance = 1 },
-                { prefab = "bluegem", amount = 1, chance = 1 },
-            },
-
-            info = BESTIARYINFO.BLUEDEER
+            {
+                name = "Blue Gem Deer",
+                prefab = "deer_blue",
+                bank = "deer",
+                build = "deer_build",
+                anim_idle = "idle_loop",
+                anim_action = "atk",
+                facing = FACING_DOWNRIGHT,
+                intent = STRINGS.BESTIARY_AGGRESSIVE,
+        
+                stats = {
+                    health = 1500,
+                    damage = 50,
+                    speed = 8,
+                    diet = "none",
+                    
+                    drops = {
+                        { prefab = "meat", amount = 2, chance = 1 },
+                        { prefab = "bluegem", amount = 1, chance = 1 },
+                    },
+        
+                    info = BESTIARYINFO.BLUEGEMDEER
+                }
+            }
         }
     },
     {
@@ -3225,7 +3309,7 @@ local data = {
                 { prefab = "meat", amount = 1, chance = 0.5 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.DEER
         }
     },
     {
@@ -3261,7 +3345,7 @@ local data = {
                 { prefab = "chesspiece_malbatross_sketch", amount = 1, chance = 1, name_override = "sketch" },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.MALBATROSS
         }
     },
     {
@@ -3289,7 +3373,7 @@ local data = {
                 { prefab = "ice", amount = 1, chance = 0.5 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.MUTATED_PENGUIN
         }
     },
     {
@@ -3829,7 +3913,7 @@ local data = {
                 { prefab = "nightmarefuel", amount = 1, chance = 0.5 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.FOREST_SKELETON
         }
     },
     {
@@ -3969,7 +4053,7 @@ local data = {
                         { prefab = "froglegs", amount = 1, chance = 1 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.MERMGUARD
                 }
             },
             {
@@ -3993,7 +4077,7 @@ local data = {
                         { prefab = "froglegs", amount = 1, chance = 1 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.MERMGUARD
                 }
             }
         }
@@ -4018,7 +4102,7 @@ local data = {
             speed = 6,
             diet = "none",
             drops = "none",
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.PIPSPOOK
         }
     },
     {
@@ -4379,7 +4463,7 @@ local data = {
                 { prefab = "moon_cap", amount = 2, chance = 1 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.MUSH_GNOME
         }
     },
     {
@@ -4414,7 +4498,7 @@ local data = {
                 }
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.MOLEBAT
         }
     },
     {
@@ -4515,7 +4599,7 @@ local data = {
             speed = 4,
             diet = { "seeds" },
             drops = "none",
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.MUTATED_ROBIN
         }
     },
     {
@@ -4538,7 +4622,7 @@ local data = {
             speed = 4,
             diet = { "seeds" },
             drops = "none",
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.MUTATED_CROW
         }
     },
     {
@@ -4691,7 +4775,7 @@ local data = {
                 }
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.SPIDER_HEALER
         }
     },
     {
@@ -5017,7 +5101,7 @@ local data = {
             speed = 0,
             diet = "none", -- He accepts items but he doesn't "eat" them, info about trading below
             drops = "none",
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.PIGKING
         }
     },
     {
