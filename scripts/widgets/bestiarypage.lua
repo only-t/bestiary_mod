@@ -615,6 +615,28 @@ function BestiaryMonstersPage:CreateInformation(data)
 		self.page:SetTexture("images/bestiary_page_torn.xml", "bestiary_page_torn.tex")
 		self.page:SetSize(970, 570)
 		self.page:SetPosition(0, 40)
+
+		if data.is_learned then
+			local desc_value = sub_root:AddChild(Text(CHATFONT, 28, nil, UICOLOURS.BROWN_DARK)) -- TBA
+			desc_value:SetHAlign(ANCHOR_LEFT)
+			desc_value:SetVAlign(ANCHOR_TOP)
+			desc_value:SetMultilineTruncatedString(data.stats.info, 60, width) -- 60 should be enough
+	
+			x, y = desc_value:GetRegionSize()
+			desc_value:SetPosition(0.5*x, height - 0.5*y)
+			height = height - y - section_space
+		else
+			local locked_bg = sub_root:AddChild(Image("images/frontend.xml", "nav_bg_short.tex"))
+			locked_bg:ScaleToSize(width - 80, 120*2)
+			x, y = locked_bg:GetSize()
+			locked_bg:SetPosition(width/2, height - 0.5*y - 30)
+	
+			local lock = sub_root:AddChild(Image("images/bestiary_lock.xml", "bestiary_lock.tex"))
+			lock:ScaleToSize(110, 120)
+			x, y = lock:GetSize()
+			lock:SetPosition(width/2, height - 0.5*y)
+			height = height - y - section_space
+		end
 	elseif data.name == "Moosegoose" then -- Setting the appropriate names for the title and info
 		local name = math.random(1, 2) == 1 and "Moose" or "Goose"
 		local info = subfmt(data.stats.info, { name = name })
