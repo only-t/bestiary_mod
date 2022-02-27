@@ -100,7 +100,7 @@ local data = {
                 }
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.SPIDER
         }
     },
     {
@@ -203,7 +203,7 @@ local data = {
                 { prefab = "tentaclespots", amount = 1, chance = 0.2 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.TENTACLE
         }
     },
     {
@@ -746,7 +746,7 @@ local data = {
                 }
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.SNOWBIRD
         }
     },
     {
@@ -1483,7 +1483,7 @@ local data = {
         bank = "walrus",
         build = "walrus_baby_build",
         anim_idle = "idle_loop",
-        anim_action = "atk",
+        anim_action = "taunt_attack",
         facing = FACING_DOWN,
         scale = 0.5,
         scale_small = 0.5*scaling,
@@ -1501,7 +1501,7 @@ local data = {
                 { prefab = "meat", amount = 1, chance = 1 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.LITTLE_WALRUS
         }
     },
     {
@@ -1747,7 +1747,7 @@ local data = {
                 { prefab = "pigskin", amount = 1, chance = 1 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.WEREPIG
         }
     },
     {
@@ -1803,7 +1803,7 @@ local data = {
                 { prefab = "flint", amount = 2, chance = 1 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.ROCKY
         }
     },
     {
@@ -1831,7 +1831,7 @@ local data = {
                 { prefab = "nightmarefuel", amount = 1, chance = 0.5 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.CRAWLINGHORROR
         }
     },
     {
@@ -1859,7 +1859,7 @@ local data = {
                 { prefab = "nightmarefuel", amount = 1, chance = 0.5 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.TERRORBEAK
         }
     },
     {
@@ -1887,7 +1887,7 @@ local data = {
                 { prefab = "slurper_pelt", amount = 1, chance = 0.5 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.SLURPER
         }
     },
     {
@@ -1919,7 +1919,7 @@ local data = {
                         { prefab = "slurtlehat", amount = 1, chance = 0.1 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.SLURTLE
                 }
             },
             {
@@ -1944,7 +1944,7 @@ local data = {
                         { prefab = "armorsnurtleshell", amount = 1, chance = 0.75 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.SNURTLE
                 }
             }
         }
@@ -1977,7 +1977,7 @@ local data = {
                         { prefab = "cave_banana", amount = 1, chance = 1 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.MONKEY
                 }
             },
             {
@@ -2003,7 +2003,7 @@ local data = {
                         { prefab = "nightmarefuel", amount = 1, chance = 0.5 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.MONKEY_SPOOKY
                 }
             }
         }
@@ -2038,7 +2038,7 @@ local data = {
                 }
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.SPIDER_WARRIOR
         }
     },
     {
@@ -2068,7 +2068,7 @@ local data = {
                 { prefab = "spiderhat", amount = 1, chance = 1 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.SPIDER_QUEEN
         }
     },
     {
@@ -2134,7 +2134,7 @@ local data = {
                 }
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.SPIDER_SPITTER
         }
     },
     {
@@ -2194,7 +2194,7 @@ local data = {
                 { prefab = "meat", amount = 2, chance = 1 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.TALLBIRD
         }
     },
     {
@@ -2221,7 +2221,7 @@ local data = {
                 { prefab = "meat", amount = 1, chance = 1 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.TEENBIRD
         }
     },
     {
@@ -2248,7 +2248,7 @@ local data = {
                 { prefab = "smallmeat", amount = 1, chance = 1 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.SMALLBIRD
         }
     },
     {
@@ -2332,7 +2332,7 @@ local data = {
                         { prefab = "livinglog", amount = 6, chance = 1 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.TREEGUARD
                 },
             },
             {
@@ -2356,7 +2356,7 @@ local data = {
                         { prefab = "livinglog", amount = 6, chance = 1 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.TREEGUARD
                 },
             }
         }
@@ -2835,7 +2835,7 @@ local data = {
                 { prefab = "houndstooth", amount = 1, chance = 0.33 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.WARG
         }
     },
     {
@@ -2866,7 +2866,7 @@ local data = {
                         { prefab = "lightninggoathorn", amount = 1, chance = 0.25 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.GOAT
                 }
             },
             {
@@ -2891,7 +2891,7 @@ local data = {
                         { prefab = "lightninggoathorn", amount = 1, chance = 0.25 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.GOAT
                 }
             }
         }
@@ -3403,7 +3403,7 @@ local data = {
                         { prefab = "plantmeat", amount = 1, chance = 1 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.SALADMANDER
                 }
             },
             {
@@ -3414,6 +3414,7 @@ local data = {
                 anim_idle = "idle_loop",
                 anim_action = "attack",
                 facing = FACING_DOWN,
+                intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
                     health = 900,
@@ -3425,7 +3426,7 @@ local data = {
                         { prefab = "dragonfruit", amount = 1, chance = 1 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.SALADMANDER
                 }
             }
         }
@@ -3460,7 +3461,7 @@ local data = {
                 }
             },
             
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.SPIDER_MOON
         }
     },
     {
@@ -3511,7 +3512,7 @@ local data = {
                         }
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.TOADSTOOL
                 }
             },
             {
@@ -3556,7 +3557,7 @@ local data = {
                         }
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.TOADSTOOL_DARK
                 }
             }
         }
@@ -3589,7 +3590,7 @@ local data = {
                         { prefab = "nightmarefuel", amount = 1, chance = 0.5 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.SHADOW_BISHOP
                 },
 
                 form_override_fn = function(animstate)
@@ -3617,7 +3618,7 @@ local data = {
                         { prefab = "nightmarefuel", amount = 2, chance = 0.5 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.SHADOW_BISHOP
                 },
 
                 form_override_fn = function(animstate)
@@ -3654,7 +3655,7 @@ local data = {
                         { prefab = "nightsword", amount = 1, chance = 1 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.SHADOW_BISHOP
                 },
 
                 form_override_fn = function(animstate)
@@ -3697,7 +3698,7 @@ local data = {
                         { prefab = "nightmarefuel", amount = 1, chance = 0.5 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.SHADOW_KNIGHT
                 },
 
                 form_override_fn = function(animstate)
@@ -3725,7 +3726,7 @@ local data = {
                         { prefab = "nightmarefuel", amount = 2, chance = 0.5 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.SHADOW_KNIGHT
                 },
 
                 form_override_fn = function(animstate)
@@ -3763,7 +3764,7 @@ local data = {
                         { prefab = "nightsword", amount = 1, chance = 1 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.SHADOW_KNIGHT
                 },
 
                 form_override_fn = function(animstate)
@@ -3807,7 +3808,7 @@ local data = {
                         { prefab = "nightmarefuel", amount = 1, chance = 0.5 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.SHADOW_ROOK
                 },
 
                 form_override_fn = function(animstate)
@@ -3835,7 +3836,7 @@ local data = {
                         { prefab = "nightmarefuel", amount = 2, chance = 0.5 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.SHADOW_ROOK
                 },
 
                 form_override_fn = function(animstate)
@@ -3872,7 +3873,7 @@ local data = {
                         { prefab = "nightsword", amount = 1, chance = 1 },
                     },
         
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.SHADOW_ROOK
                 },
 
                 form_override_fn = function(animstate)
@@ -4001,7 +4002,7 @@ local data = {
                     speed = 3,
                     diet = "none",
                     drops = "none",
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.STALKER_MINION
                 },
             },
             {
@@ -4020,7 +4021,7 @@ local data = {
                     speed = 3,
                     diet = "none",
                     drops = "none",
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.STALKER_MINION
                 },
             }
         }
@@ -4130,7 +4131,7 @@ local data = {
                 { prefab = "lightbulb", amount = 1, chance = 0.33 },
             },
 
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.SKITTERSQUID
         }
     },
     {
@@ -4208,7 +4209,7 @@ local data = {
                 { prefab = "fishmeat", amount = 4, chance = 1 },
             },
             
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.SHARK
         }
     },
     {
@@ -4237,9 +4238,10 @@ local data = {
                     drops = {
                         { prefab = "waterplant_bomb", amount = 2, chance = 1 },
                         { prefab = "waterplant_bomb", amount = 1, chance = 0.5 },
+                        { prefab = "waterplant_planter", amount = 1, chance = 1 },
                     },
                     
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.WATERPLANT
                 },
 
                 form_override_fn = function(animstate)
@@ -4268,9 +4270,10 @@ local data = {
                     drops = {
                         { prefab = "waterplant_bomb", amount = 2, chance = 1 },
                         { prefab = "waterplant_bomb", amount = 1, chance = 0.5 },
+                        { prefab = "waterplant_planter", amount = 1, chance = 1 },
                     },
                     
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.WATERPLANT
                 },
 
                 form_override_fn = function(animstate)
@@ -4299,9 +4302,10 @@ local data = {
                     drops = {
                         { prefab = "waterplant_bomb", amount = 3, chance = 1 },
                         { prefab = "waterplant_bomb", amount = 2, chance = 0.5 },
+                        { prefab = "waterplant_planter", amount = 1, chance = 1 },
                     },
                     
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.WATERPLANT
                 },
 
                 form_override_fn = function(animstate)
@@ -4338,7 +4342,7 @@ local data = {
                 { prefab = "nightmarefuel", amount = 1, chance = 0.5 },
             },
             
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.OCEANHORROR
         }
     },
     {
@@ -4361,7 +4365,7 @@ local data = {
             speed = 0,
             diet = "none",
             drops = "none",
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.WAVEYJONES
         }
     },
     {
@@ -4655,7 +4659,7 @@ local data = {
                 }
             },
             
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.WATER_SPIDER
         }
     },
     {
@@ -4904,7 +4908,7 @@ local data = {
             speed = 4,
             diet = { "meat", "horrible" },
             drops = "none",
-            info = BESTIARYINFO.RABBIT
+            info = BESTIARYINFO.PEEPER
         }
     },
     {
@@ -4944,7 +4948,7 @@ local data = {
                         { prefab = "trinket_6", amount = 1, chance = 0.5 },
                     },
                     
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.TWINOFTERROR1
                 },
 
                 form_override_fn = function(animstate, data)
@@ -4983,7 +4987,7 @@ local data = {
                         { prefab = "trinket_6", amount = 1, chance = 0.5 },
                     },
                     
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.TWINOFTERROR1
                 },
 
                 form_override_fn = function(animstate, data)
@@ -5031,7 +5035,7 @@ local data = {
                         { prefab = "trinket_6", amount = 1, chance = 0.5 },
                     },
                     
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.TWINOFTERROR2
                 },
 
                 form_override_fn = function(animstate, data)
@@ -5070,7 +5074,7 @@ local data = {
                         { prefab = "trinket_6", amount = 1, chance = 0.5 },
                     },
                     
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.TWINOFTERROR2
                 },
 
                 form_override_fn = function(animstate, data)
@@ -5129,7 +5133,7 @@ local data = {
                     drops = {
                         { prefab = "wobster_sheller_dead", amount = 1, chance = 1 },
                     },
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.WOBSTER
                 }
             },
             {
@@ -5150,7 +5154,7 @@ local data = {
                     drops = {
                         { prefab = "moonglass", amount = 1, chance = 1 },
                     },
-                    info = BESTIARYINFO.RABBIT
+                    info = BESTIARYINFO.WOBSTER_LUNAR
                 }
             }
         }
