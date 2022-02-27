@@ -249,6 +249,14 @@ AddPrefabPostInit("stalker_minion2", function(inst)
 	inst.discoverable_prefab = "stalker_minion1"
 end)
 
+AddPrefabPostInit("leif_sparse", function(inst)
+	if not GLOBAL.TheWorld.ismastersim then
+		return inst
+	end
+
+	inst.discoverable_prefab = "leif"
+end)
+
 local BestiaryEntry = require("widgets/bestiaryentry")
 AddClassPostConstruct("widgets/controls", function(self)
 	self.bestiary_notification = self.topleft_root:AddChild(BestiaryEntry(self.owner))
