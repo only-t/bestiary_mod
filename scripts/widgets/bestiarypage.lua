@@ -52,16 +52,21 @@ local BestiaryMonstersPage = Class(Widget, function(self, owner)
 			data = mob_data
 		end
 
-		if FindInTable(discovered_mobs, data.prefab) then
-			data.is_discovered = true
-		else
-			data.is_discovered = nil
-		end
+		if DISCOVERABLE_MOBS_CONFIG == 1 then
+			if FindInTable(discovered_mobs, data.prefab) then
+				data.is_discovered = true
+			else
+				data.is_discovered = nil
+			end
 
-		if FindInTable(learned_mobs, data.prefab) then
-			data.is_learned = true
+			if FindInTable(learned_mobs, data.prefab) then
+				data.is_learned = true
+			else
+				data.is_learned = nil
+			end
 		else
-			data.is_learned = nil
+			data.is_discovered = true
+			data.is_learned = true
 		end
 
 		-- if FindInTable(new_mobs, data.prefab) then	-- There's some visual errors/bugs that I can't seem to fix at the moment so I'll work on it some time later
@@ -73,7 +78,9 @@ local BestiaryMonstersPage = Class(Widget, function(self, owner)
 
 	self.completion = self:AddChild(self:CreateCompletionStrip()) -- Needs to be above the page to display properly
 
-	self.dangly = self:AddChild(self:CreateDangly())
+	if DISCOVERABLE_MOBS_CONFIG == 1 then -- Add the bestiary clear button only if discovering is enabled
+		self.dangly = self:AddChild(self:CreateDangly())
+	end
 
 	self.page = self:AddChild(Image("images/bestiary_page.xml", "bestiary_page.tex"))
 	self.page:SetSize(970, 570)

@@ -11,3 +11,15 @@ dst_compatible = true
 dont_starve_compatible = false
 priority = 0
 api_version = 10
+
+configuration_options = {
+    {
+        name = "Discoverable Mobs",
+        options = {
+            { description = "Yes", data = 1 },
+            { description = "No", data = 0 }
+        },
+
+        default = 1,
+    }
+}

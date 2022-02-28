@@ -34,6 +34,20 @@ GLOBAL.TheBestiary = nil
 GLOBAL.TheBestiary = require("bestiarydata")()
 GLOBAL.TheBestiary:Load()
 
+GLOBAL.DISCOVERABLE_MOBS_CONFIG = GetModConfigData("Discoverable Mobs")
+
+AddPlayerPostInit(function(inst)
+	if not GLOBAL.TheWorld.ismastersim then
+		return inst
+	end
+
+	inst:AddComponent("bestiaryreader")
+end)
+
+if GLOBAL.DISCOVERABLE_MOBS_CONFIG == 0 then -- Skip all the 'discovering' part if it's disabled
+	return
+end
+
 AddClientModRPCHandler("bestiarymod", "DiscoverMob", function(mob, ...)
 	local bestiaryupdater = GLOBAL.ThePlayer.components.bestiaryupdater
 
@@ -96,8 +110,6 @@ AddPlayerPostInit(function(inst)
 	if not GLOBAL.TheWorld.ismastersim then
 		return inst
 	end
-
-	inst:AddComponent("bestiaryreader")
 
 	inst:DoPeriodicTask(2, CheckNearbyMobs)
 	inst:ListenForEvent("killed", CheckKilledMob)
