@@ -1,7 +1,12 @@
 name = "󰀈 Bestiary 󰀈"
-description = "None"
+description = [[The Bestiary adds a new book to Don't Starve Together with all the information of the different creatues of The Constant!
+
+If you want to have all the information from the start disable Discoverable Mobs in the configurations!
+
+Current version: 0.9.0 󰀔
+]]
 author = "-т-"
-version = "0.0.1"
+version = "0.9.0"
 forumthread = ""
 icon_atlas = "icon.xml"
 icon = "icon.tex"
