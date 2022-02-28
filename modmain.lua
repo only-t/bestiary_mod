@@ -12,7 +12,6 @@ require("debugkeys")
 
 modimport("init/init_assets")
 modimport("init/init_prefabs")
-modimport("init/init_minimapicons")
 modimport("init/init_desc")
 modimport("init/init_strings")
 modimport("init/init_tuning")
