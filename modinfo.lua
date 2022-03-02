@@ -7,7 +7,7 @@ Current version: 0.9.0 󰀔
 ]]
 author = "-т-"
 version = "0.9.0"
-forumthread = ""
+forumthread = "https://forums.kleientertainment.com/forums/topic/137812-the-bestiary-mod-beta-release/"
 icon_atlas = "icon.xml"
 icon = "icon.tex"
 client_only_mod = false
