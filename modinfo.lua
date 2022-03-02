@@ -6,7 +6,7 @@ If you want to have all the information from the start disable Discoverable Mobs
 Current version: 0.9.0 󰀔
 ]]
 author = "-т-"
-version = "0.9.0"
+version = "0.9.1"
 forumthread = "https://forums.kleientertainment.com/forums/topic/137812-the-bestiary-mod-beta-release/"
 icon_atlas = "icon.xml"
 icon = "icon.tex"
