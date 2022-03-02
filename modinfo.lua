@@ -3,11 +3,11 @@ description = [[The Bestiary adds a new book to Don't Starve Together with all t
 
 If you want to have all the information from the start disable Discoverable Mobs in the configurations!
 
-Current version: 0.9.0 󰀔
+Current version: 0.9.1 󰀔
 ]]
 author = "-т-"
 version = "0.9.1"
-forumthread = "https://forums.kleientertainment.com/forums/topic/137812-the-bestiary-mod-beta-release/"
+forumthread = "forums/topic/137812-the-bestiary-mod-beta-release"
 icon_atlas = "icon.xml"
 icon = "icon.tex"
 client_only_mod = false
