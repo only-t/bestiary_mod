@@ -3026,7 +3026,7 @@ local data = {
 
             drops = {
                 { prefab = "monstermeat", amount = 1, chance = 1 },
-                { prefab = "cookiecuttershell", amount = 1, chance = 0.25 },
+                { prefab = "cookiecuttershell", amount = 1, chance = 0.5 },
             },
 
             info = BESTIARYINFO.COOKIECUTTER
@@ -5109,54 +5109,55 @@ local data = {
         }
     },
     {
+        name = "Wobster",
+        prefab = "wobster_sheller_land",
+        bank = "lobster",
+        build = "lobster_sheller",
+        anim_idle = "idle",
+        anim_action = "hit",
+        facing = FACING_NONE,
         scale = 0.6,
         scale_small = 0.6*scaling,
+        intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "ocean",
 
-        forms = {
-            {
-                name = "Wobster",
-                prefab = "wobster_sheller_land",
-                bank = "lobster",
-                build = "lobster_sheller",
-                anim_idle = "idle",
-                anim_action = "hit",
-                facing = FACING_NONE,
-                intent = STRINGS.BESTIARY_PASSIVE,
-        
-                stats = {
-                    health = 25,
-                    damage = 0,
-                    speed = 4,
-                    diet = "none",
-                    drops = {
-                        { prefab = "wobster_sheller_dead", amount = 1, chance = 1 },
-                    },
-                    info = BESTIARYINFO.WOBSTER
-                }
+        stats = {
+            health = 25,
+            damage = 0,
+            speed = 4,
+            diet = "none",
+            drops = {
+                { prefab = "wobster_sheller_dead", amount = 1, chance = 1 }
             },
-            {
-                name = "Lunar Wobster",
-                prefab = "wobster_moonglass_land",
-                bank = "lobster",
-                build = "lobster_moonglass",
-                anim_idle = "idle",
-                anim_action = "hit",
-                facing = FACING_NONE,
-                intent = STRINGS.BESTIARY_PASSIVE,
-        
-                stats = {
-                    health = 25,
-                    damage = 0,
-                    speed = 4,
-                    diet = "none",
-                    drops = {
-                        { prefab = "moonglass", amount = 1, chance = 1 },
-                    },
-                    info = BESTIARYINFO.WOBSTER_LUNAR
-                }
-            }
+
+            info = BESTIARYINFO.WOBSTER
+        }
+    },
+    {
+        name = "Lunar Wobster",
+        prefab = "wobster_moonglass_land",
+        bank = "lobster",
+        build = "lobster_moonglass",
+        anim_idle = "idle",
+        anim_action = "hit",
+        facing = FACING_NONE,
+        scale = 0.6,
+        scale_small = 0.6*scaling,
+        intent = STRINGS.BESTIARY_PASSIVE,
+        type = STRINGS.BESTIARY_ANIMAL,
+        theme = "lunar",
+
+        stats = {
+            health = 25,
+            damage = 0,
+            speed = 4,
+            diet = "none",
+            drops = {
+                { prefab = "moonglass", amount = 1, chance = 1 }
+            },
+
+            info = BESTIARYINFO.WOBSTER_LUNAR
         }
     }
 }
