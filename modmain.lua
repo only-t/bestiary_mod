@@ -94,7 +94,7 @@ AddPlayerPostInit(function(inst)
 		if mob and IsInMonstersTable(mob.prefab) then
 			inst.components.bestiaryupdater:DiscoverMob(mob.discoverable_prefab or mob.prefab)
 
-			if mob.prefab == "hermitcrab" then -- There isn't anything that really allows you to learn about Pearl
+			if mob.prefab == "hermitcrab" or mob.prefab == "gestalt" or mob.prefab == "gestalt_guard" then -- There cannot be killed or interacted with really...
 				inst.components.bestiaryupdater:LearnMob(mob.discoverable_prefab or mob.prefab)
 			end
 		end
