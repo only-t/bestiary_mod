@@ -67,24 +67,36 @@ AddModRPCHandler("bestiarymod", "ForgetBestiary", function(player)
 	player.components.bestiaryupdater:Forgor() -- Server sided
 end)
 
+local function IsInMonstersTable(val)
+	for i, data in ipairs(require "monsterinfo") do
+		if (data.prefab or data.forms[1].prefab) == val then
+			return true
+		end
+	end
+
+	return false
+end
+
+local CANT_TAGS = { "structure", "FX", "DECOR", "NOCLICK", "INLIMBO",  }
+local MUST_ONE_OF_TAGS = { "_health", "_combat", "character", "NET_workable", "king" } -- Should cover about 99.3141% of all mobs
 AddPlayerPostInit(function(inst)
 	local function CheckNearbyMobs(inst)
 		local radius = GLOBAL.TUNING.DISCOVER_MOB_RANGE
 		local mob = GLOBAL.FindEntity(
 			inst,
 			radius,
-			function(guy)
-				return guy ~= inst and
-				(not guy.components.childspawner and
-				guy.components.health and
-				guy.components.combat) or
-				guy.prefab == "fireflies" or -- They don't have either health nor combat
-				guy.prefab == "pigking" -- They don't have either health nor combat
-			end
+			nil,
+			nil,
+			CANT_TAGS,
+			MUST_ONE_OF_TAGS
 		)
 	
-		if mob then
+		if mob and IsInMonstersTable(mob.prefab) then
 			inst.components.bestiaryupdater:DiscoverMob(mob.discoverable_prefab or mob.prefab)
+
+			if mob.prefab == "hermitcrab" then -- There isn't anything that really allows you to learn about Pearl
+				inst.components.bestiaryupdater:LearnMob(mob.discoverable_prefab or mob.prefab)
+			end
 		end
 	end
 	
@@ -118,7 +130,7 @@ end)
 AddPrefabPostInit("pigking", function(inst)
 	inst:ListenForEvent("trade", function(inst, data)
 		if data.giver then
-			data.giver.components.bestiaryupdater:DiscoverMob(data.victim.discoverable_prefab or data.victim.prefab) -- If traded with without discovering first
+			data.giver.components.bestiaryupdater:DiscoverMob(data.victim.discoverable_prefab or data.victim.prefab) -- If traded with without discovering first, highly unlikely
 			data.giver.components.bestiaryupdater:LearnMob(data.victim.discoverable_prefab or data.victim.prefab)
 		end
 	end)
@@ -266,6 +278,22 @@ AddPrefabPostInit("leif_sparse", function(inst)
 	end
 
 	inst.discoverable_prefab = "leif"
+end)
+
+AddPrefabPostInit("wobster_sheller", function(inst)
+	if not GLOBAL.TheWorld.ismastersim then
+		return inst
+	end
+
+	inst.discoverable_prefab = "wobster_sheller_land"
+end)
+
+AddPrefabPostInit("wobster_moonglass", function(inst)
+	if not GLOBAL.TheWorld.ismastersim then
+		return inst
+	end
+
+	inst.discoverable_prefab = "wobster_moonglass_land"
 end)
 
 local BestiaryEntry = require("widgets/bestiaryentry")
