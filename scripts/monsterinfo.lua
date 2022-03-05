@@ -3026,7 +3026,7 @@ local data = {
 
             drops = {
                 { prefab = "monstermeat", amount = 1, chance = 1 },
-                { prefab = "cookiecuttershell", amount = 1, chance = 0.5 },
+                { prefab = "cookiecuttershell", amount = 1, chance = 0.25 },
             },
 
             info = BESTIARYINFO.COOKIECUTTER
