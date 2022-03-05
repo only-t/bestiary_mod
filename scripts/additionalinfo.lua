@@ -141,6 +141,7 @@ local info = {
     CRAWLINGHORROR = "A tick hallucination. It spawns when a players sanity is below 50%. The less sane the player is the more this hallucination materializes. Below 15% sanity it will become aggressive.\n\nFighting your nightmares helps your psyche.\n\nThe high amounts of nightmare energy present in Nightmare Lights and Nightmare Fissures in the Ruins allow this shadow to materialize without needing an insane player.",
     TERRORBEAK = "A screecher hallucination. It spawns when a players sanity is below 15%.\n\nFighting your nightmares helps your psyche.\n\nThe high amounts of nightmare energy present in Nightmare Lights and Nightmare Fissures in the Ruins allow this shadow to materialize without needing an insane player",
     OCEANHORROR = "An ocean hallucination. It spawns when a player tries to escape hallucinations bound to land. It will materialize in water and on boats.\n\nThey attack by whiping their hand jaws twice.\n\nFighting your nightmares helps your psyche.",
+    BUTTERFLY_MOON = "A glowing, tiny insect. Moon Moths come out of Lune Trees when they're cut down.\n\nThey will die from any attack and will avoid players. Moon Moths can be caught using a Bug Net and then planted as a Lune Tree saplings.\n\nThey are considered innocent creatures so killing one adds 1 points to the naughtiness of the player, which can cause Krampus to appear.",
 }
 
 return info

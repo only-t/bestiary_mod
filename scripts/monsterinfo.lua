@@ -5159,6 +5159,32 @@ local data = {
 
             info = BESTIARYINFO.WOBSTER_LUNAR
         }
+    },
+    {
+        name = "Moon Moth",
+        prefab = "moonbutterfly",
+        bank = "butterfly",
+        build = "butterfly_moon",
+        anim_idle = "flight_cycle",
+        anim_action = "idle_flight_loop",
+        facing = FACING_NONE,
+        scale = 0.6,
+        scale_small = 0.6*scaling,
+        intent = STRINGS.BESTIARY_PASSIVE,
+        type = STRINGS.BESTIARY_ANIMAL,
+        theme = "lunar",
+
+        stats = {
+            health = 1,
+            damage = 0,
+            speed = 5,
+            diet = "none",
+            drops = {
+                { prefab = "moonbutterflywings", amount = 1, chance = 1 }
+            },
+
+            info = BESTIARYINFO.BUTTERFLY_MOON
+        }
     }
 }
 
