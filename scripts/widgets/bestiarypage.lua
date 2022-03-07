@@ -34,7 +34,6 @@ local BestiaryMonstersPage = Class(Widget, function(self, owner)
 
 	local discovered_mobs = TheBestiary.discovered_mobs or {  }
 	local learned_mobs = TheBestiary.learned_mobs or {  }
-	-- local new_mobs = TheBestiary.new_mobs or {  }
 
 	for i, mob_data in ipairs(MonsterInfo) do
 		local data = {  }
@@ -68,10 +67,6 @@ local BestiaryMonstersPage = Class(Widget, function(self, owner)
 			data.is_discovered = true
 			data.is_learned = true
 		end
-
-		-- if FindInTable(new_mobs, data.prefab) then	-- There's some visual errors/bugs that I can't seem to fix at the moment so I'll work on it some time later
-		-- 	data.is_new = true							-- Disabling for now
-		-- end
 
 		table.insert(self.all_monsters, data)
 	end
@@ -127,24 +122,24 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 		w.cell_root.lock = w.cell_root:AddChild(Image("images/bestiary_lock.xml", "bestiary_lock.tex"))
 		w.cell_root.lock:ScaleToSize(110, 120)
 
-		-- w.cell_root.is_new = w.cell_root:AddChild(UIAnim())
-		-- w.cell_root.is_new:SetScale(2, 2)
-		-- w.cell_root.is_new:SetPosition(85, 55)
-		-- w.cell_root.is_new:GetAnimState():SetBank("cookbook_newrecipe")
-		-- w.cell_root.is_new:GetAnimState():SetBuild("cookbook_newrecipe")
-		-- w.cell_root.is_new:GetAnimState():PlayAnimation("anim", true)
-		-- w.cell_root.is_new:Hide()
+		w.cell_root.is_new = w.cell_root:AddChild(UIAnim())
+		w.cell_root.is_new:SetScale(2, 2)
+		w.cell_root.is_new:SetPosition(85, 55)
+		w.cell_root.is_new:GetAnimState():SetBank("cookbook_newrecipe")
+		w.cell_root.is_new:GetAnimState():SetBuild("cookbook_newrecipe")
+		w.cell_root.is_new:GetAnimState():PlayAnimation("anim", true)
+		w.cell_root.is_new:GetAnimState():SetTime(math.random()*w.cell_root.is_new:GetAnimState():GetCurrentAnimationLength())
+		w.cell_root.is_new:Hide()
 
 		w.focus_forward = w.cell_root
 
 		w.cell_root.ongainfocusfn = function()
 			w.cell_root.monster:GetAnimState():Resume()
 
-			-- if w.cell_root.is_new then
-			-- 	w.cell_root.is_new:Hide()
-			-- 	w.data.is_new = nil
-			-- 	TheBestiary:RemoveFromTable("new_mobs", w.data.prefab)
-			-- end
+			if TheBestiary.new_mobs then
+				TheBestiary.new_mobs[w.data.prefab] = nil
+				w.cell_root.is_new:Hide()
+			end
 
 			self.monster_grid:OnWidgetFocus(w)
 		end
@@ -171,11 +166,11 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 					widget.cell_root:SetTextures("images/monstergrid_bg_"..widget.data.theme..".xml", "monstergrid_bg_"..widget.data.theme..".tex")
 				end
 
-				-- if widget.data.is_new then
-				-- 	widget.cell_root.is_new:Show()
-				-- else
-				-- 	widget.cell_root.is_new:Hide()
-				-- end
+				if TheBestiary:IsNew(widget.data.prefab) then
+					widget.cell_root.is_new:Show()
+				else
+					widget.cell_root.is_new:Hide()
+				end
 
 				if widget.cell_root.monster:GetAnimState():GetBuild() ~= data.build then -- Change the whole UIAnim only at the last frame as it needs to replace the old one
 					local time = widget.cell_root.monster:GetAnimState():GetCurrentAnimationTime() 	-- Since re-creating the UIAnim resets the animation it makes it look a bit... weird
@@ -238,7 +233,7 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 
 				widget.cell_root.lock:Show()
 				widget.cell_root.monster:Hide()
-				-- widget.cell_root.is_new:Hide()
+				widget.cell_root.is_new:Hide()
 			end
 
 			widget:Enable()
@@ -247,7 +242,7 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 			widget.cell_root:Hide()
 			widget.cell_root.monster:Hide()
 			widget.cell_root.lock:Hide()
-			-- widget.cell_root.is_new:Hide()
+			widget.cell_root.is_new:Hide()
 		end
     end
 
@@ -951,7 +946,7 @@ function BestiaryMonstersPage:CreateDangly()
 						TheBestiary:Forgor() -- Client sided
 						SendModRPCToServer(GetModRPC("bestiarymod", "ForgetBestiary"), ThePlayer) -- Sent from client to server
 						TheFrontEnd:PopScreen()
-						TheFrontEnd:PopScreen() -- Pop twice, once for the notice, one for the bestiary
+						TheFrontEnd:PopScreen() -- Pop twice, once for the notice, once for the bestiary
 					end	
 				},
 				{
