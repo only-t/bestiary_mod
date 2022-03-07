@@ -130,8 +130,8 @@ end)
 AddPrefabPostInit("pigking", function(inst)
 	inst:ListenForEvent("trade", function(inst, data)
 		if data.giver then
-			data.giver.components.bestiaryupdater:DiscoverMob(data.victim.discoverable_prefab or data.victim.prefab) -- If traded with without discovering first, highly unlikely
-			data.giver.components.bestiaryupdater:LearnMob(data.victim.discoverable_prefab or data.victim.prefab)
+			data.giver.components.bestiaryupdater:DiscoverMob("pigking") -- If traded with without discovering first, highly unlikely
+			data.giver.components.bestiaryupdater:LearnMob("pigking")
 		end
 	end)
 end)
