@@ -67,9 +67,9 @@ AddModRPCHandler("bestiarymod", "ForgetBestiary", function(player)
 	player.components.bestiaryupdater:Forgor() -- Server sided
 end)
 
-local function IsInMonstersTable(val)
+local function IsInMonstersTable(mob)
 	for i, data in ipairs(require "monsterinfo") do
-		if (data.prefab or data.forms[1].prefab) == val then
+		if (data.prefab or data.forms[1].prefab) == (mob.discoverable_prefab or mob.prefab) then
 			return true
 		end
 	end
@@ -91,7 +91,7 @@ AddPlayerPostInit(function(inst)
 			MUST_ONE_OF_TAGS
 		)
 	
-		if mob and IsInMonstersTable(mob.prefab) then
+		if mob and IsInMonstersTable(mob) then
 			inst.components.bestiaryupdater:DiscoverMob(mob.discoverable_prefab or mob.prefab)
 
 			if mob.prefab == "hermitcrab" or mob.prefab == "gestalt" or mob.prefab == "gestalt_guard" then -- There cannot be killed or interacted with really...
