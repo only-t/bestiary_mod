@@ -52,7 +52,7 @@ function BestiaryData:DiscoverMob(prefab)
         table.insert(self.discovered_mobs, prefab)
         self.new_mobs[prefab] = true
 
-        if ThePlayer then -- Push only it's the client
+        if ThePlayer then -- Push only if it's the client
 		    ThePlayer:PushEvent("mob_discovered")
         end
 

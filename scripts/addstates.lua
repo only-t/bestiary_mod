@@ -1,4 +1,8 @@
-local bestiary_openstate = GLOBAL.State{
+local State = GLOBAL.State
+local TimeEvent = GLOBAL.TimeEvent
+local EventHandler = GLOBAL.EventHandler
+
+local bestiary_openstate = State{
 	name = "bestiary_open",
 	tags = { "doing" },
 
@@ -11,7 +15,8 @@ local bestiary_openstate = GLOBAL.State{
 	end,
 
 	timeline = {
-		GLOBAL.TimeEvent(8*GLOBAL.FRAMES, function(inst)
+		TimeEvent(8*GLOBAL.FRAMES, function(inst)
+			inst.SoundEmitter:PlaySound("dontstarve/common/use_book")
 			inst:PerformBufferedAction()
 		end),
 	},
@@ -23,7 +28,7 @@ local bestiary_openstate = GLOBAL.State{
 	end,
 	
 	events = {
-		GLOBAL.EventHandler("ms_closepopup", function(inst, data)
+		EventHandler("ms_closepopup", function(inst, data)
 			if data.popup == GLOBAL.POPUPS.BESTIARY then
 				inst.sg:GoToState("bestiary_close")
 			end
@@ -35,17 +40,18 @@ local bestiary_openstate = GLOBAL.State{
 	end,
 }
 
-local bestiary_closestate = GLOBAL.State{
+local bestiary_closestate = State{
 	name = "bestiary_close",
 	tags = { "idle", "nodangle" },
 
 	onenter = function(inst)
 		inst.components.locomotor:StopMoving()
+		inst.SoundEmitter:PlaySound("dontstarve/common/use_book")
 		inst.AnimState:PlayAnimation("reading_pst")
 	end,
 
 	events = {
-		GLOBAL.EventHandler("animover", function(inst)
+		EventHandler("animover", function(inst)
 			if inst.AnimState:AnimDone() then
 				inst.sg:GoToState(inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.HANDS) and "item_out" or "idle")
 			end
@@ -53,7 +59,7 @@ local bestiary_closestate = GLOBAL.State{
 	},
 }
 
-local bestiary_open_clientstate = GLOBAL.State{
+local bestiary_open_clientstate = State{
 	name = "bestiary_open",
 	tags = { "doing" },
 

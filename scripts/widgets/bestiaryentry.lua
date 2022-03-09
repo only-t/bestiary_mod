@@ -1,7 +1,7 @@
 local Widget = require "widgets/widget"
 local UIAnim = require "widgets/uianim"
 
-local time = 5
+local SHOW_TIME = 5
 
 local BestiaryEntry = Class(Widget, function(self, owner)
     Widget._ctor(self, "BestiaryEntry")
@@ -23,7 +23,9 @@ function BestiaryEntry:Enter()
         self.notification:GetAnimState():PlayAnimation("enter")
         self.notification:GetAnimState():PushAnimation("idle", true)
 
-        self.inst:DoTaskInTime(time, function() self:Exit() end)
+        ThePlayer.SoundEmitter:PlaySound("dontstarve/characters/actions/page_turn") -- Client-sided
+        
+        self.inst:DoTaskInTime(SHOW_TIME, function() self:Exit() end)
     end
 end
 

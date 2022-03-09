@@ -26,15 +26,11 @@ local BestiaryPopupScreen = Class(Screen, function(self, owner)
 
 	self.default_focus = self.book
 
-    self.owner.SoundEmitter:PlaySound("dontstarve/common/use_book")
-
     SetAutopaused(true)
 end)
 
 function BestiaryPopupScreen:OnDestroy()
     SetAutopaused(false)
-
-    self.owner.SoundEmitter:PlaySound("dontstarve/common/use_book")
 
     POPUPS.BESTIARY:Close(self.owner)
 	BestiaryPopupScreen._base.OnDestroy(self)
