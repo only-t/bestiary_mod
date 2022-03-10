@@ -5103,7 +5103,7 @@ local data = {
             health = 0,
             damage = 0,
             speed = 0,
-            diet = "none", -- He accepts items but he doesn't "eat" them, info about trading below
+            diet = { "meat", "horrible" },
             drops = "none",
             info = BESTIARYINFO.PIGKING
         }
@@ -5184,6 +5184,34 @@ local data = {
             },
 
             info = BESTIARYINFO.BUTTERFLY_MOON
+        }
+    },
+    {
+        name = "King of The Merms",
+        prefab = "mermking",
+        bank = "merm_king",
+        build = "merm_king",
+        anim_idle = "idle",
+        anim_action = "refuse",
+        facing = FACING_NONE,
+        scale = 0.3,
+        scale_small = 0.3*scaling,
+        intent = STRINGS.BESTIARY_PASSIVE,
+        type = STRINGS.BESTIARY_MONSTER,
+        theme = "swamp",
+
+        stats = {
+            health = 1000,
+            damage = 0,
+            speed = 0,
+            diet = { "veggies", "fish", "seeds" },
+            drops = {
+                { prefab = "fish", amount = 3, chance = 1 },
+                { prefab = "kelp", amount = 2, chance = 1 },
+                { prefab = "froglegs", amount = 1, chance = 1 }
+            },
+
+            info = BESTIARYINFO.MERMKING
         }
     }
 }
