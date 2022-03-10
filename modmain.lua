@@ -43,7 +43,7 @@ AddPlayerPostInit(function(inst)
 	inst:AddComponent("bestiaryreader")
 end)
 
-if GLOBAL.DISCOVERABLE_MOBS_CONFIG == 0 then -- Skip all the 'discovering' part if it's disabled
+if not GLOBAL.DISCOVERABLE_MOBS_CONFIG then -- Skip all the 'discovering' part if it's disabled
 	return
 end
 
@@ -78,7 +78,7 @@ local function IsInMonstersTable(mob)
 end
 
 local CANT_TAGS = { "structure", "FX", "DECOR", "NOCLICK", "INLIMBO",  }
-local MUST_ONE_OF_TAGS = { "_health", "_combat", "character", "NET_workable", "king" } -- Should cover about 99.3141% of all mobs
+local MUST_ONE_OF_TAGS = { "_health", "_combat", "character", "NET_workable", "king", "mermking" } -- Should cover about 99.3141% of all mobs
 AddPlayerPostInit(function(inst)
 	local function CheckNearbyMobs(inst)
 		local radius = GLOBAL.TUNING.DISCOVER_MOB_RANGE
@@ -132,6 +132,15 @@ AddPrefabPostInit("pigking", function(inst)
 		if data.giver then
 			data.giver.components.bestiaryupdater:DiscoverMob("pigking") -- If traded with without discovering first, highly unlikely
 			data.giver.components.bestiaryupdater:LearnMob("pigking")
+		end
+	end)
+end)
+
+AddPrefabPostInit("mermking", function(inst)
+	inst:ListenForEvent("trade", function(inst, data)
+		if data.giver then
+			data.giver.components.bestiaryupdater:DiscoverMob("mermking") -- If traded with without discovering first, highly unlikely
+			data.giver.components.bestiaryupdater:LearnMob("mermking")
 		end
 	end)
 end)
