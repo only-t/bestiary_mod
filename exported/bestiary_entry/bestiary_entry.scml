@@ -5,9 +5,10 @@
         <file id="1" name="bestiary_entry/bestiary_entry_lightbulb.png" width="82" height="102" pivot_x="0.5" pivot_y="0.5"/>
         <file id="2" name="bestiary_entry/bestiary_entry_bg.png" width="93" height="132" pivot_x="0.5" pivot_y="0.5"/>
         <file id="3" name="bestiary_entry/bestiary.png" width="64" height="64" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="4" name="bestiary_entry/bestiary_entry_learn.png" width="86" height="105" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <entity id="0" name="bestiary_entry">
-        <animation id="0" name="enter" length="1000" interval="100" looping="false">
+        <animation id="0" name="enter" length="500" interval="100" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -79,7 +80,79 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="exit" length="500" interval="100" looping="false">
+        <animation id="1" name="enter_learn" length="500" interval="100" looping="false">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+                <key id="1" time="229">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                </key>
+                <key id="2" time="311">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="3" time="382">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="3" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                </key>
+                <key id="4" time="432">
+                    <object_ref id="0" timeline="0" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="4" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="2" z_index="2"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bestiary_entry_bg">
+                <key id="0" curve_type="cubic" c1="0" c2="0" spin="0">
+                    <object folder="0" file="2" x="0.308624" y="65.957515" angle="0"/>
+                </key>
+                <key id="1" time="229" curve_type="cubic" c1="0.995305" c2="0.995305" spin="0">
+                    <object folder="0" file="2" x="0.308624" y="-47.042485" angle="0"/>
+                </key>
+                <key id="2" time="311" curve_type="cubic" c1="0" c2="0" spin="0">
+                    <object folder="0" file="2" x="0.308624" y="-52.042485" angle="0" scale_x="0.927687" scale_y="1.117278"/>
+                </key>
+                <key id="3" time="382" spin="0">
+                    <object folder="0" file="2" x="0.308624" y="-47.042485" angle="0"/>
+                </key>
+                <key id="4" time="432" spin="0">
+                    <object folder="0" file="2" x="0.308624" y="-47.042485" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="bestiary">
+                <key id="0" curve_type="cubic" c1="0" c2="0" spin="0">
+                    <object folder="0" file="3" x="-0.642214" y="75.439242" angle="0"/>
+                </key>
+                <key id="1" time="229" curve_type="cubic" c1="0.995305" c2="0.995305" spin="0">
+                    <object folder="0" file="3" x="1.104972" y="-48.911602" angle="0"/>
+                </key>
+                <key id="2" time="311" curve_type="cubic" c1="0" c2="0" spin="0">
+                    <object folder="0" file="3" x="1.104972" y="-54.911602" angle="0" scale_x="0.840753" scale_y="1.196716"/>
+                </key>
+                <key id="3" time="382" spin="0">
+                    <object folder="0" file="3" x="1.104972" y="-48.911602" angle="0"/>
+                </key>
+                <key id="4" time="432" spin="0">
+                    <object folder="0" file="3" x="1.104972" y="-48.911602" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="bestiary_entry_lightbulb">
+                <key id="0" time="311" curve_type="cubic" c1="0" c2="0.995305" spin="0">
+                    <object folder="0" file="4" x="15.501493" y="-71.379029" angle="351.012" scale_x="0.4" scale_y="0.02541"/>
+                </key>
+                <key id="1" time="382" spin="0">
+                    <object folder="0" file="4" x="19.52626" y="-56.20875" angle="351.012" scale_x="0.4" scale_y="0.520936"/>
+                </key>
+                <key id="2" time="432" spin="0">
+                    <object folder="0" file="4" x="19.52626" y="-56.20875" angle="351.012" scale_x="0.4" scale_y="0.4"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="exit" length="500" interval="100" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -138,7 +211,66 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="idle" length="2000" interval="100">
+        <animation id="3" name="exit_learn" length="500" interval="100" looping="false">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="1" time="164">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                </key>
+                <key id="2" time="165">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                </key>
+                <key id="3" time="300">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                </key>
+                <key id="4" time="385">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="3" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bestiary_entry_bg">
+                <key id="0" curve_type="cubic" c1="0" c2="0" spin="0">
+                    <object folder="0" file="2" x="0.308624" y="-47.042485" angle="0"/>
+                </key>
+                <key id="1" time="164" curve_type="cubic" c1="0" c2="0" spin="0">
+                    <object folder="0" file="2" x="0.308624" y="-54.042485" angle="0" scale_x="0.924549" scale_y="1.154103"/>
+                </key>
+                <key id="2" time="385" spin="0">
+                    <object folder="0" file="2" x="0.308624" y="86.957515" angle="0" scale_x="0.772524" scale_y="1.327682"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="bestiary">
+                <key id="0" curve_type="cubic" c1="0" c2="0" spin="0">
+                    <object folder="0" file="3" x="1.104972" y="-48.911602" angle="0"/>
+                </key>
+                <key id="1" time="164" curve_type="cubic" c1="0" c2="0" spin="0">
+                    <object folder="0" file="3" x="1.044886" y="-56.199638" angle="0" scale_x="0.924549" scale_y="1.154103"/>
+                </key>
+                <key id="2" time="300" spin="0">
+                    <object folder="0" file="3" x="1.016673" y="-31.415894" angle="0" scale_x="0.88912" scale_y="1.194555"/>
+                </key>
+                <key id="3" time="385" spin="0">
+                    <object folder="0" file="3" x="0.923822" y="75.475922" angle="0" scale_x="0.772524" scale_y="1.327682"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="bestiary_entry_lightbulb">
+                <key id="0" curve_type="cubic" c1="0" c2="0" spin="0">
+                    <object folder="0" file="4" x="19.52626" y="-56.20875" angle="343.905594" scale_x="0.4" scale_y="0.4"/>
+                </key>
+                <key id="1" time="164" curve_type="cubic" c1="0" c2="0" spin="0">
+                    <object folder="0" file="4" x="14.752164" y="-77.640688" angle="343.905594" scale_x="0.53471" scale_y="0.025671"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="idle" length="2000" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -231,6 +363,102 @@
                 </key>
                 <key id="1" time="1000" curve_type="cubic" c1="0" c2="0.995305" spin="0">
                     <object folder="0" file="1" x="18.52626" y="-62.20875" angle="351.012738" scale_x="0.4" scale_y="0.4"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="5" name="idle_learn" length="2000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="1" time="200">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="2" time="280">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="3" time="360">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="3" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="4" time="440">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="4" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="5" time="520">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="5" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="6" time="600">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="6" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="7" time="680">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="7" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="8" time="880">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="8" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="9" time="1000">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="8" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bestiary_entry_bg">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="0.308624" y="-47.042485" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="bestiary">
+                <key id="0" curve_type="cubic" c1="0" c2="0">
+                    <object folder="0" file="3" x="1.104972" y="-48.911602" angle="0"/>
+                </key>
+                <key id="1" time="200" spin="-1">
+                    <object folder="0" file="3" x="1.104972" y="-48.911602" angle="8"/>
+                </key>
+                <key id="2" time="280">
+                    <object folder="0" file="3" x="1.104972" y="-48.911602" angle="352"/>
+                </key>
+                <key id="3" time="360" spin="-1">
+                    <object folder="0" file="3" x="1.104972" y="-48.911602" angle="8"/>
+                </key>
+                <key id="4" time="440">
+                    <object folder="0" file="3" x="1.104972" y="-48.911602" angle="352"/>
+                </key>
+                <key id="5" time="520" spin="-1">
+                    <object folder="0" file="3" x="1.104972" y="-48.911602" angle="8"/>
+                </key>
+                <key id="6" time="600">
+                    <object folder="0" file="3" x="1.104972" y="-48.911602" angle="352"/>
+                </key>
+                <key id="7" time="680" curve_type="cubic" c1="0.995305" c2="0.995305" spin="-1">
+                    <object folder="0" file="3" x="1.104972" y="-48.911602" angle="8"/>
+                </key>
+                <key id="8" time="880" spin="0">
+                    <object folder="0" file="3" x="1.104972" y="-48.911602" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="bestiary_entry_lightbulb">
+                <key id="0" curve_type="cubic" c1="0" c2="0.995305">
+                    <object folder="0" file="4" x="19.52626" y="-56.20875" angle="351.012" scale_x="0.4" scale_y="0.4"/>
+                </key>
+                <key id="1" time="1000" curve_type="cubic" c1="0" c2="0.995305" spin="-1">
+                    <object folder="0" file="4" x="18.52626" y="-62.20875" angle="351.012738" scale_x="0.4" scale_y="0.4"/>
                 </key>
             </timeline>
         </animation>
