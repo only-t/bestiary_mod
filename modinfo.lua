@@ -21,10 +21,10 @@ configuration_options = {
     {
         name = "Discoverable Mobs",
         options = {
-            { description = "Yes", data = 1 },
-            { description = "No", data = 0 }
+            { description = "Yes", data = true },
+            { description = "No", data = false }
         },
 
-        default = 1,
+        default = true,
     }
 }

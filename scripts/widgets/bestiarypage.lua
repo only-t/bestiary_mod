@@ -23,7 +23,7 @@ local function FindInTable(table, value)
 end
 
 local BestiaryMonstersPage = Class(Widget, function(self, owner)
-    Widget._ctor(self, "BestiaryMonstersPage")
+	Widget._ctor(self, "BestiaryMonstersPage")
 
 	self.parent_screen = owner
 
@@ -51,7 +51,7 @@ local BestiaryMonstersPage = Class(Widget, function(self, owner)
 			data = mob_data
 		end
 
-		if DISCOVERABLE_MOBS_CONFIG == 1 then
+		if DISCOVERABLE_MOBS_CONFIG then
 			if FindInTable(discovered_mobs, data.prefab) then
 				data.is_discovered = true
 			else
@@ -73,7 +73,7 @@ local BestiaryMonstersPage = Class(Widget, function(self, owner)
 
 	self.completion = self:AddChild(self:CreateCompletionStrip()) -- Needs to be above the page to display properly
 
-	if DISCOVERABLE_MOBS_CONFIG == 1 then -- Add the bestiary clear button only if discovering is enabled
+	if DISCOVERABLE_MOBS_CONFIG then -- Add the bestiary clear button only if discovering is enabled
 		self.dangly = self:AddChild(self:CreateDangly())
 	end
 
