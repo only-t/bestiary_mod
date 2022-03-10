@@ -64,6 +64,9 @@ Assets = {
 	Asset("ATLAS", "images/diet_generic.xml"),
 	Asset("IMAGE", "images/diet_generic.tex"),
 
+	Asset("ATLAS", "images/diet_fish.xml"),
+	Asset("IMAGE", "images/diet_fish.tex"),
+
 	Asset("ATLAS", "images/bestiary_page.xml"),
 	Asset("IMAGE", "images/bestiary_page.tex"),
 
