@@ -84,6 +84,10 @@ function BestiaryData:LearnMob(prefab)
     if ValidLearnableMob(prefab) then
         table.insert(self.learned_mobs, prefab)
         
+        if ThePlayer then -- Push only if it's the client
+		    ThePlayer:PushEvent("mob_learned")
+        end
+
         self:Save(true)
 
         return true
