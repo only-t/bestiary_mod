@@ -1916,6 +1916,7 @@ local data = {
                     drops = {
                         { prefab = "slurtleslime", amount = 2, chance = 1 },
                         { prefab = "slurtleslime", amount = 1, chance = 1 },
+                        { prefab = "slurtle_shellpieces", amount = 1, chance = 1 },
                         { prefab = "slurtlehat", amount = 1, chance = 0.1 },
                     },
         
@@ -1941,6 +1942,7 @@ local data = {
                     drops = {
                         { prefab = "slurtleslime", amount = 2, chance = 1 },
                         { prefab = "slurtleslime", amount = 1, chance = 1 },
+                        { prefab = "slurtle_shellpieces", amount = 1, chance = 1 },
                         { prefab = "armorsnurtleshell", amount = 1, chance = 0.75 },
                     },
         
