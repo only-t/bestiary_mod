@@ -82,18 +82,18 @@ local BestiaryMonstersPage = Class(Widget, function(self, owner)
 	self.page:SetPosition(0, 40)
 
 	self.gridroot = self:AddChild(Widget("grid_root"))
-	self.gridroot:SetScale(0.7)
     self.gridroot:SetPosition(-120, -40)
 
     self.monster_grid = self.gridroot:AddChild(self:CreateMonsterGrid())
+	self.monster_grid:SetPosition(0, 30)
 
 	local grid_w, grid_h = self.monster_grid:GetScrollRegionSize()
 	local grid_boarder = self.gridroot:AddChild(Image("images/quagmire_recipebook.xml", "quagmire_recipe_line.tex"))
-    grid_boarder:SetPosition(0, grid_h/2)
-	grid_boarder:SetScale(1.5, 1.1)
+    grid_boarder:SetPosition(0, grid_h/2 + 30)
+	grid_boarder:SetScale(1.1, 1)
 	grid_boarder = self.gridroot:AddChild(Image("images/quagmire_recipebook.xml", "quagmire_recipe_line.tex"))
-	grid_boarder:SetPosition(0, -grid_h/2 - 2)
-	grid_boarder:SetScale(1.5, -1.1)
+	grid_boarder:SetPosition(0, -grid_h/2 - 2 + 30)
+	grid_boarder:SetScale(1.1, -1)
 
 	self.head_root = self:AddChild(self:CreateHeadRoot())
 	self.side_root = self:AddChild(self:CreateSideRoot())
@@ -105,10 +105,9 @@ local BestiaryMonstersPage = Class(Widget, function(self, owner)
 end)
 
 function BestiaryMonstersPage:CreateMonsterGrid()
-	local row_w = 280
-    local row_h = 230
-
-	local framescale = 0.8
+	local row_w = 200
+    local row_h = 160
+	local framescale = 0.60
 
 	local function ScrollWidgetsCtor(context, index)
         local w = Widget("monster-cell-"..index)
@@ -120,11 +119,12 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 
 		w.cell_root.monster = w.cell_root:AddChild(UIAnim())
 		w.cell_root.lock = w.cell_root:AddChild(Image("images/bestiary_lock.xml", "bestiary_lock.tex"))
-		w.cell_root.lock:ScaleToSize(110, 120)
+		w.cell_root.lock:ScaleToSize(45, 50)
+		w.cell_root.lock:SetPosition(70, 40)
 
 		w.cell_root.is_new = w.cell_root:AddChild(UIAnim())
-		w.cell_root.is_new:SetScale(2, 2)
-		w.cell_root.is_new:SetPosition(85, 55)
+		w.cell_root.is_new:SetScale(1.2, 1.2)
+		w.cell_root.is_new:SetPosition(70, 40)
 		w.cell_root.is_new:GetAnimState():SetBank("cookbook_newrecipe")
 		w.cell_root.is_new:GetAnimState():SetBuild("cookbook_newrecipe")
 		w.cell_root.is_new:GetAnimState():PlayAnimation("anim", true)
@@ -263,17 +263,17 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 	)
 
 	grid.up_button:SetTextures("images/quagmire_recipebook.xml", "quagmire_recipe_scroll_arrow_hover.tex")
-	grid.up_button:SetScale(0.9)
+	grid.up_button:SetScale(0.7)
 
 	grid.down_button:SetTextures("images/quagmire_recipebook.xml", "quagmire_recipe_scroll_arrow_hover.tex")
-	grid.down_button:SetScale(-0.9)
+	grid.down_button:SetScale(-0.7)
 
 	grid.scroll_bar_line:SetTexture("images/quagmire_recipebook.xml", "quagmire_recipe_scroll_bar.tex")
-	grid.scroll_bar_line:SetScale(0.9, 0.8)
+	grid.scroll_bar_line:SetScale(0.7, 0.5)
 
 	grid.position_marker:SetTextures("images/quagmire_recipebook.xml", "quagmire_recipe_scroll_handle.tex")
 	grid.position_marker.image:SetTexture("images/quagmire_recipebook.xml", "quagmire_recipe_scroll_handle.tex")
-	grid.position_marker:SetScale(0.9)
+	grid.position_marker:SetScale(0.8)
 
 	return grid
 end
@@ -286,14 +286,13 @@ function BestiaryMonstersPage:PopulateMonsterDetailPanel(data)
 	
 	local details_root = self:AddChild(Widget("details_root"))
 	details_root:SetPosition(235, 35)
-	details_root:SetScale(0.67)
 
 	local details_decor = details_root:AddChild(Image("images/quagmire_recipebook.xml", "quagmire_recipe_menu_block.tex"))
-	details_decor:ScaleToSize(550, 800)
+	details_decor:ScaleToSize(400, 530)
 
 	self.monsterframe = details_root:AddChild(Image("images/monster_bg_"..(data.theme or "basic")..".xml", "monster_bg_"..(data.theme or "basic")..".tex"))
-	self.monsterframe:SetScale(1.3, 1.3)
-	self.monsterframe:SetPosition(0, 200)
+	self.monsterframe:SetPosition(0, 90)
+	self.monsterframe:SetScale(0.85, 0.85)
 
 	self.details = details_root:AddChild(Widget("details"))
 
@@ -316,9 +315,9 @@ function BestiaryMonstersPage:PopulateMonsterDetailPanel(data)
 		data.current_form = 1 -- Reset current form so it doesn't desync when viewing the same mob multiple times
 	end)
 
-	back:SetNormalScale(0.5, 0.5)
-	back:SetFocusScale(0.55, 0.55)
-	back:SetPosition(180, -330)
+	back:SetNormalScale(0.3, 0.3)
+	back:SetFocusScale(0.33, 0.33)
+	back:SetPosition(130, -210)
 
 	self:CreateTheMob(data)
 	self:CreateStats(data)
@@ -329,7 +328,6 @@ end
 function BestiaryMonstersPage:PopulateMonsterInfoPanel(data)
 	self.root = self:AddChild(Widget("info_root"))
 
-	self.root:SetScale(0.67)
 	self.root:SetPosition(0, 10)
 
 	self:CreateInformation(data)
@@ -495,29 +493,25 @@ function BestiaryMonstersPage:CreateStats(data)
 	self.details.damage = self.details:AddChild(Image("images/bestiary_dmg.xml", "bestiary_dmg.tex"))
 	self.details.speed = self.details:AddChild(Image("images/bestiary_speed.xml", "bestiary_speed.tex"))
 
-	self.details.health:ScaleToSize(80, 80)
-	self.details.damage:ScaleToSize(80, 80)
-	self.details.speed:ScaleToSize(80, 80)
+	self.details.health:ScaleToSize(60, 60)
+	self.details.damage:ScaleToSize(60, 60)
+	self.details.speed:ScaleToSize(60, 60)
 
-	self.details.health:SetPosition(-150, -35)
-	self.details.damage:SetPosition(0, -35)
-	self.details.speed:SetPosition(150, -35)
+	self.details.health:SetPosition(-100, -60)
+	self.details.damage:SetPosition(0, -60)
+	self.details.speed:SetPosition(100, -60)
 
-	self.details.health_value = self.details:AddChild(Text(HEADERFONT, 48, nil, UICOLOURS.BROWN_DARK))
-	self.details.damage_value = self.details:AddChild(Text(HEADERFONT, 48, nil, UICOLOURS.BROWN_DARK))
-	self.details.speed_value = self.details:AddChild(Text(HEADERFONT, 48, nil, UICOLOURS.BROWN_DARK))
+	self.details.health_value = self.details:AddChild(Text(HEADERFONT, 32, nil, UICOLOURS.BROWN_DARK))
+	self.details.damage_value = self.details:AddChild(Text(HEADERFONT, 32, nil, UICOLOURS.BROWN_DARK))
+	self.details.speed_value = self.details:AddChild(Text(HEADERFONT, 32, nil, UICOLOURS.BROWN_DARK))
 
-	self.details.health_value:SetAutoSizingString(data.stats.health, 128)
-	self.details.damage_value:SetAutoSizingString(data.stats.damage, 128)
-	self.details.speed_value:SetAutoSizingString(data.stats.speed, 128)
+	self.details.health_value:SetAutoSizingString(data.stats.health, 100)
+	self.details.damage_value:SetAutoSizingString(data.stats.damage, 100)
+	self.details.speed_value:SetAutoSizingString(data.stats.speed, 100)
 
-	self.details.health_value:SetPosition(-150, -125)
-	self.details.damage_value:SetPosition(0, -125)
-	self.details.speed_value:SetPosition(150, -125)
-
-	local decorline = self.details:AddChild(Image("images/quagmire_recipebook.xml", "quagmire_recipe_line_break.tex"))
-	decorline:SetPosition(0, -170)
-	decorline:SetScale(1.2, 1.2)
+	self.details.health_value:SetPosition(-100, -115)
+	self.details.damage_value:SetPosition(0, -115)
+	self.details.speed_value:SetPosition(100, -115)
 end
 
 function BestiaryMonstersPage:CreateInformation(data)
@@ -525,13 +519,14 @@ function BestiaryMonstersPage:CreateInformation(data)
 
 	local sub_root = self.root:AddChild(Widget("text_root"))
 
-	local width = 600
+	local width = 420
 	local height = 0
 	local title_space = 5
 	local section_space = 32
+	local font = 38
 
 	if data.stats.diet and (type(data.stats.diet) == "table" and not data.stats.diet[1] ~= "none") then
-		local diet = sub_root:AddChild(Text(HEADERFONT, 48, "Diet", UICOLOURS.BROWN_DARK))
+		local diet = sub_root:AddChild(Text(HEADERFONT, font, "Diet", UICOLOURS.BROWN_DARK))
 		local x, y = diet:GetRegionSize()
 		diet:SetPosition(width/2, height - 0.5*y)
 		height = height - y - section_space
@@ -539,8 +534,8 @@ function BestiaryMonstersPage:CreateInformation(data)
 		if data.is_learned then
 			local diet_value = sub_root:AddChild(Grid())
 			self:FillDietGrid(diet_value, data.stats.diet)
-			y = diet_value.rows*100
-			diet_value:SetPosition(width/2 - (diet_value.cols - 1)*100/2, height - 50) -- Note to self: cols are the vertical ones, idiot
+			y = diet_value.rows*70
+			diet_value:SetPosition(width/2 - (diet_value.cols - 1)*70/2, height - 35) -- Note to self: cols are the vertical ones, idiot
 			height = height - y - section_space
 		else
 			local locked_bg = sub_root:AddChild(Image("images/frontend.xml", "nav_bg_short.tex"))
@@ -557,7 +552,7 @@ function BestiaryMonstersPage:CreateInformation(data)
 	end
 
 	if data.stats.drops and data.stats.drops ~= "none" then
-		local drops = sub_root:AddChild(Text(HEADERFONT, 48, "Drops", UICOLOURS.BROWN_DARK))
+		local drops = sub_root:AddChild(Text(HEADERFONT, font, "Drops", UICOLOURS.BROWN_DARK))
 		local x, y = drops:GetRegionSize()
 		drops:SetPosition(width/2, height - 0.5*y)
 		height = height - y - section_space
@@ -565,8 +560,8 @@ function BestiaryMonstersPage:CreateInformation(data)
 		if data.is_learned then
 			local drops_value = sub_root:AddChild(Grid())
 			self:FillDropsGrid(drops_value, data.stats.drops)
-			y = drops_value.rows*88
-			drops_value:SetPosition(width/2 - (drops_value.cols - 1)*128/2, height - 44)
+			y = drops_value.rows*56
+			drops_value:SetPosition(width/2 - (drops_value.cols - 1)*104/2, height - 28)
 			height = height - y - section_space
 		else
 			local locked_bg = sub_root:AddChild(Image("images/frontend.xml", "nav_bg_short.tex"))
@@ -583,7 +578,7 @@ function BestiaryMonstersPage:CreateInformation(data)
 	end
 
 	if data.stats.limited_drops then
-		local limited_drops = sub_root:AddChild(Text(HEADERFONT, 48, data.stats.limited_drops.amount..(data.stats.limited_drops.amount == 1 and " Drop Of" or " Drops Of"), UICOLOURS.BROWN_DARK))
+		local limited_drops = sub_root:AddChild(Text(HEADERFONT, font, data.stats.limited_drops.amount..(data.stats.limited_drops.amount == 1 and " Drop Of" or " Drops Of"), UICOLOURS.BROWN_DARK))
 		local x, y = limited_drops:GetRegionSize()
 		limited_drops:SetPosition(width/2, height - 0.5*y)
 		height = height - y - section_space
@@ -591,8 +586,8 @@ function BestiaryMonstersPage:CreateInformation(data)
 		if data.is_learned then
 			local limited_drops_value = sub_root:AddChild(Grid())
 			self:FillDropsGrid(limited_drops_value, data.stats.limited_drops.loot)
-			y = limited_drops_value.rows*88
-			limited_drops_value:SetPosition(width/2 - (limited_drops_value.cols - 1)*128/2, height - 44)
+			y = limited_drops_value.rows*56
+			limited_drops_value:SetPosition(width/2 - (limited_drops_value.cols - 1)*104/2, height - 28)
 			height = height - y - section_space
 		else
 			local locked_bg = sub_root:AddChild(Image("images/frontend.xml", "nav_bg_short.tex"))
@@ -608,7 +603,7 @@ function BestiaryMonstersPage:CreateInformation(data)
 		end
 	end
 
-	local desc = sub_root:AddChild(Text(CHATFONT, 48, "Information", UICOLOURS.BROWN_DARK))
+	local desc = sub_root:AddChild(Text(CHATFONT, font, "Information", UICOLOURS.BROWN_DARK))
 	local x, y = desc:GetRegionSize()
 	desc:SetPosition(width/2, height - 0.5*y)
 	height = height - y - section_space
@@ -619,7 +614,7 @@ function BestiaryMonstersPage:CreateInformation(data)
 		self.page:SetPosition(0, 40)
 
 		if data.is_learned then
-			local desc_value = sub_root:AddChild(Text(CHATFONT, 28, nil, UICOLOURS.BROWN_DARK)) -- TBA
+			local desc_value = sub_root:AddChild(Text(CHATFONT, 20, nil, UICOLOURS.BROWN_DARK))
 			desc_value:SetHAlign(ANCHOR_LEFT)
 			desc_value:SetVAlign(ANCHOR_TOP)
 			desc_value:SetMultilineTruncatedString(data.stats.info, 60, width) -- 60 should be enough
@@ -643,15 +638,12 @@ function BestiaryMonstersPage:CreateInformation(data)
 		local name = math.random(1, 2) == 1 and "Moose" or "Goose"
 		local info = subfmt(data.stats.info, { name = name })
 
-		local title = self.root:AddChild(Text(HEADERFONT, 64, name, UICOLOURS.BROWN_DARK))
-		title:SetPosition(-width/2, 400)
-
-		local decorline = self.root:AddChild(Image("images/quagmire_recipebook.xml", "quagmire_recipe_line_break.tex"))
-		decorline:SetPosition(-width/2, 350)
-		decorline:SetScale(1.2, 1.2)
+		local title = self.root:AddChild(Text(HEADERFONT, 48, nil, UICOLOURS.BROWN_DARK))
+		title:SetPosition(235, 255)
+		title:SetAutoSizingString(name or "Unknown", 320)
 
 		if data.is_learned then
-			local desc_value = sub_root:AddChild(Text(CHATFONT, 28, nil, UICOLOURS.BROWN_DARK)) -- TBA
+			local desc_value = sub_root:AddChild(Text(CHATFONT, 20, nil, UICOLOURS.BROWN_DARK))
 			desc_value:SetHAlign(ANCHOR_LEFT)
 			desc_value:SetVAlign(ANCHOR_TOP)
 			desc_value:SetMultilineTruncatedString(info, 60, width) -- 60 should be enough
@@ -672,15 +664,12 @@ function BestiaryMonstersPage:CreateInformation(data)
 			height = height - y - section_space
 		end
 	else
-		local title = self.root:AddChild(Text(HEADERFONT, 64, data.name or "Unknown", UICOLOURS.BROWN_DARK))
-		title:SetPosition(-width/2, 400)
-
-		local decorline = self.root:AddChild(Image("images/quagmire_recipebook.xml", "quagmire_recipe_line_break.tex"))
-		decorline:SetPosition(-width/2, 350)
-		decorline:SetScale(1.2, 1.2)
+		local title = self.root:AddChild(Text(HEADERFONT, 48, nil, UICOLOURS.BROWN_DARK))
+		title:SetPosition(235, 255)
+		title:SetAutoSizingString(data.name or "Unknown", 320)
 
 		if data.is_learned then
-			local desc_value = sub_root:AddChild(Text(CHATFONT, 28, nil, UICOLOURS.BROWN_DARK)) -- TBA
+			local desc_value = sub_root:AddChild(Text(CHATFONT, 20, nil, UICOLOURS.BROWN_DARK))
 			desc_value:SetHAlign(ANCHOR_LEFT)
 			desc_value:SetVAlign(ANCHOR_TOP)
 			desc_value:SetMultilineTruncatedString(data.stats.info, 60, width) -- 60 should be enough
@@ -704,7 +693,7 @@ function BestiaryMonstersPage:CreateInformation(data)
 
 	height = math.abs(height)
 
-	local max_visible_height = 640
+	local max_visible_height = 500
 	local padding = 5
 
 	local top = math.min(height, max_visible_height)/2 - padding
@@ -714,20 +703,20 @@ function BestiaryMonstersPage:CreateInformation(data)
 	local scrollbar = { scroll_per_click = 10*3 }
 
 	local scroll_area = self.root:AddChild(TrueScrollArea(context, scissor_data, scrollbar))
-	scroll_area:SetPosition(-width, max_visible_height/2 - top - 25)
+	scroll_area:SetPosition(-width, 20)
 
 	scroll_area.up_button:SetTextures("images/quagmire_recipebook.xml", "quagmire_recipe_scroll_arrow_hover.tex")
-	scroll_area.up_button:SetScale(0.9)
+	scroll_area.up_button:SetScale(0.75)
 
 	scroll_area.down_button:SetTextures("images/quagmire_recipebook.xml", "quagmire_recipe_scroll_arrow_hover.tex")
-	scroll_area.down_button:SetScale(-0.9)
+	scroll_area.down_button:SetScale(-0.75)
 
 	scroll_area.scroll_bar_line:SetTexture("images/quagmire_recipebook.xml", "quagmire_recipe_scroll_bar.tex")
-	scroll_area.scroll_bar_line:SetScale(1, 1.35)
+	scroll_area.scroll_bar_line:SetScale(0.85, 1)
 
 	scroll_area.position_marker:SetTextures("images/quagmire_recipebook.xml", "quagmire_recipe_scroll_handle.tex")
 	scroll_area.position_marker.image:SetTexture("images/quagmire_recipebook.xml", "quagmire_recipe_scroll_handle.tex")
-	scroll_area.position_marker:SetScale(0.9)
+	scroll_area.position_marker:SetScale(0.75)
 end
 
 function BestiaryMonstersPage:ApplyForm(data, current_form)
@@ -762,25 +751,26 @@ function BestiaryMonstersPage:FillDropsGrid(grid, drops)
 			return
 		end
 
-		grid:InitSize(#drops <= 2 and #drops or 3, math.ceil(#drops/3), 136, 88) -- 128, 64
+		grid:InitSize(#drops <= 2 and #drops or 3, math.ceil(#drops/3), 104, 56) -- 96, 48
 		grid:UseNaturalLayout()
 
 		for i, drop in ipairs(drops) do
 			local item = Widget("drop")
 
 			local item_image_bg = item:AddChild(Image("images/quagmire_recipebook.xml", "ingredient_slot.tex"))
-			item_image_bg:ScaleToSize(64, 64)
-			item_image_bg:SetPosition(-36, 0)
+			item_image_bg:ScaleToSize(48, 48)
+			item_image_bg:SetPosition(-28, 0)
 
-			local chance = item:AddChild(Image("images/button_icons.xml", "diceroll.tex")) -- Might change the "chance" display in the future
-			chance:SetPosition(-36 + 32, 32)
+			local chance = item:AddChild(Image("images/button_icons.xml", "diceroll.tex")) -- Might change the "chance" display in the future. TBA
+			chance:SetScale(0.8, 0.8)
+			chance:SetPosition(-36 + 28, 24)
 			chance:SetHoverText((drop.chance*100).."%")
 
 			local item_drop_name = (drop.name_override or drop.prefab)..".tex"
 			local item_drop_atlas = GetInventoryItemAtlas(item_drop_name, true)
 			local item_image = item:AddChild(Image(item_drop_atlas or "images/quagmire_recipebook.xml", item_drop_atlas ~= nil and item_drop_name or "cookbook_missing.tex"))
 			item_image:SetPosition(item_image_bg:GetPosition())
-			item_image:ScaleToSize(58, 58)
+			item_image:ScaleToSize(40, 40)
 
 			if drop.name_override then
 				if drop.name_override == "blueprint_rare" then
@@ -796,9 +786,9 @@ function BestiaryMonstersPage:FillDropsGrid(grid, drops)
 				item_image:SetHoverText(STRINGS.NAMES[string.upper(drop.prefab)])
 			end
 
-			local item_amount = item:AddChild(Text(CHATFONT, 64, nil, UICOLOURS.BROWN_DARK))
-			item_amount:SetAutoSizingString("x"..(drop.amount or "1"), 64)
-			item_amount:SetPosition(36, 0)
+			local item_amount = item:AddChild(Text(CHATFONT, 48, nil, UICOLOURS.BROWN_DARK))
+			item_amount:SetAutoSizingString("x"..(drop.amount or "1"), 48)
+			item_amount:SetPosition(28, 0)
 
 			grid:AddItem(item, i - 3*(math.ceil(i/3) - 1), math.ceil(i/3))
 		end
@@ -810,12 +800,12 @@ end
 function BestiaryMonstersPage:FillDietGrid(grid, diet)
 	if diet and grid then
 		if type(diet) == "table" then
-			grid:InitSize(#diet <= 4 and #diet or 4, math.ceil(#diet/4), 100, 100)
+			grid:InitSize(#diet <= 4 and #diet or 4, math.ceil(#diet/4), 70, 70)
 			grid:UseNaturalLayout()
 
 			for i, type in ipairs(diet) do
 				local item = Image("images/diet_"..type..".xml", "diet_"..type..".tex")
-				item:ScaleToSize(100, 100)
+				item:ScaleToSize(70, 70)
 				item:SetHoverText(type:gsub("%l", string.upper, 1), nil)
 
 				grid:AddItem(item, i - 4*(math.ceil(i/4) - 1), math.ceil(i/4))
@@ -824,7 +814,7 @@ function BestiaryMonstersPage:FillDietGrid(grid, diet)
 			grid:InitSize(1, 1, 0, 0)
 
 			local item = Image("images/diet_"..diet..".xml", "diet_"..diet..".tex")
-			item:ScaleToSize(100, 100)
+			item:ScaleToSize(70, 70)
 			item:SetHoverText(diet:gsub("%l", string.upper, 1), nil)
 
 			grid:AddItem(item, 1, 1)
@@ -963,16 +953,41 @@ function BestiaryMonstersPage:CreateDangly()
 	return dangly
 end
 
+function BestiaryMonstersPage:AddSearch()
+    local searchbox = Widget("search")
+    searchbox.textbox_root = searchbox:AddChild(TEMPLATES.StandardSingleLineTextEntry(nil, 260, 60, nil, 40))
+    searchbox.textbox = searchbox.textbox_root.textbox
+    searchbox.textbox:SetTextLengthLimit(50)
+    searchbox.textbox:SetForceEdit(true)
+    searchbox.textbox:EnableWordWrap(false)
+    searchbox.textbox:EnableScrollEditWindow(true)
+    searchbox.textbox:SetHelpTextEdit("")
+    searchbox.textbox:SetHelpTextApply("Search")
+    searchbox.textbox:SetTextPrompt("Search", UICOLOURS.GREY)
+    searchbox.textbox.prompt:SetHAlign(ANCHOR_MIDDLE)
+    searchbox.textbox.OnTextInputted = function()
+		-- TBA
+    end
+
+    searchbox:SetOnGainFocus(function() searchbox.textbox:OnGainFocus() end)
+    searchbox:SetOnLoseFocus(function() searchbox.textbox:OnLoseFocus() end)
+
+    searchbox.focus_forward = searchbox.textbox
+
+    return searchbox
+end
+
 function BestiaryMonstersPage:CreateHeadRoot()
 	local head_root = Widget("head_root")
 	head_root:SetPosition(0, 200)
-	head_root:SetScale(0.7)
-
-	local bestiary = head_root:AddChild(Text(HEADERFONT, 96, "Bestiary", UICOLOURS.BROWN_DARK))
-	bestiary:SetPosition(0, 80)
 
 	local spinners = head_root:AddChild(self:BuildSpinners())
-	spinners:SetPosition(-460, -95)
+	spinners:SetPosition(-330, -30)
+
+	local grid_w, grid_h = self.monster_grid:GetScrollRegionSize()
+
+	local mob_search = head_root:AddChild(self:AddSearch())
+	mob_search:SetPosition(-120, 20)
 
 	return head_root
 end
@@ -1022,48 +1037,61 @@ function BestiaryMonstersPage:CreateSideRoot()
 	side_root.panel_width = 250
 	side_root.panel_height = 500
 	side_root:SetPosition(320, -20)
-	side_root:SetScale(0.75)
 
-	local discovered = side_root:AddChild(Text(HEADERFONT, 48, "Discovered", UICOLOURS.BROWN_DARK))
-	discovered:SetPosition(0, 350)
+	local height = 280
+
+	local discovered = side_root:AddChild(Text(HEADERFONT, 40, "Discovered", UICOLOURS.BROWN_DARK))
+	discovered:SetPosition(0, height)
+	height = height - 40
 
 	local decor_line = side_root:AddChild(Image("images/quagmire_recipebook.xml", "quagmire_recipe_line_break.tex"))
-	decor_line:SetPosition(0, 315)
-	decor_line:SetScale(0.7, 0.7)
+	decor_line:SetPosition(0, height)
+	height = height - 40
+	decor_line:SetScale(0.55, 0.55)
 
-	local animals = side_root:AddChild(Text(HEADERFONT, 32, "Animals", UICOLOURS.BROWN_DARK))
-	animals:SetPosition(0, 275)
-	local animals_amount = side_root:AddChild(Text(HEADERFONT, 32, nil, UICOLOURS.BROWN_DARK))
-	animals_amount:SetPosition(0, 225)
+	local animals = side_root:AddChild(Text(HEADERFONT, 26, "Animals", UICOLOURS.BROWN_DARK))
+	animals:SetPosition(0, height)
+	height = height - 30
+	local animals_amount = side_root:AddChild(Text(HEADERFONT, 26, nil, UICOLOURS.BROWN_DARK))
+	animals_amount:SetPosition(0, height)
+	height = height - 35
 	animals_amount:SetString(GetCurrentMobAmount(STRINGS.BESTIARY_ANIMAL).."/"..GetMaxMobAmount(STRINGS.BESTIARY_ANIMAL))
 
-	local monsters = side_root:AddChild(Text(HEADERFONT, 32, "Monsters", UICOLOURS.BROWN_DARK))
-	monsters:SetPosition(0, 175)
-	local monsters_amount = side_root:AddChild(Text(HEADERFONT, 32, nil, UICOLOURS.BROWN_DARK))
-	monsters_amount:SetPosition(0, 125)
+	local monsters = side_root:AddChild(Text(HEADERFONT, 26, "Monsters", UICOLOURS.BROWN_DARK))
+	monsters:SetPosition(0, height)
+	height = height - 30
+	local monsters_amount = side_root:AddChild(Text(HEADERFONT, 26, nil, UICOLOURS.BROWN_DARK))
+	monsters_amount:SetPosition(0, height)
+	height = height - 35
 	monsters_amount:SetString(GetCurrentMobAmount(STRINGS.BESTIARY_MONSTER).."/"..GetMaxMobAmount(STRINGS.BESTIARY_MONSTER))
 
-	local bosses = side_root:AddChild(Text(HEADERFONT, 32, "Bosses", UICOLOURS.BROWN_DARK))
-	bosses:SetPosition(0, 75)
-	local bosses_amount = side_root:AddChild(Text(HEADERFONT, 32, nil, UICOLOURS.BROWN_DARK))
-	bosses_amount:SetPosition(0, 25)
+	local bosses = side_root:AddChild(Text(HEADERFONT, 26, "Bosses", UICOLOURS.BROWN_DARK))
+	bosses:SetPosition(0, height)
+	height = height - 30
+	local bosses_amount = side_root:AddChild(Text(HEADERFONT, 26, nil, UICOLOURS.BROWN_DARK))
+	bosses_amount:SetPosition(0, height)
+	height = height - 35
 	bosses_amount:SetString(GetCurrentMobAmount(STRINGS.BESTIARY_BOSS).."/"..GetMaxMobAmount(STRINGS.BESTIARY_BOSS))
 
-	local raids = side_root:AddChild(Text(HEADERFONT, 32, "Raid Bosses", UICOLOURS.BROWN_DARK))
-	raids:SetPosition(0, -25)
-	local raids_amount = side_root:AddChild(Text(HEADERFONT, 32, nil, UICOLOURS.BROWN_DARK))
-	raids_amount:SetPosition(0, -75)
+	local raids = side_root:AddChild(Text(HEADERFONT, 26, "Raid Bosses", UICOLOURS.BROWN_DARK))
+	raids:SetPosition(0, height)
+	height = height - 30
+	local raids_amount = side_root:AddChild(Text(HEADERFONT, 26, nil, UICOLOURS.BROWN_DARK))
+	raids_amount:SetPosition(0, height)
+	height = height - 35
 	raids_amount:SetString(GetCurrentMobAmount(STRINGS.BESTIARY_RAIDBOSS).."/"..GetMaxMobAmount(STRINGS.BESTIARY_RAIDBOSS))
 
 	decor_line = side_root:AddChild(Image("images/quagmire_recipebook.xml", "quagmire_recipe_line_break.tex"))
-	decor_line:SetPosition(0, -110)
-	decor_line:SetScale(0.7, -0.7)
+	decor_line:SetPosition(0, height)
+	height = height - 50
+	decor_line:SetScale(0.55, -0.55)
 
-	local collection = side_root:AddChild(Text(HEADERFONT, 48, "Collection", UICOLOURS.BROWN_DARK))
-	collection:SetPosition(0, -160)
+	local collection = side_root:AddChild(Text(HEADERFONT, 40, "Collection", UICOLOURS.BROWN_DARK))
+	collection:SetPosition(0, height)
+	height = height - 50
 
-	local collection_percent = side_root:AddChild(Text(HEADERFONT, 64, self:GetCompletionPercent().."%", UICOLOURS.BROWN_DARK))
-	collection_percent:SetPosition(0, -230)
+	local collection_percent = side_root:AddChild(Text(HEADERFONT, 44, self:GetCompletionPercent().."%", UICOLOURS.BROWN_DARK))
+	collection_percent:SetPosition(0, height)
 
 	return side_root
 end
@@ -1102,14 +1130,14 @@ function BestiaryMonstersPage:BuildSpinners()
 		self:ApplyFilters(self.filter)
 	end
 
-	local width_label = 150
-	local width_spinner = 300
-	local height = 50
+	local width_label = 100
+	local width_spinner = 200
+	local height = 35
 
 	local function MakeSpinner(labeltext, spinnerdata, onchanged_fn, initial_data)
 		local spacing = 10
 		local font = HEADERFONT
-		local font_size = 26
+		local font_size = 18
 		local total_width = width_label + width_spinner + spacing
 		local wdg = Widget("labelspinner")
 
