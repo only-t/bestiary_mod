@@ -33,6 +33,30 @@ function BestiaryUpdater:LearnMob(mob)
 	end
 end
 
+function BestiaryUpdater:DiscoverAll()
+	for i, data in ipairs(require("monsterinfo")) do
+		if data then
+			local discovered = self.bestiary:DiscoverMob(data.prefab or data.forms[1].prefab)
+
+			if discovered and (TheNet:IsDedicated() or (TheWorld.ismastersim and self.inst ~= ThePlayer)) and self.inst.userid then
+				SendModRPCToClient(GetClientModRPC("bestiarymod", "DiscoverMob"), self.inst.userid, data.prefab or data.forms[1].prefab)
+			end
+		end
+	end
+end
+
+function BestiaryUpdater:LearnAll()
+	for i, data in ipairs(require("monsterinfo")) do
+		if data then
+			local learned = self.bestiary:LearnMob(data.prefab or data.forms[1].prefab)
+
+			if learned and (TheNet:IsDedicated() or (TheWorld.ismastersim and self.inst ~= ThePlayer)) and self.inst.userid then
+				SendModRPCToClient(GetClientModRPC("bestiarymod", "LearnMob"), self.inst.userid, data.prefab or data.forms[1].prefab)
+			end
+		end
+	end
+end
+
 function BestiaryUpdater:Forgor()
 	self.bestiary:Forgor()
 end
