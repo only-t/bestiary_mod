@@ -109,10 +109,8 @@ AddPlayerPostInit(function(inst)
 
 	local function CheckKilledMob(inst, data)
 		if data.victim then
-			if not data.victim:HasTag("structure") and not data.victim.components.childspawner then
-				inst.components.bestiaryupdater:DiscoverMob(data.victim.discoverable_prefab or data.victim.prefab) -- If killed without discovering first
-				inst.components.bestiaryupdater:LearnMob(data.victim.discoverable_prefab or data.victim.prefab)
-			end
+			inst.components.bestiaryupdater:DiscoverMob(data.victim.discoverable_prefab or data.victim.prefab) -- If killed without discovering first
+			inst.components.bestiaryupdater:LearnMob(data.victim.discoverable_prefab or data.victim.prefab)
 		end
 	end
 
