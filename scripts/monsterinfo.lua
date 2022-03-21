@@ -16,6 +16,7 @@ local data = {
         scale_small = 0.2*scaling,
         type = STRINGS.BESTIARY_BOSS,
         theme = "winter",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -25,7 +26,6 @@ local data = {
                 build = "deerclops_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -50,7 +50,6 @@ local data = {
                 build = "deerclops_yule",
                 anim_idle = "idle_loop",
                 anim_action = "atk2",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -77,12 +76,12 @@ local data = {
         build = "spider_build",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.7,
         scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "forest",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 100,
@@ -108,6 +107,7 @@ local data = {
         scale_small = 0.3*scaling,
         type = STRINGS.BESTIARY_BOSS,
         theme = "winter",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
             {
@@ -117,7 +117,6 @@ local data = {
                 build = "klaus_build",
                 anim_idle = "idle_loop",
                 anim_action = "attack_doubleclaw",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
 
                 stats = {
@@ -147,7 +146,6 @@ local data = {
                 build = "klaus_build",
                 anim_idle = "idle_loop",
                 anim_action = "attack_doubleclaw",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
 
                 stats = {
@@ -184,7 +182,6 @@ local data = {
         build = "tentacle",
         anim_idle = "atk_idle",
         anim_action = "atk_loop",
-        facing = FACING_NONE,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
@@ -220,7 +217,6 @@ local data = {
                 build = "rabbit_build",
                 anim_idle = "idle",
                 anim_action = "hit",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_PASSIVE,
         
                 stats = {
@@ -243,7 +239,6 @@ local data = {
                 build = "beard_monster",
                 anim_idle = "idle",
                 anim_action = "hit",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_PASSIVE,
         
                 stats = {
@@ -274,12 +269,12 @@ local data = {
         build = "beefalo_build",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_NONE,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "savanna",
+        rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 1000,
@@ -301,6 +296,7 @@ local data = {
         scale_small = 0.15*scaling,
         type = STRINGS.BESTIARY_BOSS,
         theme = "deciduous",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -310,7 +306,6 @@ local data = {
                 build = "bearger_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
 
                 stats = {
@@ -335,7 +330,6 @@ local data = {
                 build = "bearger_yule",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
 
                 stats = {
@@ -362,7 +356,6 @@ local data = {
         build = "crab_king_build",
         anim_idle = "idle",
         anim_action = "hit_light",
-        facing = FACING_NONE,
         scale = 0.1, -- That's a big boy
         scale_small = 0.1*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
@@ -400,13 +393,13 @@ local data = {
         bank = "rook",
         build = "rook_rhino",
         anim_idle = "idle",
-        anim_action = "gore",
-        facing = FACING_DOWN,
+        anim_action = "bite",
         scale = 0.2,
         scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_BOSS,
         theme = "ruins",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 10000,
@@ -430,12 +423,12 @@ local data = {
         build = "bat_basic",
         anim_idle = "fly_loop",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "cave",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 50,
@@ -457,6 +450,7 @@ local data = {
         scale_small = 0.8*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "plain",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
         
         forms = {
             {
@@ -466,7 +460,6 @@ local data = {
                 build = "bee_build",
                 anim_idle = "idle",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -494,7 +487,6 @@ local data = {
                 build = "bee_angry_build",
                 anim_idle = "idle",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -522,7 +514,6 @@ local data = {
                 build = "bee_guard_build",
                 anim_idle = "idle",
                 anim_action = "atk",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -547,7 +538,6 @@ local data = {
         build = "butterfly_basic",
         anim_idle = "flight_cycle",
         anim_action = "idle_flight_loop",
-        facing = FACING_NONE,
         scale = 0.6,
         scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -577,6 +567,7 @@ local data = {
         scale_small = 0.25*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "savanna",
+        rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         forms = {
             {
@@ -586,7 +577,6 @@ local data = {
                 build = "beefalo_baby_build",
                 anim_idle = "idle_loop",
                 anim_action = "hit",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_PASSIVE,
 
                 stats = {
@@ -610,7 +600,6 @@ local data = {
                 build = "beefalo_baby_build",
                 anim_idle = "idle_loop",
                 anim_action = "hit",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_PASSIVE,
 
                 stats = {
@@ -634,7 +623,6 @@ local data = {
                 build = "beefalo_baby_build",
                 anim_idle = "idle_loop",
                 anim_action = "hit",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_PASSIVE,
 
                 stats = {
@@ -660,7 +648,6 @@ local data = {
         build = "crow_build",
         anim_idle = "idle",
         anim_action = "hit",
-        facing = FACING_NONE,
         scale = 0.65,
         scale_small = 0.65*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -692,7 +679,6 @@ local data = {
         build = "robin_build",
         anim_idle = "idle",
         anim_action = "hit",
-        facing = FACING_NONE,
         scale = 0.65,
         scale_small = 0.65*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -724,7 +710,6 @@ local data = {
         build = "robin_winter_build",
         anim_idle = "idle",
         anim_action = "hit",
-        facing = FACING_NONE,
         scale = 0.65,
         scale_small = 0.65*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -763,7 +748,6 @@ local data = {
                 build = "canary_build",
                 anim_idle = "idle",
                 anim_action = "hit",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_PASSIVE,
         
                 stats = {
@@ -791,7 +775,6 @@ local data = {
                 build = "canary_build",
                 anim_idle = "stunned_loop",
                 anim_action = nil,
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_PASSIVE,
         
                 stats = {
@@ -817,7 +800,6 @@ local data = {
         build = "puffin_build",
         anim_idle = "idle",
         anim_action = "hit",
-        facing = FACING_NONE,
         scale = 0.65,
         scale_small = 0.65*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -847,6 +829,7 @@ local data = {
         scale_small = 0.5*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "cavewilds",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -856,7 +839,6 @@ local data = {
                 build = "manrabbit_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -885,7 +867,6 @@ local data = {
                 build = "manrabbit_beard_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -909,6 +890,7 @@ local data = {
         scale_small = 0.75*scaling,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "plain",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -918,7 +900,6 @@ local data = {
                 build = "chester_build",
                 anim_idle = "idle_loop",
                 anim_action = "hit",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_PASSIVE,
                 
                 stats = {
@@ -937,7 +918,6 @@ local data = {
                 build = "chester_snow_build",
                 anim_idle = "idle_loop",
                 anim_action = "hit",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_PASSIVE,
                 
                 stats = {
@@ -956,7 +936,6 @@ local data = {
                 build = "chester_shadow_build",
                 anim_idle = "idle_loop",
                 anim_action = "hit",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_PASSIVE,
                 
                 stats = {
@@ -975,6 +954,7 @@ local data = {
         scale_small = 0.3*scaling,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "ruins",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -984,7 +964,6 @@ local data = {
                 build = "bishop_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -1008,7 +987,6 @@ local data = {
                 build = "bishop_nightmare",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -1033,6 +1011,7 @@ local data = {
         scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "ruins",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -1042,7 +1021,6 @@ local data = {
                 build = "knight_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -1065,7 +1043,6 @@ local data = {
                 build = "knight_nightmare",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -1090,6 +1067,7 @@ local data = {
         scale_small = 0.2*scaling,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "ruins",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -1099,7 +1077,6 @@ local data = {
                 build = "rook_build",
                 anim_idle = "idle",
                 anim_action = "gore",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -1122,7 +1099,6 @@ local data = {
                 build = "rook_nightmare",
                 anim_idle = "idle",
                 anim_action = "gore",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -1149,12 +1125,12 @@ local data = {
         build = "worm",
         anim_idle = "taunt",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "cave",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 900,
@@ -1177,12 +1153,12 @@ local data = {
         build = "spat_build",
         anim_idle = "idle_loop",
         anim_action = "strike",
-        facing = FACING_DOWNRIGHT,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "plain",
+        rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 800,
@@ -1208,12 +1184,12 @@ local data = {
         build = "frog",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.6,
         scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "plain",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 100,
@@ -1235,7 +1211,6 @@ local data = {
         build = "ghost_build",
         anim_idle = "idle",
         anim_action = "angry",
-        facing = FACING_DOWN,
         scale = 0.35,
         scale_small = 0.35*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
@@ -1258,12 +1233,12 @@ local data = {
         build = "perd",
         anim_idle = "idle_loop",
         anim_action = "hit",
-        facing = FACING_DOWN,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "plain",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 50,
@@ -1283,6 +1258,7 @@ local data = {
         scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "desert",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -1292,7 +1268,6 @@ local data = {
                 build = "hound_ocean",
                 anim_idle = "idle",
                 anim_action = "taunt",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
                 
                 stats = {
@@ -1316,7 +1291,6 @@ local data = {
                 build = "hound_red_ocean",
                 anim_idle = "idle",
                 anim_action = "taunt",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -1341,7 +1315,6 @@ local data = {
                 build = "hound_ice_ocean",
                 anim_idle = "idle",
                 anim_action = "taunt",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -1366,6 +1339,7 @@ local data = {
         scale_small = 0.3*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "plain",
+        rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         forms = {
             {
@@ -1375,7 +1349,6 @@ local data = {
                 build = "koalefant_summer_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -1399,7 +1372,6 @@ local data = {
                 build = "koalefant_winter_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_NEUTRAL,
 
                 stats = {
@@ -1425,12 +1397,12 @@ local data = {
         build = "krampus_build",
         anim_idle = "idle",
         anim_action = "taunt",
-        facing = FACING_DOWN,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "winter",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 300,
@@ -1454,12 +1426,12 @@ local data = {
         build = "walrus_build",
         anim_idle = "idle_loop",
         anim_action = "atk_dart",
-        facing = FACING_DOWN,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "winter",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 300,
@@ -1484,12 +1456,12 @@ local data = {
         build = "walrus_baby_build",
         anim_idle = "idle_loop",
         anim_action = "taunt_attack",
-        facing = FACING_DOWN,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "winter",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 300,
@@ -1511,12 +1483,12 @@ local data = {
         build = "mandrake",
         anim_idle = "idle_loop",
         anim_action = "hit",
-        facing = FACING_DOWN,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "forest",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 20,
@@ -1538,12 +1510,12 @@ local data = {
         build = "merm_build",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "swamp",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 500,
@@ -1566,7 +1538,6 @@ local data = {
         build = "eyeplant_trap",
         anim_idle = "idle_hidden",
         anim_action = "hit",
-        facing = FACING_NONE,
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -1594,12 +1565,12 @@ local data = {
         build = "eyeplant",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "plain",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 30,
@@ -1617,7 +1588,6 @@ local data = {
         build = "mosquito",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
@@ -1644,12 +1614,12 @@ local data = {
         build = "penguin_build",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "winter",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 150,
@@ -1673,12 +1643,12 @@ local data = {
         build = "pig_build",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "deciduous",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 250,
@@ -1701,12 +1671,12 @@ local data = {
         build = "pig_guard_build",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "plain",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 600,
@@ -1729,12 +1699,12 @@ local data = {
         build = "werepig_build",
         anim_idle = "were_idle_loop",
         anim_action = "howl",
-        facing = FACING_DOWN,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "forest",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 525,
@@ -1757,7 +1727,6 @@ local data = {
         build = "fireflies",
         anim_idle = "swarm_loop",
         anim_action = nil,
-        facing = FACING_NONE,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -1784,12 +1753,12 @@ local data = {
         build = "rocky",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "cave",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = "2250-3600",
@@ -1813,12 +1782,12 @@ local data = {
         build = "shadow_insanity1_basic",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "ruins",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 300,
@@ -1841,12 +1810,12 @@ local data = {
         build = "shadow_insanity2_basic",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "ruins",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 400,
@@ -1869,12 +1838,12 @@ local data = {
         build = "slurper_basic",
         anim_idle = "idle_loop",
         anim_action = "taunt",
-        facing = FACING_DOWN,
         scale = 0.6,
         scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "lightbulb",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 200,
@@ -1895,6 +1864,7 @@ local data = {
         scale_small = 0.5*scaling,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "lightbulb",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -1904,7 +1874,6 @@ local data = {
                 build = "slurtle",
                 anim_idle = "idle",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -1930,7 +1899,6 @@ local data = {
                 build = "slurtle_snaily",
                 anim_idle = "idle",
                 anim_action = "hit_out",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_PASSIVE,
         
                 stats = {
@@ -1956,6 +1924,7 @@ local data = {
         scale_small = 0.5*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "ruins",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
             {
@@ -1965,7 +1934,6 @@ local data = {
                 build = "kiki_basic",
                 anim_idle = "idle_loop",
                 anim_action = "throw",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -1989,7 +1957,6 @@ local data = {
                 build = "kiki_nightmare_skin",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -2017,12 +1984,12 @@ local data = {
         build = "spider_warrior_build",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.7,
         scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "forest",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 400,
@@ -2050,12 +2017,12 @@ local data = {
         build = "spider_queen_build",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_BOSS,
         theme = "forest",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 2500,
@@ -2080,12 +2047,12 @@ local data = {
         build = "DS_spider_caves",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.7,
         scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "cave",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 225,
@@ -2113,12 +2080,12 @@ local data = {
         build = "DS_spider2_caves",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.7,
         scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "cave",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 350,
@@ -2146,12 +2113,12 @@ local data = {
         build = "spider_white",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.7,
         scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "cave",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 400,
@@ -2179,12 +2146,12 @@ local data = {
         build = "ds_tallbird_basic",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "plain",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 800,
@@ -2206,12 +2173,12 @@ local data = {
         build = "tallbird_teen_build",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "plain",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 600,
@@ -2233,12 +2200,12 @@ local data = {
         build = "smallbird_basic",
         anim_idle = "idle",
         anim_action = "hit",
-        facing = FACING_DOWN,
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "plain",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 50,
@@ -2260,7 +2227,6 @@ local data = {
         build = "tentacle_pillar",
         anim_idle = "idle",
         anim_action = "hit",
-        facing = FACING_NONE,
         scale = 0.06,
         scale_small = 0.06*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -2290,7 +2256,6 @@ local data = {
         build = "tentacle_arm_build",
         anim_idle = "atk_idle",
         anim_action = "atk_loop",
-        facing = FACING_NONE,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
@@ -2311,6 +2276,7 @@ local data = {
         scale_small = 0.2*scaling,
         type = STRINGS.BESTIARY_BOSS,
         theme = "forest",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -2320,7 +2286,6 @@ local data = {
                 build = "leif_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -2344,7 +2309,6 @@ local data = {
                 build = "leif_lumpy_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -2370,12 +2334,12 @@ local data = {
         build = "buzzard_build",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "desert",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 250,
@@ -2399,12 +2363,12 @@ local data = {
         build = "catcoon_build",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.6,
         scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "deciduous",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 150,
@@ -2425,6 +2389,7 @@ local data = {
         scale_small = 0.25*scaling,
         type = STRINGS.BESTIARY_RAIDBOSS,
         theme = "desert",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
             {
@@ -2434,7 +2399,6 @@ local data = {
                 build = "dragonfly_build",
                 anim_idle = "idle",
                 anim_action = "atk",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -2476,7 +2440,6 @@ local data = {
                 build = "dragonfly_yule_build",
                 anim_idle = "idle",
                 anim_action = "atk",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -2520,12 +2483,12 @@ local data = {
         build = "glommer",
         anim_idle = "idle_loop",
         anim_action = "hit",
-        facing = FACING_NONE,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "deciduous",
+        rotations = { FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 100,
@@ -2549,12 +2512,12 @@ local data = {
         build = "mole_build",
         anim_idle = "idle",
         anim_action = "hit",
-        facing = FACING_DOWN,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "plain",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 30,
@@ -2574,6 +2537,7 @@ local data = {
         scale_small = 0.2*scaling,
         type = STRINGS.BESTIARY_BOSS,
         theme = "plain",
+        rotations = { FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -2583,7 +2547,6 @@ local data = {
                 build = "goosemoose_build",
                 anim_idle = "idle",
                 anim_action = "atk",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -2611,7 +2574,6 @@ local data = {
                 build = "goosemoose_yule_build",
                 anim_idle = "idle",
                 anim_action = "atk",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -2639,6 +2601,7 @@ local data = {
         scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "plain",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
         
         forms = {
             {
@@ -2648,7 +2611,6 @@ local data = {
                 build = "mossling_build",
                 anim_idle = "idle",
                 anim_action = "hit",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -2674,7 +2636,6 @@ local data = {
                 build = "mossling_angry_build",
                 anim_idle = "idle",
                 anim_action = "taunt",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -2700,7 +2661,6 @@ local data = {
                 build = "mossling_yule_build",
                 anim_idle = "idle",
                 anim_action = "hit",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -2726,7 +2686,6 @@ local data = {
                 build = "mossling_yule_angry_build",
                 anim_idle = "idle",
                 anim_action = "taunt",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -2754,7 +2713,6 @@ local data = {
         build = "tree_leaf_trunk_build",
         anim_idle = "idle_loop_agro",
         anim_action = "sway_loop_agro",
-        facing = FACING_NONE,
         scale = 0.2,
         scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
@@ -2784,12 +2742,12 @@ local data = {
         build = "treedrake_build",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.6,
         scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "deciduous",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 50,
@@ -2816,12 +2774,12 @@ local data = {
         build = "warg_build",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWNRIGHT,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_BOSS,
         theme = "plain",
+        rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 1800,
@@ -2845,6 +2803,7 @@ local data = {
         scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "desert",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -2854,7 +2813,6 @@ local data = {
                 build = "lightning_goat_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -2878,7 +2836,6 @@ local data = {
                 build = "lightning_goat_shocked_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -2905,7 +2862,6 @@ local data = {
         build = "antlion_build",
         anim_idle = "idle",
         anim_action = "cast_pre",
-        facing = FACING_NONE,
         scale = 0.2,
         scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
@@ -2949,12 +2905,12 @@ local data = {
         build = "bee_queen_build",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWNRIGHT,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_RAIDBOSS,
         theme = "plain",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 22500,
@@ -2985,7 +2941,6 @@ local data = {
         build = "carrat_build",
         anim_idle = "idle1",
         anim_action = "hit",
-        facing = FACING_DOWNRIGHT,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -3013,12 +2968,12 @@ local data = {
         build = "cookiecutter_build",
         anim_idle = "idle",
         anim_action = "jumping",
-        facing = FACING_DOWNRIGHT,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "ocean",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 100,
@@ -3041,12 +2996,12 @@ local data = {
         build = "lavae",
         anim_idle = "idle",
         anim_action = "hit",
-        facing = FACING_DOWNRIGHT,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "desert",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT  },
 
         stats = {
             health = 250,
@@ -3067,13 +3022,13 @@ local data = {
         bank = "brightmare_gestalt_head",
         build = "brightmare_gestalt_head",
         anim_idle = "idle",
-        anim_action = nil,
-        facing = FACING_DOWN,
+        anim_action = nil, -- I don't know what the hell to do with this amalgam of prefabs...
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "lunar",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 0,
@@ -3089,6 +3044,7 @@ local data = {
         scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "winter",
+        rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         forms = {
             {
@@ -3098,7 +3054,6 @@ local data = {
                 build = "deer_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -3122,7 +3077,6 @@ local data = {
                 build = "deer_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -3148,12 +3102,12 @@ local data = {
         build = "grassgecko",
         anim_idle = "idle_loop",
         anim_action = "tail_off",
-        facing = FACING_NONE,
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "desert",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 150,
@@ -3176,12 +3130,12 @@ local data = {
         build = "hound_mutated",
         anim_idle = "idle",
         anim_action = "taunt",
-        facing = FACING_DOWN,
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "lunar",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 100,
@@ -3202,6 +3156,7 @@ local data = {
         scale_small = 0.8*scaling,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "cave",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -3211,7 +3166,6 @@ local data = {
                 build = "hutch_build",
                 anim_idle = "idle_loop",
                 anim_action = "hit",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_PASSIVE,
         
                 stats = {
@@ -3230,7 +3184,6 @@ local data = {
                 build = "hutch_pufferfish_build",
                 anim_idle = "idle_loop",
                 anim_action = "hit",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_PASSIVE,
         
                 stats = {
@@ -3249,7 +3202,6 @@ local data = {
                 build = "hutch_musicbox_build",
                 anim_idle = "idle_loop",
                 anim_action = "hit",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_PASSIVE,
         
                 stats = {
@@ -3270,12 +3222,12 @@ local data = {
         build = "lavae",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWNRIGHT,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "desert",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT  },
 
         stats = {
             health = 500,
@@ -3293,12 +3245,12 @@ local data = {
         build = "deer_build",
         anim_idle = "idle_loop",
         anim_action = "hit",
-        facing = FACING_DOWNRIGHT,
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "winter",
+        rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 700,
@@ -3321,12 +3273,12 @@ local data = {
         build = "malbatross_build",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWNRIGHT,
         scale = 0.2,
         scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_BOSS,
         theme = "ocean",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 5000,
@@ -3357,12 +3309,12 @@ local data = {
         build = "penguin_mutated_build",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "lunar",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 100,
@@ -3383,6 +3335,7 @@ local data = {
         scale_small = 0.9*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "lunar",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -3392,7 +3345,6 @@ local data = {
                 build = "fruit_dragon_build",
                 anim_idle = "idle_loop",
                 anim_action = "attack",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -3415,7 +3367,6 @@ local data = {
                 build = "fruit_dragon_ripe_build",
                 anim_idle = "idle_loop",
                 anim_action = "attack",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -3440,12 +3391,12 @@ local data = {
         build = "ds_spider_moon",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.7,
         scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "lunar",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 250,
@@ -3471,6 +3422,7 @@ local data = {
         scale_small = 0.15*scaling,
         type = STRINGS.BESTIARY_RAIDBOSS,
         theme = "lightbulb",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
             {
@@ -3480,7 +3432,6 @@ local data = {
                 build = "toadstool_build",
                 anim_idle = "idle",
                 anim_action = "attack_infection",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -3524,7 +3475,6 @@ local data = {
                 build = "toadstool_dark_build",
                 anim_idle = "idle",
                 anim_action = "attack_infection",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -3569,6 +3519,7 @@ local data = {
         scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_BOSS,
         theme = "forest",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -3578,7 +3529,6 @@ local data = {
                 build = "shadow_bishop",
                 anim_idle = "idle_loop",
                 anim_action = "taunt",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -3606,7 +3556,6 @@ local data = {
                 build = "shadow_bishop",
                 anim_idle = "idle_loop",
                 anim_action = "taunt",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -3640,7 +3589,6 @@ local data = {
                 build = "shadow_bishop",
                 anim_idle = "idle_loop",
                 anim_action = "taunt",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -3677,6 +3625,7 @@ local data = {
         scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_BOSS,
         theme = "forest",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -3686,7 +3635,6 @@ local data = {
                 build = "shadow_knight",
                 anim_idle = "idle_loop",
                 anim_action = "taunt",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -3714,7 +3662,6 @@ local data = {
                 build = "shadow_knight",
                 anim_idle = "idle_loop",
                 anim_action = "taunt",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -3749,7 +3696,6 @@ local data = {
                 build = "shadow_knight",
                 anim_idle = "idle_loop",
                 anim_action = "taunt",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -3787,6 +3733,7 @@ local data = {
         scale_small = 0.25*scaling,
         type = STRINGS.BESTIARY_BOSS,
         theme = "forest",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -3796,7 +3743,6 @@ local data = {
                 build = "shadow_rook",
                 anim_idle = "idle_loop",
                 anim_action = "taunt",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -3824,7 +3770,6 @@ local data = {
                 build = "shadow_rook",
                 anim_idle = "idle_loop",
                 anim_action = "taunt",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -3858,7 +3803,6 @@ local data = {
                 build = "shadow_rook",
                 anim_idle = "idle_loop",
                 anim_action = "taunt",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -3897,12 +3841,12 @@ local data = {
         build = "stalker_shadow_build",
         anim_idle = "idle",
         anim_action = "taunt1",
-        facing = FACING_DOWN,
         scale = 0.2,
         scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "forest",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 4000,
@@ -3926,12 +3870,12 @@ local data = {
         build = "stalker_shadow_build",
         anim_idle = "idle",
         anim_action = "taunt1",
-        facing = FACING_DOWN,
         scale = 0.2,
         scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_BOSS,
         theme = "cave",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 4000,
@@ -3956,12 +3900,12 @@ local data = {
         build = "stalker_shadow_build",
         anim_idle = "idle",
         anim_action = "taunt1",
-        facing = FACING_DOWN,
         scale = 0.2,
         scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_RAIDBOSS,
         theme = "ruins",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 16000,
@@ -3986,6 +3930,7 @@ local data = {
         scale_small = 0.6*scaling,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "ruins",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
             {
@@ -3994,8 +3939,7 @@ local data = {
                 bank = "stalker_minion",
                 build = "stalker_minion",
                 anim_idle = "idle",
-                anim_action = nil,
-                facing = FACING_DOWNRIGHT,
+                anim_action = "spawn",
                 intent = STRINGS.BESTIARY_PASSIVE,
         
                 stats = {
@@ -4013,8 +3957,7 @@ local data = {
                 bank = "stalker_minion_2",
                 build = "stalker_minion_2",
                 anim_idle = "idle",
-                anim_action = nil,
-                facing = FACING_DOWNRIGHT,
+                anim_action = "spawn",
                 intent = STRINGS.BESTIARY_PASSIVE,
         
                 stats = {
@@ -4033,6 +3976,7 @@ local data = {
         scale_small = 0.5*scaling,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "swamp",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
             {
@@ -4042,7 +3986,6 @@ local data = {
                 build = "merm_guard_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -4066,7 +4009,6 @@ local data = {
                 build = "merm_guard_small_build",
                 anim_idle = "idle_loop",
                 anim_action = "atk",
-                facing = FACING_DOWN,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -4092,7 +4034,6 @@ local data = {
         build = "ghost_kid",
         anim_idle = "idle",
         anim_action = "sad",
-        facing = FACING_DOWN,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -4115,12 +4056,12 @@ local data = {
         build = "squid_build",
         anim_idle = "idle",
         anim_action = "attack",
-        facing = FACING_DOWNRIGHT,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "ocean",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 170,
@@ -4143,12 +4084,12 @@ local data = {
         build = "hermitcrab_build",
         anim_idle = "idle_loop",
         anim_action = "idle_tap_loop",
-        facing = FACING_DOWN,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "lunar",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 0,
@@ -4166,12 +4107,12 @@ local data = {
         build = "gnarwail_build",
         anim_idle = "idle_loop",
         anim_action = "hit",
-        facing = FACING_DOWNRIGHT,
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "ocean",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 1000,
@@ -4194,12 +4135,12 @@ local data = {
         build = "shark_build",
         anim_idle = "idle",
         anim_action = "attack",
-        facing = FACING_DOWNRIGHT,
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "ocean",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 1000,
@@ -4219,6 +4160,7 @@ local data = {
         scale_small = 0.3*scaling,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "ocean",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
             {
@@ -4228,7 +4170,6 @@ local data = {
                 build = "barnacle_plant_colour_swaps",
                 anim_idle = "idle",
                 anim_action = "attack",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -4260,7 +4201,6 @@ local data = {
                 build = "barnacle_plant_colour_swaps",
                 anim_idle = "idle",
                 anim_action = "attack",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -4292,7 +4232,6 @@ local data = {
                 build = "barnacle_plant_colour_swaps",
                 anim_idle = "idle",
                 anim_action = "attack",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_NEUTRAL,
         
                 stats = {
@@ -4326,12 +4265,12 @@ local data = {
         build = "shadow_oceanhorror",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_NONE,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "ocean",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 400,
@@ -4353,8 +4292,7 @@ local data = {
         bank = "shadow_wavey_jones",
         build = "shadow_wavey_jones",
         anim_idle = "idle",
-        anim_action = nil,
-        facing = FACING_NONE,
+        anim_action = "laugh",
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
@@ -4377,12 +4315,12 @@ local data = {
         build = "archive_centipede_build",
         anim_idle = "idle",
         anim_action = "taunt",
-        facing = FACING_DOWN,
         scale = 0.2,
         scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "cavelunar",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 1200,
@@ -4400,12 +4338,12 @@ local data = {
         build = "dustmoth",
         anim_idle = "idle",
         anim_action = "hit",
-        facing = FACING_DOWNRIGHT,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "cavelunar",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 200,
@@ -4427,7 +4365,6 @@ local data = {
         build = "brightmare_gestalt_evolved",
         anim_idle = "idle",
         anim_action = "attack",
-        facing = FACING_NONE,
         scale = 0.35,
         scale_small = 0.35*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
@@ -4450,12 +4387,12 @@ local data = {
         build = "grotto_mushgnome",
         anim_idle = "idle_loop",
         anim_action = "hit",
-        facing = FACING_DOWN,
         scale = 0.4,
         scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "cavelunar",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 600,
@@ -4479,12 +4416,12 @@ local data = {
         build = "molebat",
         anim_idle = "idle_sit",
         anim_action = "attack",
-        facing = FACING_DOWNRIGHT,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "cavelunar",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 150,
@@ -4514,7 +4451,6 @@ local data = {
         build = "fruitfly_evil",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.6,
         scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
@@ -4542,7 +4478,6 @@ local data = {
         build = "fruitfly_evil_minion",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.6,
         scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
@@ -4569,7 +4504,6 @@ local data = {
         build = "fruitfly_good",
         anim_idle = "idle",
         anim_action = "plant_dance_loop",
-        facing = FACING_DOWN,
         scale = 0.6,
         scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -4592,7 +4526,6 @@ local data = {
         build = "bird_mutant_spitter_build",
         anim_idle = "idle",
         anim_action = "attack",
-        facing = FACING_DOWN,
         scale = 0.65,
         scale_small = 0.65*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
@@ -4615,7 +4548,6 @@ local data = {
         build = "bird_mutant_build",
         anim_idle = "idle",
         anim_action = "attack",
-        facing = FACING_DOWN,
         scale = 0.65,
         scale_small = 0.65*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
@@ -4638,12 +4570,12 @@ local data = {
         build = "spider_water",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.7,
         scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "ocean",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 200,
@@ -4678,8 +4610,8 @@ local data = {
                 build = "alterguardian_phase1",
                 anim_idle = "idle",
                 anim_action = "hit",
-                facing = FACING_NONE,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
+                rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
                 stats = {
                     health = 10000,
@@ -4701,8 +4633,8 @@ local data = {
                 build = "alterguardian_phase2",
                 anim_idle = "idle",
                 anim_action = "attk_chop",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
+                rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
                 stats = {
                     health = 13000,
@@ -4726,8 +4658,8 @@ local data = {
                 build = "alterguardian_phase3",
                 anim_idle = "idle",
                 anim_action = "attk_stab",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
+                rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
                 stats = {
                     health = 14000,
@@ -4758,12 +4690,12 @@ local data = {
         build = "spider_wolf_build",
         anim_idle = "idle",
         anim_action = "atk",
-        facing = FACING_DOWN,
         scale = 0.7,
         scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "forest",
+        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
             health = 400,
@@ -4791,12 +4723,12 @@ local data = {
         build = "grass_gator",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWNRIGHT,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "ocean",
+        rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 1000,
@@ -4818,6 +4750,7 @@ local data = {
         scale_small = 0.25*scaling,
         type = STRINGS.BESTIARY_BOSS,
         theme = "plain",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
             {
@@ -4827,7 +4760,6 @@ local data = {
                 build = "eyeofterror_basic",
                 anim_idle = "idle",
                 anim_action = "chomp",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -4861,7 +4793,6 @@ local data = {
                 build = "eyeofterror_basic",
                 anim_idle = "idle",
                 anim_action = "chomp",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -4885,6 +4816,8 @@ local data = {
                 form_override_fn = function(animstate, data)
                     animstate:Show("ball_mouth")
                     animstate:Show("mouth")
+                    animstate:Hide("eye")
+                    animstate:Hide("ball_eye")
                     data.anim_action = "chomp"
                 end
             }
@@ -4897,12 +4830,12 @@ local data = {
         build = "eyeofterror_mini_mob_build",
         anim_idle = "idle_loop",
         anim_action = "atk",
-        facing = FACING_DOWNRIGHT,
         scale = 0.5,
         scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
         theme = "plain",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
             health = 200,
@@ -4918,6 +4851,7 @@ local data = {
         scale_small = 0.25*scaling,
         type = STRINGS.BESTIARY_BOSS,
         theme = "plain",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
             {
@@ -4927,7 +4861,6 @@ local data = {
                 build = "eyeofterror_twin1_build",
                 anim_idle = "idle",
                 anim_action = "chomp",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -4966,7 +4899,6 @@ local data = {
                 build = "eyeofterror_twin1_build",
                 anim_idle = "idle",
                 anim_action = "chomp",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -4995,6 +4927,8 @@ local data = {
                 form_override_fn = function(animstate, data)
                     animstate:Show("ball_mouth")
                     animstate:Show("mouth")
+                    animstate:Hide("eye")
+                    animstate:Hide("ball_eye")
                     data.anim_action = "chomp"
                 end
             }
@@ -5005,6 +4939,7 @@ local data = {
         scale_small = 0.25*scaling,
         type = STRINGS.BESTIARY_BOSS,
         theme = "plain",
+        rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
             {
@@ -5014,7 +4949,6 @@ local data = {
                 build = "eyeofterror_twin2_build",
                 anim_idle = "idle",
                 anim_action = "chomp",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -5053,7 +4987,6 @@ local data = {
                 build = "eyeofterror_twin2_build",
                 anim_idle = "idle",
                 anim_action = "chomp",
-                facing = FACING_DOWNRIGHT,
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
@@ -5082,6 +5015,8 @@ local data = {
                 form_override_fn = function(animstate, data)
                     animstate:Show("ball_mouth")
                     animstate:Show("mouth")
+                    animstate:Hide("eye")
+                    animstate:Hide("ball_eye")
                     data.anim_action = "chomp"
                 end
             }
@@ -5094,7 +5029,6 @@ local data = {
         build = "Pig_King",
         anim_idle = "idle",
         anim_action = "unimpressed",
-        facing = FACING_NONE,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -5117,7 +5051,6 @@ local data = {
         build = "lobster_sheller",
         anim_idle = "idle",
         anim_action = "hit",
-        facing = FACING_NONE,
         scale = 0.6,
         scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -5143,7 +5076,6 @@ local data = {
         build = "lobster_moonglass",
         anim_idle = "idle",
         anim_action = "hit",
-        facing = FACING_NONE,
         scale = 0.6,
         scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -5169,7 +5101,6 @@ local data = {
         build = "butterfly_moon",
         anim_idle = "flight_cycle",
         anim_action = "idle_flight_loop",
-        facing = FACING_NONE,
         scale = 0.6,
         scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
@@ -5195,7 +5126,6 @@ local data = {
         build = "merm_king",
         anim_idle = "idle",
         anim_action = "refuse",
-        facing = FACING_NONE,
         scale = 0.3,
         scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,

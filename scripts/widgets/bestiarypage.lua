@@ -47,6 +47,7 @@ local BestiaryMonstersPage = Class(Widget, function(self, owner)
 			data.scale_small = mob_data.scale_small
 			data.type = mob_data.type
 			data.theme = mob_data.theme
+			data.rotations = mob_data.rotations or nil
 		else
 			data = mob_data
 		end
@@ -180,7 +181,7 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 
 					widget.cell_root.monster:GetAnimState():SetBank(data.bank)
 					widget.cell_root.monster:GetAnimState():SetBuild(data.build)
-					widget.cell_root.monster:SetFacing(data.facing or TUNING.FACING_NONE)
+					widget.cell_root.monster:SetFacing(data.rotations and data.rotations[1] or FACING_NONE)
 					widget.cell_root.monster:GetAnimState():PlayAnimation(data.anim_idle, true)
 					widget.cell_root.monster:GetAnimState():Pause() -- Pause here to stop at the first frame
 					widget.cell_root.monster:GetAnimState():SetTime(time)-- And apply it to the new cell to make the transition smooooth
@@ -203,6 +204,8 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 						widget.cell_root.monster:GetAnimState():Hide("ARM")
 					elseif data.prefab == "fireflies" then
 						widget.cell_root.monster:SetPosition(0, 0)
+					elseif data.prefab == "chester" or data.prefab == "hutch" then
+						widget.cell_root.monster:SetPosition(0, -35)
 					elseif (data.prefab == "tallbird") or (data.prefab == "teenbird") then
 						widget.cell_root.monster:GetAnimState():Hide("beakfull")
 					elseif data.prefab == "deciduoustree" then
@@ -211,12 +214,16 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 						widget.cell_root.monster:GetAnimState():OverrideSymbol("legs_mouseover", "tree_leaf_poison_build", "legs_mouseover")
 						widget.cell_root.monster:GetAnimState():OverrideSymbol("eye", "tree_leaf_poison_build", "eye")
 						widget.cell_root.monster:GetAnimState():OverrideSymbol("mouth", "tree_leaf_poison_build", "mouth")
+					elseif data.prefab == "gestalt" then
+						widget.cell_root.monster:SetPosition(0, -40)
 					elseif data.prefab == "deer_blue" then
 						widget.cell_root.monster:GetAnimState():OverrideSymbol("swap_antler_red", "deer_build", "swap_antler_blue")
 					elseif data.prefab == "deer" then
 						widget.cell_root.monster:GetAnimState():Hide("swap_antler")
 						widget.cell_root.monster:GetAnimState():Hide("CHAIN")
 						widget.cell_root.monster:GetAnimState():OverrideSymbol("swap_neck_collar", "deer_build", "swap_neck")
+					elseif data.prefab == "cookiecutter" then
+						widget.cell_root.monster:SetPosition(0, -40)
 					elseif data.prefab == "stalker_forest" then
 						widget.cell_root.monster:GetAnimState():AddOverrideBuild("stalker_forest_build")
 					elseif data.prefab == "stalker" then
@@ -225,6 +232,22 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 						widget.cell_root.monster:GetAnimState():AddOverrideBuild("stalker_atrium_build")
 					elseif data.prefab == "hermitcrab" then
 						widget.cell_root.monster:GetAnimState():Hide("ARM_carry")
+					elseif data.prefab == "crabking" then
+						widget.cell_root.monster:SetPosition(0, -40)
+					elseif data.prefab == "dustmoth" then
+						widget.cell_root.monster:SetPosition(0, -40)
+					elseif data.prefab == "gnarwail" then
+						widget.cell_root.monster:SetPosition(0, -40)
+					elseif data.prefab == "wobster_moonglass_land" then
+						widget.cell_root.monster:SetPosition(0, -40)
+					elseif data.prefab == "wobster_sheller_land" then
+						widget.cell_root.monster:SetPosition(0, -40)
+					elseif data.prefab == "mole" then
+						widget.cell_root.monster:SetPosition(0, -40)
+					elseif data.prefab == "pigking" then
+						widget.cell_root.monster:SetPosition(0, -40)
+					elseif data.prefab == "stalker_minion1" then
+						widget.cell_root.monster:SetPosition(0, -40)
 					end
 				end
 			else
@@ -382,7 +405,7 @@ function BestiaryMonstersPage:CreateTheMob(data)
 	self.monsterframe.monster = self.monsterframe:AddChild(UIAnim())
 	self.monsterframe.monster:GetAnimState():SetBank(data.bank)
 	self.monsterframe.monster:GetAnimState():SetBuild(data.build)
-	self.monsterframe.monster:SetFacing(data.facing or FACING_NONE)
+	self.monsterframe.monster:SetFacing(data.rotations and data.rotations[1] or FACING_NONE)
 	self.monsterframe.monster:GetAnimState():PushAnimation(data.anim_idle, true)
 	self.monsterframe.monster:SetClickable(false)
 	self.monsterframe.monster:SetScale(data.scale or 1, data.scale or 1)
@@ -395,7 +418,7 @@ function BestiaryMonstersPage:CreateTheMob(data)
 	elseif data.prefab == "fireflies" then
 		self.monsterframe.monster:SetPosition(0, 0)
 	elseif data.prefab == "chester" or data.prefab == "hutch" then
-		self.monsterframe.monster:SetPosition(0, -50)
+		self.monsterframe.monster:SetPosition(0, -80)
 	elseif data.prefab == "tallbird" or data.prefab == "teenbird"then
 		self.monsterframe.monster:GetAnimState():Hide("beakfull")
 	elseif data.prefab == "deciduoustree" then
@@ -422,8 +445,24 @@ function BestiaryMonstersPage:CreateTheMob(data)
 		self.monsterframe.monster:GetAnimState():AddOverrideBuild("stalker_atrium_build")
 	elseif data.prefab == "hermitcrab" then
 		self.monsterframe.monster:GetAnimState():Hide("ARM_carry")
+	elseif data.prefab == "crabking" then
+		self.monsterframe.monster:SetPosition(0, -70)
+	elseif data.prefab == "dustmoth" then
+		self.monsterframe.monster:SetPosition(0, -60)
 	elseif data.prefab == "pigking" then
 		self.monsterframe.monster:SetPosition(0, -75)
+	elseif data.prefab == "beefalo" then
+		self.monsterframe.monster:GetAnimState():Hide("HEAT")
+	elseif data.prefab == "gnarwail" then
+		self.monsterframe.monster:SetPosition(0, -60)
+	elseif data.prefab == "wobster_moonglass_land" then
+		self.monsterframe.monster:SetPosition(0, -60)
+	elseif data.prefab == "wobster_sheller_land" then
+		self.monsterframe.monster:SetPosition(0, -60)
+	elseif data.prefab == "mole" then
+		self.monsterframe.monster:SetPosition(0, -60)
+	elseif data.prefab == "stalker_minion1" then
+		self.monsterframe.monster:SetPosition(0, -60)
 	end
 
 	if data.anim_action then
@@ -438,6 +477,40 @@ function BestiaryMonstersPage:CreateTheMob(data)
 		self.monsterframe.clickyclick.scale_on_focus = false
 		self.monsterframe.clickyclick.move_on_click = false
 		self.monsterframe.clickyclick.image:SetTint(1, 1, 1, 0)
+	end
+
+	if data.rotations and type(data.rotations) == "table" then
+		self.monsterframe.rot_left = self.monsterframe:AddChild(ImageButton("images/button_icons.xml", "undo.tex"))
+		self.monsterframe.rot_left:SetScale(0.25, 0.15)
+		self.monsterframe.rot_left:SetPosition(115, -80)
+		self.monsterframe.rot_left:SetRotation(40)
+
+		self.monsterframe.rot_right = self.monsterframe:AddChild(ImageButton("images/button_icons.xml", "undo.tex"))
+		self.monsterframe.rot_right:SetScale(-0.25, 0.15)
+		self.monsterframe.rot_right:SetPosition(-115, -80)
+		self.monsterframe.rot_right:SetRotation(40)
+
+		local iteration = 1
+
+		self.monsterframe.rot_left:SetOnClick(function()
+			iteration = iteration + 1
+
+			if iteration > #data.rotations then
+				iteration = 1
+			end
+
+			self.monsterframe.monster:SetFacing(data.rotations[iteration])
+		end)
+
+		self.monsterframe.rot_right:SetOnClick(function()
+			iteration = iteration - 1
+
+			if iteration < 1 then
+				iteration = #data.rotations
+			end
+
+			self.monsterframe.monster:SetFacing(data.rotations[iteration])
+		end)
 	end
 
 	if data.forms then
@@ -724,6 +797,7 @@ function BestiaryMonstersPage:ApplyForm(data, current_form)
 	local scale = data.scale
 	local scale_small = data.scale_small
 	local type = data.type
+	local rotations = data.rotations
 	local is_learned = data.is_learned
 
 	data = data.forms[data.current_form]
@@ -732,6 +806,7 @@ function BestiaryMonstersPage:ApplyForm(data, current_form)
 	data.scale = scale
 	data.scale_small = scale_small
 	data.type = type
+	data.rotations = rotations
 	data.is_learned = is_learned
 
 	self:CreateTheMob(data) -- Regenerate mob UIAnim
