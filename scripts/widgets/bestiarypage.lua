@@ -47,7 +47,7 @@ local BestiaryMonstersPage = Class(Widget, function(self, owner)
 			data.scale_small = mob_data.scale_small
 			data.type = mob_data.type
 			data.theme = mob_data.theme
-			data.rotations = mob_data.rotations or nil
+			data.rotations = mob_data.rotations or data.rotations
 		else
 			data = mob_data
 		end
@@ -806,8 +806,11 @@ function BestiaryMonstersPage:ApplyForm(data, current_form)
 	data.scale = scale
 	data.scale_small = scale_small
 	data.type = type
-	data.rotations = rotations
 	data.is_learned = is_learned
+
+	if data.rotations == nil then
+		data.rotations = rotations
+	end
 
 	self:CreateTheMob(data) -- Regenerate mob UIAnim
 	self:CreateStats(data) -- Regenerate mobs stats
@@ -1061,8 +1064,8 @@ function BestiaryMonstersPage:CreateHeadRoot()
 
 	local grid_w, grid_h = self.monster_grid:GetScrollRegionSize()
 
-	local mob_search = head_root:AddChild(self:AddSearch())
-	mob_search:SetPosition(-120, 20)
+	-- local mob_search = head_root:AddChild(self:AddSearch())
+	-- mob_search:SetPosition(-120, 20)
 
 	return head_root
 end
