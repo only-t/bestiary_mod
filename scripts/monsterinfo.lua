@@ -450,7 +450,6 @@ local data = {
         scale_small = 0.8*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
         theme = "plain",
-        rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
         
         forms = {
             {
@@ -461,6 +460,7 @@ local data = {
                 anim_idle = "idle",
                 anim_action = "atk",
                 intent = STRINGS.BESTIARY_NEUTRAL,
+                rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
         
                 stats = {
                     health = 100,
@@ -488,6 +488,7 @@ local data = {
                 anim_idle = "idle",
                 anim_action = "atk",
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
+                rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
         
                 stats = {
                     health = 100,
@@ -515,6 +516,7 @@ local data = {
                 anim_idle = "idle",
                 anim_action = "atk",
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
+                rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
         
                 stats = {
                     health = 150,
