@@ -70,9 +70,6 @@ Assets = {
 	Asset("ATLAS", "images/bestiary_page.xml"),
 	Asset("IMAGE", "images/bestiary_page.tex"),
 
-	Asset("ATLAS", "images/bestiary_page_torn.xml"),
-	Asset("IMAGE", "images/bestiary_page_torn.tex"),
-
 	Asset("ATLAS", "images/bestiary_book_cover.xml"),
 	Asset("IMAGE", "images/bestiary_book_cover.tex"),
 
