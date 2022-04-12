@@ -1,6 +1,14 @@
 local BESTIARYINFO = require "additionalinfo"
-
-local scaling = 0.5
+local FACING_DOWN = GLOBAL.FACING_DOWN
+local FACING_RIGHT = GLOBAL.FACING_RIGHT
+local FACING_UP = GLOBAL.FACING_UP
+local FACING_LEFT = GLOBAL.FACING_LEFT
+local FACING_DOWNRIGHT = GLOBAL.FACING_DOWNRIGHT
+local FACING_UPRIGHT = GLOBAL.FACING_UPRIGHT
+local FACING_UPLEFT = GLOBAL.FACING_UPLEFT
+local FACING_DOWNLEFT = GLOBAL.FACING_DOWNLEFT
+local unpack = GLOBAL.unpack
+local STRINGS = GLOBAL.STRINGS
 
 local omni_diet = {
     "meat",
@@ -10,12 +18,21 @@ local omni_diet = {
     "goodies",
 }
 
-local data = {
+GLOBAL.MONSTERDATA_BESTIARY = {  }
+
+local function LoadMonsterData(data)
+    for i, data in ipairs(data) do
+        if data then
+            table.insert(GLOBAL.MONSTERDATA_BESTIARY, data)
+        end
+    end
+end
+
+local MONSTERDATA_BESTIARY = {
     {
         scale = 0.2,
-        scale_small = 0.2*scaling,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "winter",
+        images = { grid_atlas = "images/monstergrid_bg_winter.xml", grid_image = "monstergrid_bg_winter.tex", atlas = "images/monster_bg_winter.xml", image = "monster_bg_winter.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -77,10 +94,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.7,
-        scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -104,9 +120,8 @@ local data = {
     },
     {
         scale = 0.3,
-        scale_small = 0.3*scaling,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "winter",
+        images = { grid_atlas = "images/monstergrid_bg_winter.xml", grid_image = "monstergrid_bg_winter.tex", atlas = "images/monster_bg_winter.xml", image = "monster_bg_winter.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
@@ -183,10 +198,9 @@ local data = {
         anim_idle = "atk_idle",
         anim_action = "atk_loop",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "swamp",
+        images = { grid_atlas = "images/monstergrid_bg_swamp.xml", grid_image = "monstergrid_bg_swamp.tex", atlas = "images/monster_bg_swamp.xml", image = "monster_bg_swamp.tex" },
 
         stats = {
             health = 500,
@@ -205,9 +219,8 @@ local data = {
     },
     {
         scale = 1,
-        scale_small = 1*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "savanna",
+        images = { grid_atlas = "images/monstergrid_bg_savanna.xml", grid_image = "monstergrid_bg_savanna.tex", atlas = "images/monster_bg_savanna.xml", image = "monster_bg_savanna.tex" },
 
         forms = {
             {
@@ -270,10 +283,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "savanna",
+        images = { grid_atlas = "images/monstergrid_bg_savanna.xml", grid_image = "monstergrid_bg_savanna.tex", atlas = "images/monster_bg_savanna.xml", image = "monster_bg_savanna.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -293,9 +305,8 @@ local data = {
     },
     {
         scale = 0.15,
-        scale_small = 0.15*scaling,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "deciduous",
+        images = { grid_atlas = "images/monstergrid_bg_deciduous.xml", grid_image = "monstergrid_bg_deciduous.tex", atlas = "images/monster_bg_deciduous.xml", image = "monster_bg_deciduous.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -357,10 +368,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "hit_light",
         scale = 0.1, -- That's a big boy
-        scale_small = 0.1*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_RAIDBOSS,
-        theme = "ocean",
+        images = { grid_atlas = "images/monstergrid_bg_ocean.xml", grid_image = "monstergrid_bg_ocean.tex", atlas = "images/monster_bg_ocean.xml", image = "monster_bg_ocean.tex" },
 
         stats = {
             health = "20000-95000", -- Oh, dear...
@@ -395,10 +405,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "bite",
         scale = 0.2,
-        scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "ruins",
+        images = { grid_atlas = "images/monstergrid_bg_ruins.xml", grid_image = "monstergrid_bg_ruins.tex", atlas = "images/monster_bg_ruins.xml", image = "monster_bg_ruins.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -424,10 +433,9 @@ local data = {
         anim_idle = "fly_loop",
         anim_action = "atk",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "cave",
+        images = { grid_atlas = "images/monstergrid_bg_cave.xml", grid_image = "monstergrid_bg_cave.tex", atlas = "images/monster_bg_cave.xml", image = "monster_bg_cave.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -447,9 +455,8 @@ local data = {
     },
     {
         scale = 0.8,
-        scale_small = 0.8*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         
         forms = {
             {
@@ -541,10 +548,9 @@ local data = {
         anim_idle = "flight_cycle",
         anim_action = "idle_flight_loop",
         scale = 0.6,
-        scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
 
         stats = {
             health = 1,
@@ -566,9 +572,8 @@ local data = {
     },
     {
         scale = 0.25,
-        scale_small = 0.25*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "savanna",
+        images = { grid_atlas = "images/monstergrid_bg_savanna.xml", grid_image = "monstergrid_bg_savanna.tex", atlas = "images/monster_bg_savanna.xml", image = "monster_bg_savanna.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         forms = {
@@ -651,10 +656,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "hit",
         scale = 0.65,
-        scale_small = 0.65*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
 
         stats = {
             health = 25,
@@ -682,10 +686,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "hit",
         scale = 0.65,
-        scale_small = 0.65*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
 
         stats = {
             health = 25,
@@ -713,10 +716,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "hit",
         scale = 0.65,
-        scale_small = 0.65*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "winter",
+        images = { grid_atlas = "images/monstergrid_bg_winter.xml", grid_image = "monstergrid_bg_winter.tex", atlas = "images/monster_bg_winter.xml", image = "monster_bg_winter.tex" },
 
         stats = {
             health = 25,
@@ -738,9 +740,8 @@ local data = {
     },
     {
         scale = 0.65,
-        scale_small = 0.65*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
 
         forms = {
             {
@@ -803,10 +804,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "hit",
         scale = 0.65,
-        scale_small = 0.65*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "ocean",
+        images = { grid_atlas = "images/monstergrid_bg_ocean.xml", grid_image = "monstergrid_bg_ocean.tex", atlas = "images/monster_bg_ocean.xml", image = "monster_bg_ocean.tex" },
 
         stats = {
             health = 25,
@@ -828,9 +828,8 @@ local data = {
     },
     {
         scale = 0.5,
-        scale_small = 0.5*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "cavewilds",
+        images = { grid_atlas = "images/monstergrid_bg_cavewilds.xml", grid_image = "monstergrid_bg_cavewilds.tex", atlas = "images/monster_bg_cavewilds.xml", image = "monster_bg_cavewilds.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -889,9 +888,8 @@ local data = {
     },
     {
         scale = 0.75,
-        scale_small = 0.75*scaling,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -953,9 +951,8 @@ local data = {
     },
     {
         scale = 0.3,
-        scale_small = 0.3*scaling,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "ruins",
+        images = { grid_atlas = "images/monstergrid_bg_ruins.xml", grid_image = "monstergrid_bg_ruins.tex", atlas = "images/monster_bg_ruins.xml", image = "monster_bg_ruins.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -1010,9 +1007,8 @@ local data = {
     },
     {
         scale = 0.4,
-        scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "ruins",
+        images = { grid_atlas = "images/monstergrid_bg_ruins.xml", grid_image = "monstergrid_bg_ruins.tex", atlas = "images/monster_bg_ruins.xml", image = "monster_bg_ruins.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -1066,9 +1062,8 @@ local data = {
     },
     {
         scale = 0.2,
-        scale_small = 0.2*scaling,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "ruins",
+        images = { grid_atlas = "images/monstergrid_bg_ruins.xml", grid_image = "monstergrid_bg_ruins.tex", atlas = "images/monster_bg_ruins.xml", image = "monster_bg_ruins.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -1128,10 +1123,9 @@ local data = {
         anim_idle = "taunt",
         anim_action = "atk",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "cave",
+        images = { grid_atlas = "images/monstergrid_bg_cave.xml", grid_image = "monstergrid_bg_cave.tex", atlas = "images/monster_bg_cave.xml", image = "monster_bg_cave.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1156,10 +1150,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "strike",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -1187,10 +1180,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.6,
-        scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1214,10 +1206,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "angry",
         scale = 0.35,
-        scale_small = 0.35*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
 
         stats = {
             health = 200,
@@ -1236,10 +1227,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "hit",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1257,9 +1247,8 @@ local data = {
     },
     {
         scale = 0.4,
-        scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "desert",
+        images = { grid_atlas = "images/monstergrid_bg_desert.xml", grid_image = "monstergrid_bg_desert.tex", atlas = "images/monster_bg_desert.xml", image = "monster_bg_desert.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -1338,9 +1327,8 @@ local data = {
     },
     {
         scale = 0.3,
-        scale_small = 0.3*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         forms = {
@@ -1400,10 +1388,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "taunt",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "winter",
+        images = { grid_atlas = "images/monstergrid_bg_winter.xml", grid_image = "monstergrid_bg_winter.tex", atlas = "images/monster_bg_winter.xml", image = "monster_bg_winter.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1429,10 +1416,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk_dart",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "winter",
+        images = { grid_atlas = "images/monstergrid_bg_winter.xml", grid_image = "monstergrid_bg_winter.tex", atlas = "images/monster_bg_winter.xml", image = "monster_bg_winter.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1459,10 +1445,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "taunt_attack",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "winter",
+        images = { grid_atlas = "images/monstergrid_bg_winter.xml", grid_image = "monstergrid_bg_winter.tex", atlas = "images/monster_bg_winter.xml", image = "monster_bg_winter.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1486,10 +1471,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "hit",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1513,10 +1497,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "swamp",
+        images = { grid_atlas = "images/monstergrid_bg_swamp.xml", grid_image = "monstergrid_bg_swamp.tex", atlas = "images/monster_bg_swamp.xml", image = "monster_bg_swamp.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1541,10 +1524,9 @@ local data = {
         anim_idle = "idle_hidden",
         anim_action = "hit",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
 
         stats = {
             health = 300,
@@ -1568,10 +1550,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1591,10 +1572,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "swamp",
+        images = { grid_atlas = "images/monstergrid_bg_swamp.xml", grid_image = "monstergrid_bg_swamp.tex", atlas = "images/monster_bg_swamp.xml", image = "monster_bg_swamp.tex" },
 
         stats = {
             health = 100,
@@ -1617,10 +1597,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "winter",
+        images = { grid_atlas = "images/monstergrid_bg_winter.xml", grid_image = "monstergrid_bg_winter.tex", atlas = "images/monster_bg_winter.xml", image = "monster_bg_winter.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1646,10 +1625,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "deciduous",
+        images = { grid_atlas = "images/monstergrid_bg_deciduous.xml", grid_image = "monstergrid_bg_deciduous.tex", atlas = "images/monster_bg_deciduous.xml", image = "monster_bg_deciduous.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1674,10 +1652,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1702,10 +1679,9 @@ local data = {
         anim_idle = "were_idle_loop",
         anim_action = "howl",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1730,10 +1706,9 @@ local data = {
         anim_idle = "swarm_loop",
         anim_action = nil,
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
 
         stats = {
             health = 0,
@@ -1756,10 +1731,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "cave",
+        images = { grid_atlas = "images/monstergrid_bg_cave.xml", grid_image = "monstergrid_bg_cave.tex", atlas = "images/monster_bg_cave.xml", image = "monster_bg_cave.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1778,17 +1752,16 @@ local data = {
         }
     },
     {
-        name = "torn",
+        name = "Crawling Horror",
         prefab = "crawlinghorror",
         bank = "shadowcreature1",
         build = "shadow_insanity1_basic",
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "ruins",
+        images = { grid_atlas = "images/monstergrid_bg_ruins.xml", grid_image = "monstergrid_bg_ruins.tex", atlas = "images/monster_bg_ruins.xml", image = "monster_bg_ruins.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1806,17 +1779,16 @@ local data = {
         }
     },
     {
-        name = "torn",
+        name = "Terrorbeak",
         prefab = "terrorbeak",
         bank = "shadowcreature2",
         build = "shadow_insanity2_basic",
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "ruins",
+        images = { grid_atlas = "images/monstergrid_bg_ruins.xml", grid_image = "monstergrid_bg_ruins.tex", atlas = "images/monster_bg_ruins.xml", image = "monster_bg_ruins.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1841,10 +1813,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "taunt",
         scale = 0.6,
-        scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "lightbulb",
+        images = { grid_atlas = "images/monstergrid_bg_lightbulb.xml", grid_image = "monstergrid_bg_lightbulb.tex", atlas = "images/monster_bg_lightbulb.xml", image = "monster_bg_lightbulb.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -1863,9 +1834,8 @@ local data = {
     },
     {
         scale = 0.5,
-        scale_small = 0.5*scaling,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "lightbulb",
+        images = { grid_atlas = "images/monstergrid_bg_lightbulb.xml", grid_image = "monstergrid_bg_lightbulb.tex", atlas = "images/monster_bg_lightbulb.xml", image = "monster_bg_lightbulb.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -1923,9 +1893,8 @@ local data = {
     },
     {
         scale = 0.5,
-        scale_small = 0.5*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "ruins",
+        images = { grid_atlas = "images/monstergrid_bg_ruins.xml", grid_image = "monstergrid_bg_ruins.tex", atlas = "images/monster_bg_ruins.xml", image = "monster_bg_ruins.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
@@ -1987,10 +1956,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.7,
-        scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -2020,10 +1988,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -2050,10 +2017,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.7,
-        scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "cave",
+        images = { grid_atlas = "images/monstergrid_bg_cave.xml", grid_image = "monstergrid_bg_cave.tex", atlas = "images/monster_bg_cave.xml", image = "monster_bg_cave.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -2083,10 +2049,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.7,
-        scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "cave",
+        images = { grid_atlas = "images/monstergrid_bg_cave.xml", grid_image = "monstergrid_bg_cave.tex", atlas = "images/monster_bg_cave.xml", image = "monster_bg_cave.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -2116,10 +2081,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.7,
-        scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "cave",
+        images = { grid_atlas = "images/monstergrid_bg_cave.xml", grid_image = "monstergrid_bg_cave.tex", atlas = "images/monster_bg_cave.xml", image = "monster_bg_cave.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -2149,10 +2113,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -2176,10 +2139,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -2203,10 +2165,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "hit",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -2230,10 +2191,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "hit",
         scale = 0.06,
-        scale_small = 0.06*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "cave",
+        images = { grid_atlas = "images/monstergrid_bg_cave.xml", grid_image = "monstergrid_bg_cave.tex", atlas = "images/monster_bg_cave.xml", image = "monster_bg_cave.tex" },
 
         stats = {
             health = 750,
@@ -2259,10 +2219,9 @@ local data = {
         anim_idle = "atk_idle",
         anim_action = "atk_loop",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "cave",
+        images = { grid_atlas = "images/monstergrid_bg_cave.xml", grid_image = "monstergrid_bg_cave.tex", atlas = "images/monster_bg_cave.xml", image = "monster_bg_cave.tex" },
 
         stats = {
             health = 20,
@@ -2275,9 +2234,8 @@ local data = {
     },
     {
         scale = 0.2,
-        scale_small = 0.2*scaling,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -2337,10 +2295,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "desert",
+        images = { grid_atlas = "images/monstergrid_bg_desert.xml", grid_image = "monstergrid_bg_desert.tex", atlas = "images/monster_bg_desert.xml", image = "monster_bg_desert.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -2366,10 +2323,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.6,
-        scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "deciduous",
+        images = { grid_atlas = "images/monstergrid_bg_deciduous.xml", grid_image = "monstergrid_bg_deciduous.tex", atlas = "images/monster_bg_deciduous.xml", image = "monster_bg_deciduous.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -2388,9 +2344,8 @@ local data = {
     },
     {
         scale = 0.25,
-        scale_small = 0.25*scaling,
         type = STRINGS.BESTIARY_RAIDBOSS,
-        theme = "desert",
+        images = { grid_atlas = "images/monstergrid_bg_desert.xml", grid_image = "monstergrid_bg_desert.tex", atlas = "images/monster_bg_desert.xml", image = "monster_bg_desert.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
@@ -2486,10 +2441,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "hit",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "deciduous",
+        images = { grid_atlas = "images/monstergrid_bg_deciduous.xml", grid_image = "monstergrid_bg_deciduous.tex", atlas = "images/monster_bg_deciduous.xml", image = "monster_bg_deciduous.tex" },
         rotations = { FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -2515,10 +2469,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "hit",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -2536,9 +2489,8 @@ local data = {
     },
     {
         scale = 0.2,
-        scale_small = 0.2*scaling,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -2600,9 +2552,8 @@ local data = {
     },
     {
         scale = 0.4,
-        scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
         
         forms = {
@@ -2716,10 +2667,9 @@ local data = {
         anim_idle = "idle_loop_agro",
         anim_action = "sway_loop_agro",
         scale = 0.2,
-        scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "deciduous",
+        images = { grid_atlas = "images/monstergrid_bg_deciduous.xml", grid_image = "monstergrid_bg_deciduous.tex", atlas = "images/monster_bg_deciduous.xml", image = "monster_bg_deciduous.tex" },
 
         stats = {
             health = TUNING.DECIDUOUS_CHOPS_MONSTER,
@@ -2745,10 +2695,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.6,
-        scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "deciduous",
+        images = { grid_atlas = "images/monstergrid_bg_deciduous.xml", grid_image = "monstergrid_bg_deciduous.tex", atlas = "images/monster_bg_deciduous.xml", image = "monster_bg_deciduous.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -2777,10 +2726,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -2802,9 +2750,8 @@ local data = {
     },
     {
         scale = 0.4,
-        scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "desert",
+        images = { grid_atlas = "images/monstergrid_bg_desert.xml", grid_image = "monstergrid_bg_desert.tex", atlas = "images/monster_bg_desert.xml", image = "monster_bg_desert.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -2865,10 +2812,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "cast_pre",
         scale = 0.2,
-        scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "desert",
+        images = { grid_atlas = "images/monstergrid_bg_desert.xml", grid_image = "monstergrid_bg_desert.tex", atlas = "images/monster_bg_desert.xml", image = "monster_bg_desert.tex" },
 
         stats = {
             health = 6000,
@@ -2908,10 +2854,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_RAIDBOSS,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -2944,10 +2889,9 @@ local data = {
         anim_idle = "idle1",
         anim_action = "hit",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL, -- BESTIARY_MONSTER ?
-        theme = "lunar",
+        images = { grid_atlas = "images/monstergrid_bg_lunar.xml", grid_image = "monstergrid_bg_lunar.tex", atlas = "images/monster_bg_lunar.xml", image = "monster_bg_lunar.tex" },
 
         stats = {
             health = 25,
@@ -2971,10 +2915,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "jumping",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "ocean",
+        images = { grid_atlas = "images/monstergrid_bg_ocean.xml", grid_image = "monstergrid_bg_ocean.tex", atlas = "images/monster_bg_ocean.xml", image = "monster_bg_ocean.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -2999,10 +2942,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "hit",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "desert",
+        images = { grid_atlas = "images/monstergrid_bg_desert.xml", grid_image = "monstergrid_bg_desert.tex", atlas = "images/monster_bg_desert.xml", image = "monster_bg_desert.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT  },
 
         stats = {
@@ -3026,10 +2968,9 @@ local data = {
         anim_idle = "idle",
         anim_action = nil, -- I don't know what the hell to do with this amalgam of prefabs...
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "lunar",
+        images = { grid_atlas = "images/monstergrid_bg_lunar.xml", grid_image = "monstergrid_bg_lunar.tex", atlas = "images/monster_bg_lunar.xml", image = "monster_bg_lunar.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -3043,9 +2984,8 @@ local data = {
     },
     {
         scale = 0.4,
-        scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "winter",
+        images = { grid_atlas = "images/monstergrid_bg_winter.xml", grid_image = "monstergrid_bg_winter.tex", atlas = "images/monster_bg_winter.xml", image = "monster_bg_winter.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         forms = {
@@ -3105,10 +3045,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "tail_off",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "desert",
+        images = { grid_atlas = "images/monstergrid_bg_desert.xml", grid_image = "monstergrid_bg_desert.tex", atlas = "images/monster_bg_desert.xml", image = "monster_bg_desert.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -3133,10 +3072,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "taunt",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "lunar",
+        images = { grid_atlas = "images/monstergrid_bg_lunar.xml", grid_image = "monstergrid_bg_lunar.tex", atlas = "images/monster_bg_lunar.xml", image = "monster_bg_lunar.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -3155,9 +3093,8 @@ local data = {
     },
     {
         scale = 0.8,
-        scale_small = 0.8*scaling,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "cave",
+        images = { grid_atlas = "images/monstergrid_bg_cave.xml", grid_image = "monstergrid_bg_cave.tex", atlas = "images/monster_bg_cave.xml", image = "monster_bg_cave.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -3225,10 +3162,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "desert",
+        images = { grid_atlas = "images/monstergrid_bg_desert.xml", grid_image = "monstergrid_bg_desert.tex", atlas = "images/monster_bg_desert.xml", image = "monster_bg_desert.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT  },
 
         stats = {
@@ -3248,10 +3184,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "hit",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "winter",
+        images = { grid_atlas = "images/monstergrid_bg_winter.xml", grid_image = "monstergrid_bg_winter.tex", atlas = "images/monster_bg_winter.xml", image = "monster_bg_winter.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -3276,10 +3211,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.2,
-        scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "ocean",
+        images = { grid_atlas = "images/monstergrid_bg_ocean.xml", grid_image = "monstergrid_bg_ocean.tex", atlas = "images/monster_bg_ocean.xml", image = "monster_bg_ocean.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -3312,10 +3246,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "lunar",
+        images = { grid_atlas = "images/monstergrid_bg_lunar.xml", grid_image = "monstergrid_bg_lunar.tex", atlas = "images/monster_bg_lunar.xml", image = "monster_bg_lunar.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -3334,9 +3267,8 @@ local data = {
     },
     {
         scale = 0.9,
-        scale_small = 0.9*scaling,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "lunar",
+        images = { grid_atlas = "images/monstergrid_bg_lunar.xml", grid_image = "monstergrid_bg_lunar.tex", atlas = "images/monster_bg_lunar.xml", image = "monster_bg_lunar.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -3394,10 +3326,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.7,
-        scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "lunar",
+        images = { grid_atlas = "images/monstergrid_bg_lunar.xml", grid_image = "monstergrid_bg_lunar.tex", atlas = "images/monster_bg_lunar.xml", image = "monster_bg_lunar.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -3421,9 +3352,8 @@ local data = {
     },
     {
         scale = 0.15,
-        scale_small = 0.15*scaling,
         type = STRINGS.BESTIARY_RAIDBOSS,
-        theme = "lightbulb",
+        images = { grid_atlas = "images/monstergrid_bg_lightbulb.xml", grid_image = "monstergrid_bg_lightbulb.tex", atlas = "images/monster_bg_lightbulb.xml", image = "monster_bg_lightbulb.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
@@ -3518,9 +3448,8 @@ local data = {
     },
     {
         scale = 0.4,
-        scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -3624,9 +3553,8 @@ local data = {
     },
     {
         scale = 0.4,
-        scale_small = 0.4*scaling,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -3732,9 +3660,8 @@ local data = {
     },
     {
         scale = 0.25,
-        scale_small = 0.25*scaling,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -3844,10 +3771,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "taunt1",
         scale = 0.2,
-        scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -3873,10 +3799,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "taunt1",
         scale = 0.2,
-        scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "cave",
+        images = { grid_atlas = "images/monstergrid_bg_cave.xml", grid_image = "monstergrid_bg_cave.tex", atlas = "images/monster_bg_cave.xml", image = "monster_bg_cave.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -3903,10 +3828,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "taunt1",
         scale = 0.2,
-        scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_RAIDBOSS,
-        theme = "ruins",
+        images = { grid_atlas = "images/monstergrid_bg_ruins.xml", grid_image = "monstergrid_bg_ruins.tex", atlas = "images/monster_bg_ruins.xml", image = "monster_bg_ruins.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -3929,9 +3853,8 @@ local data = {
     },
     {
         scale = 0.6,
-        scale_small = 0.6*scaling,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "ruins",
+        images = { grid_atlas = "images/monstergrid_bg_ruins.xml", grid_image = "monstergrid_bg_ruins.tex", atlas = "images/monster_bg_ruins.xml", image = "monster_bg_ruins.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
@@ -3975,9 +3898,8 @@ local data = {
     },
     {
         scale = 0.5,
-        scale_small = 0.5*scaling,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "swamp",
+        images = { grid_atlas = "images/monstergrid_bg_swamp.xml", grid_image = "monstergrid_bg_swamp.tex", atlas = "images/monster_bg_swamp.xml", image = "monster_bg_swamp.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         forms = {
@@ -4037,10 +3959,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "sad",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
 
         stats = {
             health = 0,
@@ -4059,10 +3980,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "attack",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "ocean",
+        images = { grid_atlas = "images/monstergrid_bg_ocean.xml", grid_image = "monstergrid_bg_ocean.tex", atlas = "images/monster_bg_ocean.xml", image = "monster_bg_ocean.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -4087,10 +4007,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "idle_tap_loop",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "lunar",
+        images = { grid_atlas = "images/monstergrid_bg_lunar.xml", grid_image = "monstergrid_bg_lunar.tex", atlas = "images/monster_bg_lunar.xml", image = "monster_bg_lunar.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -4110,10 +4029,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "hit",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "ocean",
+        images = { grid_atlas = "images/monstergrid_bg_ocean.xml", grid_image = "monstergrid_bg_ocean.tex", atlas = "images/monster_bg_ocean.xml", image = "monster_bg_ocean.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -4138,10 +4056,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "attack",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "ocean",
+        images = { grid_atlas = "images/monstergrid_bg_ocean.xml", grid_image = "monstergrid_bg_ocean.tex", atlas = "images/monster_bg_ocean.xml", image = "monster_bg_ocean.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -4159,9 +4076,8 @@ local data = {
     },
     {
         scale = 0.3,
-        scale_small = 0.3*scaling,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "ocean",
+        images = { grid_atlas = "images/monstergrid_bg_ocean.xml", grid_image = "monstergrid_bg_ocean.tex", atlas = "images/monster_bg_ocean.xml", image = "monster_bg_ocean.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
@@ -4261,17 +4177,16 @@ local data = {
         }
     },
     {
-        name = "torn",
+        name = "Terrorclaw",
         prefab = "oceanhorror",
         bank = "oceanhorror",
         build = "shadow_oceanhorror",
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "ocean",
+        images = { grid_atlas = "images/monstergrid_bg_ocean.xml", grid_image = "monstergrid_bg_ocean.tex", atlas = "images/monster_bg_ocean.xml", image = "monster_bg_ocean.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -4289,17 +4204,16 @@ local data = {
         }
     },
     {
-        name = "torn",
+        name = "Wavey Jones",
         prefab = "waveyjones",
         bank = "shadow_wavey_jones",
         build = "shadow_wavey_jones",
         anim_idle = "idle",
         anim_action = "laugh",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "ocean",
+        images = { grid_atlas = "images/monstergrid_bg_ocean.xml", grid_image = "monstergrid_bg_ocean.tex", atlas = "images/monster_bg_ocean.xml", image = "monster_bg_ocean.tex" },
 
         stats = {
             health = 0,
@@ -4318,10 +4232,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "taunt",
         scale = 0.2,
-        scale_small = 0.2*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "cavelunar",
+        images = { grid_atlas = "images/monstergrid_bg_cavelunar.xml", grid_image = "monstergrid_bg_cavelunar.tex", atlas = "images/monster_bg_cavelunar.xml", image = "monster_bg_cavelunar.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -4341,10 +4254,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "hit",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "cavelunar",
+        images = { grid_atlas = "images/monstergrid_bg_cavelunar.xml", grid_image = "monstergrid_bg_cavelunar.tex", atlas = "images/monster_bg_cavelunar.xml", image = "monster_bg_cavelunar.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -4368,10 +4280,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "attack",
         scale = 0.35,
-        scale_small = 0.35*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "cavelunar",
+        images = { grid_atlas = "images/monstergrid_bg_cavelunar.xml", grid_image = "monstergrid_bg_cavelunar.tex", atlas = "images/monster_bg_cavelunar.xml", image = "monster_bg_cavelunar.tex" },
 
         stats = {
             health = 200,
@@ -4390,10 +4301,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "hit",
         scale = 0.4,
-        scale_small = 0.4*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "cavelunar",
+        images = { grid_atlas = "images/monstergrid_bg_cavelunar.xml", grid_image = "monstergrid_bg_cavelunar.tex", atlas = "images/monster_bg_cavelunar.xml", image = "monster_bg_cavelunar.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -4419,10 +4329,9 @@ local data = {
         anim_idle = "idle_sit",
         anim_action = "attack",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "cavelunar",
+        images = { grid_atlas = "images/monstergrid_bg_cavelunar.xml", grid_image = "monstergrid_bg_cavelunar.tex", atlas = "images/monster_bg_cavelunar.xml", image = "monster_bg_cavelunar.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -4454,10 +4363,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.6,
-        scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
 
         stats = {
             health = 1500,
@@ -4481,10 +4389,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.6,
-        scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
 
         stats = {
             health = 100,
@@ -4507,10 +4414,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "plant_dance_loop",
         scale = 0.6,
-        scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
 
         stats = {
             health = 100,
@@ -4529,10 +4435,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "attack",
         scale = 0.65,
-        scale_small = 0.65*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
 
         stats = {
             health = 10,
@@ -4551,10 +4456,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "attack",
         scale = 0.65,
-        scale_small = 0.65*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
 
         stats = {
             health = 10,
@@ -4573,10 +4477,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.7,
-        scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "ocean",
+        images = { grid_atlas = "images/monstergrid_bg_ocean.xml", grid_image = "monstergrid_bg_ocean.tex", atlas = "images/monster_bg_ocean.xml", image = "monster_bg_ocean.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -4600,9 +4503,8 @@ local data = {
     },
     {
         scale = 0.2,
-        scale_small = 0.2*scaling,
         type = STRINGS.BESTIARY_RAIDBOSS,
-        theme = "lunar",
+        images = { grid_atlas = "images/monstergrid_bg_lunar.xml", grid_image = "monstergrid_bg_lunar.tex", atlas = "images/monster_bg_lunar.xml", image = "monster_bg_lunar.tex" },
 
         forms = {
             {
@@ -4693,10 +4595,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "atk",
         scale = 0.7,
-        scale_small = 0.7*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "forest",
+        images = { grid_atlas = "images/monstergrid_bg_forest.xml", grid_image = "monstergrid_bg_forest.tex", atlas = "images/monster_bg_forest.xml", image = "monster_bg_forest.tex" },
         rotations = { FACING_DOWN, FACING_RIGHT, FACING_UP, FACING_LEFT },
 
         stats = {
@@ -4726,10 +4627,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_NEUTRAL,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "ocean",
+        images = { grid_atlas = "images/monstergrid_bg_ocean.xml", grid_image = "monstergrid_bg_ocean.tex", atlas = "images/monster_bg_ocean.xml", image = "monster_bg_ocean.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -4749,9 +4649,8 @@ local data = {
     },
     {
         scale = 0.25,
-        scale_small = 0.25*scaling,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
@@ -4833,10 +4732,9 @@ local data = {
         anim_idle = "idle_loop",
         anim_action = "atk",
         scale = 0.5,
-        scale_small = 0.5*scaling,
         intent = STRINGS.BESTIARY_AGGRESSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         stats = {
@@ -4850,9 +4748,8 @@ local data = {
     },
     {
         scale = 0.25,
-        scale_small = 0.25*scaling,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
@@ -4938,9 +4835,8 @@ local data = {
     },
     {
         scale = 0.25,
-        scale_small = 0.25*scaling,
         type = STRINGS.BESTIARY_BOSS,
-        theme = "plain",
+        images = { grid_atlas = "images/monstergrid_bg_plain.xml", grid_image = "monstergrid_bg_plain.tex", atlas = "images/monster_bg_plain.xml", image = "monster_bg_plain.tex" },
         rotations = { FACING_DOWNRIGHT, FACING_RIGHT, FACING_UPRIGHT, FACING_UPLEFT, FACING_LEFT, FACING_DOWNLEFT },
 
         forms = {
@@ -5032,10 +4928,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "unimpressed",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "deciduous",
+        images = { grid_atlas = "images/monstergrid_bg_deciduous.xml", grid_image = "monstergrid_bg_deciduous.tex", atlas = "images/monster_bg_deciduous.xml", image = "monster_bg_deciduous.tex" },
 
         stats = {
             health = 0,
@@ -5054,10 +4949,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "hit",
         scale = 0.6,
-        scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "ocean",
+        images = { grid_atlas = "images/monstergrid_bg_ocean.xml", grid_image = "monstergrid_bg_ocean.tex", atlas = "images/monster_bg_ocean.xml", image = "monster_bg_ocean.tex" },
 
         stats = {
             health = 25,
@@ -5079,10 +4973,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "hit",
         scale = 0.6,
-        scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "lunar",
+        images = { grid_atlas = "images/monstergrid_bg_lunar.xml", grid_image = "monstergrid_bg_lunar.tex", atlas = "images/monster_bg_lunar.xml", image = "monster_bg_lunar.tex" },
 
         stats = {
             health = 25,
@@ -5104,10 +4997,9 @@ local data = {
         anim_idle = "flight_cycle",
         anim_action = "idle_flight_loop",
         scale = 0.6,
-        scale_small = 0.6*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_ANIMAL,
-        theme = "lunar",
+        images = { grid_atlas = "images/monstergrid_bg_lunar.xml", grid_image = "monstergrid_bg_lunar.tex", atlas = "images/monster_bg_lunar.xml", image = "monster_bg_lunar.tex" },
 
         stats = {
             health = 1,
@@ -5129,10 +5021,9 @@ local data = {
         anim_idle = "idle",
         anim_action = "refuse",
         scale = 0.3,
-        scale_small = 0.3*scaling,
         intent = STRINGS.BESTIARY_PASSIVE,
         type = STRINGS.BESTIARY_MONSTER,
-        theme = "swamp",
+        images = { grid_atlas = "images/monstergrid_bg_swamp.xml", grid_image = "monstergrid_bg_swamp.tex", atlas = "images/monster_bg_swamp.xml", image = "monster_bg_swamp.tex" },
 
         stats = {
             health = 1000,
@@ -5150,4 +5041,4 @@ local data = {
     }
 }
 
-return data
+LoadMonsterData(MONSTERDATA_BESTIARY)
