@@ -21,6 +21,7 @@ modimport("init/init_recipes")
 
 --\/ EXTERNAL CODE \/--
 
+modimport("scripts/monsterinfo")
 modimport("scripts/addbestiaryaction")
 modimport("scripts/addstates")
 modimport("scripts/bestiarypopup")
@@ -68,7 +69,7 @@ AddModRPCHandler("bestiarymod", "ForgetBestiary", function(player)
 end)
 
 local function IsInMonstersTable(mob)
-	for i, data in ipairs(require "monsterinfo") do
+	for i, data in ipairs(GLOBAL.MONSTERDATA_BESTIARY) do
 		if (data.prefab or data.forms[1].prefab) == (mob.discoverable_prefab or mob.prefab) then
 			return true
 		end

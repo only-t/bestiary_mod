@@ -34,7 +34,7 @@ function BestiaryUpdater:LearnMob(mob)
 end
 
 function BestiaryUpdater:DiscoverAll()
-	for i, data in ipairs(require("monsterinfo")) do
+	for i, data in ipairs(MONSTERDATA_BESTIARY) do
 		if data then
 			local discovered = self.bestiary:DiscoverMob(data.prefab or data.forms[1].prefab)
 
@@ -46,7 +46,7 @@ function BestiaryUpdater:DiscoverAll()
 end
 
 function BestiaryUpdater:LearnAll()
-	for i, data in ipairs(require("monsterinfo")) do
+	for i, data in ipairs(MONSTERDATA_BESTIARY) do
 		if data then
 			local learned = self.bestiary:LearnMob(data.prefab or data.forms[1].prefab)
 
