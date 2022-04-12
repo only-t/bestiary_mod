@@ -9,7 +9,7 @@ local Spinner = require "widgets/spinner"
 local TrueScrollArea = require "widgets/truescrollarea"
 local PopupDialogScreen = require "screens/popupdialog"
 
-local MonsterInfo = require "monsterinfo"
+local MonsterInfo = MONSTERDATA_BESTIARY
 local TEMPLATES = require "widgets/redux/templates"
 
 local function FindInTable(table, value)
@@ -44,9 +44,8 @@ local BestiaryMonstersPage = Class(Widget, function(self, owner)
 			data.current_form = 1
 
 			data.scale = mob_data.scale
-			data.scale_small = mob_data.scale_small
 			data.type = mob_data.type
-			data.theme = mob_data.theme
+			data.images = mob_data.images
 			data.rotations = mob_data.rotations or data.rotations
 		else
 			data = mob_data
@@ -163,8 +162,8 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 					self.details_root:AddChild(self:PopulateMonsterInfoPanel(widget.data))
 				end)
 
-				if widget.data.theme then
-					widget.cell_root:SetTextures("images/monstergrid_bg_"..widget.data.theme..".xml", "monstergrid_bg_"..widget.data.theme..".tex")
+				if widget.data.images then
+					widget.cell_root:SetTextures(widget.data.images.grid_atlas, widget.data.images.grid_image)
 				end
 
 				if TheBestiary:IsNew(widget.data.prefab) then
@@ -186,7 +185,7 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 					widget.cell_root.monster:GetAnimState():Pause() -- Pause here to stop at the first frame
 					widget.cell_root.monster:GetAnimState():SetTime(time)-- And apply it to the new cell to make the transition smooooth
 					widget.cell_root.monster:SetClickable(false)
-					widget.cell_root.monster:SetScale(data.scale_small or 1, data.scale_small or 1)
+					widget.cell_root.monster:SetScale(data.scale and data.scale*TUNING.MONSTER_SMALL_SCALING or 1, data.scale and data.scale*TUNING.MONSTER_SMALL_SCALING or 1)
 					widget.cell_root.monster:SetPosition(0, -55)
 
 					widget.cell_root.onlosefocusfn = function()
@@ -313,7 +312,10 @@ function BestiaryMonstersPage:PopulateMonsterDetailPanel(data)
 	local details_decor = details_root:AddChild(Image("images/quagmire_recipebook.xml", "quagmire_recipe_menu_block.tex"))
 	details_decor:ScaleToSize(400, 530)
 
-	self.monsterframe = details_root:AddChild(Image("images/monster_bg_"..(data.theme or "basic")..".xml", "monster_bg_"..(data.theme or "basic")..".tex"))
+	if data.images then
+		self.monsterframe = details_root:AddChild(Image(data.images.atlas, data.images.image))
+	end
+
 	self.monsterframe:SetPosition(0, 90)
 	self.monsterframe:SetScale(0.85, 0.85)
 
@@ -681,33 +683,7 @@ function BestiaryMonstersPage:CreateInformation(data)
 	desc:SetPosition(width/2, height - 0.5*y)
 	height = height - y - section_space
 
-	if data.name == "torn" then
-		self.page:SetTexture("images/bestiary_page_torn.xml", "bestiary_page_torn.tex")
-		self.page:SetSize(970, 570)
-		self.page:SetPosition(0, 40)
-
-		if data.is_learned then
-			local desc_value = sub_root:AddChild(Text(CHATFONT, 20, nil, UICOLOURS.BROWN_DARK))
-			desc_value:SetHAlign(ANCHOR_LEFT)
-			desc_value:SetVAlign(ANCHOR_TOP)
-			desc_value:SetMultilineTruncatedString(data.stats.info, 60, width) -- 60 should be enough
-	
-			x, y = desc_value:GetRegionSize()
-			desc_value:SetPosition(0.5*x, height - 0.5*y)
-			height = height - y - section_space
-		else
-			local locked_bg = sub_root:AddChild(Image("images/frontend.xml", "nav_bg_short.tex"))
-			locked_bg:ScaleToSize(width - 80, 120*2)
-			x, y = locked_bg:GetSize()
-			locked_bg:SetPosition(width/2, height - 0.5*y - 30)
-	
-			local lock = sub_root:AddChild(Image("images/bestiary_lock.xml", "bestiary_lock.tex"))
-			lock:ScaleToSize(110, 120)
-			x, y = lock:GetSize()
-			lock:SetPosition(width/2, height - 0.5*y)
-			height = height - y - section_space
-		end
-	elseif data.name == "Moosegoose" then -- Setting the appropriate names for the title and info
+	if data.name == "Moosegoose" then -- Setting the appropriate names for the title and info
 		local name = math.random(1, 2) == 1 and "Moose" or "Goose"
 		local info = subfmt(data.stats.info, { name = name })
 
@@ -795,18 +771,18 @@ end
 function BestiaryMonstersPage:ApplyForm(data, current_form)
 	local forms = data.forms
 	local scale = data.scale
-	local scale_small = data.scale_small
 	local type = data.type
 	local rotations = data.rotations
 	local is_learned = data.is_learned
+	local images = data.images
 
 	data = data.forms[data.current_form]
 	data.forms = forms
 	data.current_form = current_form
 	data.scale = scale
-	data.scale_small = scale_small
 	data.type = type
 	data.is_learned = is_learned
+	data.images = images
 
 	if data.rotations == nil then
 		data.rotations = rotations
@@ -963,7 +939,7 @@ function BestiaryMonstersPage:ApplySort(selected)
 	self:_DoFocusHookups()
 end
 
-function BestiaryMonstersPage:ApplyFilters(selected)
+function BestiaryMonstersPage:ApplyFilters(selected, text)
 	local filterby = selected or "all"
 
 	self.filtered_monsters = {  }
@@ -978,7 +954,13 @@ function BestiaryMonstersPage:ApplyFilters(selected)
 		or (filterby == "boss"			and data.type == STRINGS.BESTIARY_BOSS)
 		or (filterby == "raid"			and data.type == STRINGS.BESTIARY_RAIDBOSS)
 		then
-			table.insert(self.filtered_monsters, data)
+			if text then
+				if string.find(string.lower(data.name), string.lower(text)) then
+					table.insert(self.filtered_monsters, data)
+				end
+			else
+				table.insert(self.filtered_monsters, data)
+			end
 		end
 	end
 
@@ -1044,7 +1026,8 @@ function BestiaryMonstersPage:AddSearch()
     searchbox.textbox:SetTextPrompt("Search", UICOLOURS.GREY)
     searchbox.textbox.prompt:SetHAlign(ANCHOR_MIDDLE)
     searchbox.textbox.OnTextInputted = function()
-		-- TBA
+		print(searchbox.textbox:GetLineEditString())
+		self:ApplyFilters(self.filter, searchbox.textbox:GetLineEditString())
     end
 
     searchbox:SetOnGainFocus(function() searchbox.textbox:OnGainFocus() end)
@@ -1059,13 +1042,13 @@ function BestiaryMonstersPage:CreateHeadRoot()
 	local head_root = Widget("head_root")
 	head_root:SetPosition(0, 200)
 
-	local spinners = head_root:AddChild(self:BuildSpinners())
-	spinners:SetPosition(-330, -30)
+	-- local spinners = head_root:AddChild(self:BuildSpinners())
+	-- spinners:SetPosition(-330, -30)
 
 	local grid_w, grid_h = self.monster_grid:GetScrollRegionSize()
 
-	-- local mob_search = head_root:AddChild(self:AddSearch())
-	-- mob_search:SetPosition(-120, 20)
+	local mob_search = head_root:AddChild(self:AddSearch())
+	mob_search:SetPosition(-120, 20)
 
 	return head_root
 end
