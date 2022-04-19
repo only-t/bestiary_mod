@@ -1026,7 +1026,6 @@ function BestiaryMonstersPage:AddSearch()
     searchbox.textbox:SetTextPrompt("Search", UICOLOURS.GREY)
     searchbox.textbox.prompt:SetHAlign(ANCHOR_MIDDLE)
     searchbox.textbox.OnTextInputted = function()
-		print(searchbox.textbox:GetLineEditString())
 		self:ApplyFilters(self.filter, searchbox.textbox:GetLineEditString())
     end
 
@@ -1038,18 +1037,81 @@ function BestiaryMonstersPage:AddSearch()
     return searchbox
 end
 
+local filters = {
+	{ text = "All", data = "all", atlas = CRAFTING_ICONS_ATLAS, image = "filter_none.tex" },
+	{ text = "Intent: Aggressive", data = "aggressive", atlas = "images/intent_aggressive.xml", image = "intent_aggressive.tex" },
+	{ text = "Intent: Neutral", data = "neutral", atlas = "images/intent_passive.xml", image = "intent_passive.tex" },
+	{ text = "Intent: Passive", data = "passive", atlas = "images/intent_neutral.xml", image = "intent_neutral.tex" },
+	{ text = "Type: Animal", data = "animal", atlas = "images/type_animal.xml", image = "type_animal.tex" },
+	{ text = "Type: Monster", data = "monster", atlas = "minimap/minimap_data.xml", image = "spiderden.png" },
+	{ text = "Type: Boss", data = "boss", atlas = "images/type_boss.xml", image = "type_boss.tex" },
+	{ text = "Type: Raid Boss", data = "raid", atlas = "minimap/minimap_data.xml", image = "crabking.png" },
+}
+
+function BestiaryMonstersPage:CreateFilterButtons()
+	local root = Widget("filter_buttons_root")
+	root.grid = root:AddChild(Grid())
+
+	local size = 28
+
+	root.grid:InitSize(8, 1, size*1.2, size*1.2)
+	root.grid:UseNaturalLayout()
+
+	for i, filter in ipairs(filters) do
+		local btn = ImageButton(CRAFTING_ATLAS, "filterslot_frame.tex", "filterslot_frame_highlight.tex", nil, nil, "filterslot_frame_select.tex")
+		btn.image:ScaleToSize(size, size)
+
+		local filter_bg = btn:AddChild(Image(CRAFTING_ATLAS, "filterslot_bg.tex"))
+		filter_bg:ScaleToSize(size + 6, size + 6)
+		filter_bg:MoveToBack()
+
+		local filter_img = btn:AddChild(Image(filter.atlas, filter.image))
+		filter_img:ScaleToSize(size - size/10, size - size/10)
+
+		root.grid:AddItem(btn, i, 1)
+	end
+
+	return root
+end
+
+function BestiaryMonstersPage:CreateSortButton()
+	local size = 32
+
+	local btn = TEMPLATES.StandardButton(nil, "none", { size, size }, { CRAFTING_ATLAS, "filterslot_frame.tex", "filterslot_frame_highlight.tex", "filterslot_frame_select.tex" })
+	btn.image:ScaleToSize(size, size)
+
+	local filter_bg = btn:AddChild(Image(CRAFTING_ATLAS, "filterslot_bg.tex"))
+	filter_bg:ScaleToSize(size + 6, size + 6)
+	filter_bg:MoveToBack()
+
+	local filter_img = btn:AddChild(Image(CRAFTING_ICONS_ATLAS, "filter_none.tex"))
+	filter_img:ScaleToSize(size - size/10, size - size/10)
+
+	return btn
+end
+
 function BestiaryMonstersPage:CreateHeadRoot()
 	local head_root = Widget("head_root")
 	head_root:SetPosition(0, 200)
 
-	-- local spinners = head_root:AddChild(self:BuildSpinners())
-	-- spinners:SetPosition(-330, -30)
-
-	local grid_w, grid_h = self.monster_grid:GetScrollRegionSize()
-
 	local mob_search = head_root:AddChild(self:AddSearch())
-	mob_search:SetPosition(-120, 20)
+	mob_search:SetPosition(-120, 60)
 
+	-- "All"				- filter_all
+	-- "Intent: Aggressive"	- intent_aggro
+	-- "Intent: Neutral"	- intent_neutral
+	-- "Intent: Passive"	- intent_passive
+	-- "Type: Animal"		- type_animal
+	-- "Type: Monster"		- type_monster
+	-- "Type: Boss"			- type_boss
+	-- "Type: Raid Boss"	- type_raidboss
+
+	local filter_buttons = head_root:AddChild(self:CreateFilterButtons())
+	filter_buttons:SetPosition(-120 - (28*1.2*8)/2 + 14*1.2, 0)
+
+	local sort_button = head_root:AddChild(self:CreateSortButton())
+	sort_button:SetPosition(40, 60)
+	
 	return head_root
 end
 
@@ -1098,6 +1160,11 @@ function BestiaryMonstersPage:CreateSideRoot()
 	side_root.panel_width = 250
 	side_root.panel_height = 500
 	side_root:SetPosition(320, -20)
+
+	local decor_area = side_root:AddChild(Image("images/quagmire_recipebook.xml", "quagmire_recipe_menu_block.tex"))
+	local grid_w, grid_h = self.monster_grid:GetScrollRegionSize()
+	decor_area:ScaleToSize(210, 510)
+	decor_area:SetPosition(0, 65)
 
 	local height = 280
 

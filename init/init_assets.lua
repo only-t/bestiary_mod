@@ -168,4 +168,19 @@ Assets = {
 
 	Asset("ATLAS", "images/monstergrid_bg_ocean.xml"),
 	Asset("IMAGE", "images/monstergrid_bg_ocean.tex"),
+
+	Asset("ATLAS", "images/intent_aggressive.xml"),
+	Asset("IMAGE", "images/intent_aggressive.tex"),
+
+	Asset("ATLAS", "images/intent_passive.xml"),
+	Asset("IMAGE", "images/intent_passive.tex"),
+
+	Asset("ATLAS", "images/intent_neutral.xml"),
+	Asset("IMAGE", "images/intent_neutral.tex"),
+
+	Asset("ATLAS", "images/type_animal.xml"),
+	Asset("IMAGE", "images/type_animal.tex"),
+
+	Asset("ATLAS", "images/type_boss.xml"),
+	Asset("IMAGE", "images/type_boss.tex"),
 }
