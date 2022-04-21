@@ -1015,7 +1015,7 @@ end
 
 function BestiaryMonstersPage:AddSearch()
     local searchbox = Widget("search")
-    searchbox.textbox_root = searchbox:AddChild(TEMPLATES.StandardSingleLineTextEntry(nil, 260, 60, nil, 40))
+    searchbox.textbox_root = searchbox:AddChild(TEMPLATES.StandardSingleLineTextEntry(nil, 500, 60, nil, 40))
     searchbox.textbox = searchbox.textbox_root.textbox
     searchbox.textbox:SetTextLengthLimit(50)
     searchbox.textbox:SetForceEdit(true)
@@ -1026,7 +1026,8 @@ function BestiaryMonstersPage:AddSearch()
     searchbox.textbox:SetTextPrompt("Search", UICOLOURS.GREY)
     searchbox.textbox.prompt:SetHAlign(ANCHOR_MIDDLE)
     searchbox.textbox.OnTextInputted = function()
-		self:ApplyFilters(self.filter, searchbox.textbox:GetLineEditString())
+		self.search_text = searchbox.textbox:GetLineEditString()
+		self:ApplyFilters(self.filter, self.search_text)
     end
 
     searchbox:SetOnGainFocus(function() searchbox.textbox:OnGainFocus() end)
@@ -1038,15 +1039,17 @@ function BestiaryMonstersPage:AddSearch()
 end
 
 local filters = {
-	{ text = "All", data = "all", atlas = CRAFTING_ICONS_ATLAS, image = "filter_none.tex" },
+	{ text = "Everything", data = "all", atlas = CRAFTING_ICONS_ATLAS, image = "filter_none.tex" },
+	{ text = "Intent: Neutral", data = "neutral", atlas = "images/intent_neutral.xml", image = "intent_neutral.tex" },
+	{ text = "Intent: Passive", data = "passive", atlas = "images/intent_passive.xml", image = "intent_passive.tex" },
 	{ text = "Intent: Aggressive", data = "aggressive", atlas = "images/intent_aggressive.xml", image = "intent_aggressive.tex" },
-	{ text = "Intent: Neutral", data = "neutral", atlas = "images/intent_passive.xml", image = "intent_passive.tex" },
-	{ text = "Intent: Passive", data = "passive", atlas = "images/intent_neutral.xml", image = "intent_neutral.tex" },
 	{ text = "Type: Animal", data = "animal", atlas = "images/type_animal.xml", image = "type_animal.tex" },
 	{ text = "Type: Monster", data = "monster", atlas = "minimap/minimap_data.xml", image = "spiderden.png" },
 	{ text = "Type: Boss", data = "boss", atlas = "images/type_boss.xml", image = "type_boss.tex" },
 	{ text = "Type: Raid Boss", data = "raid", atlas = "minimap/minimap_data.xml", image = "crabking.png" },
 }
+
+local filter_buttons = {  }
 
 function BestiaryMonstersPage:CreateFilterButtons()
 	local root = Widget("filter_buttons_root")
@@ -1060,57 +1063,84 @@ function BestiaryMonstersPage:CreateFilterButtons()
 	for i, filter in ipairs(filters) do
 		local btn = ImageButton(CRAFTING_ATLAS, "filterslot_frame.tex", "filterslot_frame_highlight.tex", nil, nil, "filterslot_frame_select.tex")
 		btn.image:ScaleToSize(size, size)
+		btn:SetHoverText(filter.text, { offset_y = 30 })
 
-		local filter_bg = btn:AddChild(Image(CRAFTING_ATLAS, "filterslot_bg.tex"))
-		filter_bg:ScaleToSize(size + 6, size + 6)
-		filter_bg:MoveToBack()
+		btn.filter_bg = btn:AddChild(Image(CRAFTING_ATLAS, i == 1 and "filterslot_bg_highlight.tex" or "filterslot_bg.tex"))
+		btn.filter_bg:ScaleToSize(size + 6, size + 6)
+		btn.filter_bg:MoveToBack()
 
-		local filter_img = btn:AddChild(Image(filter.atlas, filter.image))
-		filter_img:ScaleToSize(size - size/10, size - size/10)
+		btn.filter_img = btn:AddChild(Image(filter.atlas, filter.image))
+		btn.filter_img:ScaleToSize(size - size/10, size - size/10)
 
-		root.grid:AddItem(btn, i, 1)
+		btn:SetOnClick(function()
+			self:ApplyFilters(filter.data, self.search_text)
+
+			for i, filter_btn in ipairs(filter_buttons) do
+				filter_btn.filter_bg:SetTexture(CRAFTING_ATLAS, "filterslot_bg.tex")
+			end
+
+			btn.filter_bg:SetTexture(CRAFTING_ATLAS, "filterslot_bg_highlight.tex")
+		end)
+
+		btn = root.grid:AddItem(btn, i, 1)
+		local pos = btn:GetPosition()
+
+		if i < 2 then
+			btn:SetPosition(pos.x - 15, 0)
+		elseif i < 5 then
+			btn:SetPosition(pos.x - 5, 0)
+		else
+			btn:SetPosition(pos.x + 5, 0)
+		end
+
+		table.insert(filter_buttons, btn)
 	end
 
 	return root
 end
 
-function BestiaryMonstersPage:CreateSortButton()
-	local size = 32
-
-	local btn = TEMPLATES.StandardButton(nil, "none", { size, size }, { CRAFTING_ATLAS, "filterslot_frame.tex", "filterslot_frame_highlight.tex", "filterslot_frame_select.tex" })
-	btn.image:ScaleToSize(size, size)
-
-	local filter_bg = btn:AddChild(Image(CRAFTING_ATLAS, "filterslot_bg.tex"))
-	filter_bg:ScaleToSize(size + 6, size + 6)
-	filter_bg:MoveToBack()
-
-	local filter_img = btn:AddChild(Image(CRAFTING_ICONS_ATLAS, "filter_none.tex"))
-	filter_img:ScaleToSize(size - size/10, size - size/10)
-
-	return btn
-end
+local sorts = {
+	{ text = "Sort: Alphabetically", data = "alphabetical", atlas = "images/button_icons.xml", image = "sort_name.tex" },
+	{ text = "Sort: Reversed Alphabetically", data = "alphabetical_rev", atlas = "images/sort_rev_name.xml", image = "sort_rev_name.tex"  },
+	{ text = "Sort: By Health", data = "health", atlas = "images/sort_health.xml", image = "sort_health.tex" },
+	{ text = "Sort: By Damage", data = "damage", atlas = "images/sort_dmg.xml", image = "sort_dmg.tex" },
+	{ text = "Sort: By Speed", data = "speed", atlas = "images/sort_speed.xml", image = "sort_speed.tex" },
+}
 
 function BestiaryMonstersPage:CreateHeadRoot()
 	local head_root = Widget("head_root")
 	head_root:SetPosition(0, 200)
 
 	local mob_search = head_root:AddChild(self:AddSearch())
-	mob_search:SetPosition(-120, 60)
+	mob_search:SetPosition(-120, 65)
 
-	-- "All"				- filter_all
-	-- "Intent: Aggressive"	- intent_aggro
-	-- "Intent: Neutral"	- intent_neutral
-	-- "Intent: Passive"	- intent_passive
-	-- "Type: Animal"		- type_animal
-	-- "Type: Monster"		- type_monster
-	-- "Type: Boss"			- type_boss
-	-- "Type: Raid Boss"	- type_raidboss
+	local decor_line = head_root:AddChild(Image("images/ui.xml", "line_horizontal_white.tex"))
+    decor_line:SetTint(unpack(BROWN))
+	decor_line:SetPosition(-120, 25)
+	decor_line:ScaleToSize(600, 4)
 
 	local filter_buttons = head_root:AddChild(self:CreateFilterButtons())
-	filter_buttons:SetPosition(-120 - (28*1.2*8)/2 + 14*1.2, 0)
+	filter_buttons:SetPosition(-120 - (28*1.2*8)/2 + 14*1.2, -5) -- Some serious math going on here
 
-	local sort_button = head_root:AddChild(self:CreateSortButton())
-	sort_button:SetPosition(40, 60)
+	local sort_index = 1
+	local sort_button = head_root:AddChild(TEMPLATES.IconButton(sorts[1].atlas, sorts[1].image))
+	sort_button:SetHoverText(sorts[1].text)
+	sort_button:SetPosition(64, -5)
+	sort_button:ForceImageSize(50, 50)
+	sort_button:SetTextSize(math.ceil(50*0.45))
+	sort_button:SetOnClick(function()
+		sort_index = sort_index + 1
+
+		if sort_index > #sorts then
+			sort_index = 1
+		end
+
+		self.sort = sorts[sort_index].data
+		self:ApplySort(self.sort)
+		sort_button:SetHoverText(sorts[sort_index].text)
+
+		sort_button.icon:SetTexture(sorts[sort_index].atlas, sorts[sort_index].image)
+	end)
 	
 	return head_root
 end
@@ -1222,82 +1252,6 @@ function BestiaryMonstersPage:CreateSideRoot()
 	collection_percent:SetPosition(0, height)
 
 	return side_root
-end
-
-function BestiaryMonstersPage:BuildSpinners()
-	local root = Widget("spinner_root")
-
-	local sort_options = {
-		{ text = "A - Z", data = "alphabetical" },
-		{ text = "Z - A", data = "alphabetical_rev" },
-		{ text = "Health", data = "health" },
-		{ text = "Damage", data = "damage" },
-		{ text = "Speed", data = "speed" },
-	}
-
-	local function on_sort_fn(selected)
-		self.sort = selected
-
-		self:ApplySort(self.sort)
-	end
-
-	local filter_options = {
-		{ text = "All", data = "all" },
-		{ text = "Intent: Aggressive", data = "aggressive" },
-		{ text = "Intent: Neutral", data = "neutral" },
-		{ text = "Intent: Passive", data = "passive" },
-		{ text = "Type: Animal", data = "animal" },
-		{ text = "Type: Monster", data = "monster" },
-		{ text = "Type: Boss", data = "boss" },
-		{ text = "Type: Raid Boss", data = "raid" },
-	}
-
-	local function on_filter_fn(selected)
-		self.filter = selected
-		
-		self:ApplyFilters(self.filter)
-	end
-
-	local width_label = 100
-	local width_spinner = 200
-	local height = 35
-
-	local function MakeSpinner(labeltext, spinnerdata, onchanged_fn, initial_data)
-		local spacing = 10
-		local font = HEADERFONT
-		local font_size = 18
-		local total_width = width_label + width_spinner + spacing
-		local wdg = Widget("labelspinner")
-
-		wdg.label = wdg:AddChild(Text(font, font_size, labeltext))
-		wdg.label:SetPosition((-total_width/2)+(width_label/2), 0)
-		wdg.label:SetRegionSize( width_label, height)
-		wdg.label:SetHAlign(ANCHOR_RIGHT)
-		wdg.label:SetColour(UICOLOURS.BROWN_DARK)
-
-		wdg.spinner = wdg:AddChild(Spinner(spinnerdata, width_spinner, height, { font = font, size = font_size }, nil, "images/quagmire_recipebook.xml", nil, true))
-		wdg.spinner:SetTextColour(UICOLOURS.BROWN_DARK)
-		wdg.spinner:SetOnChangedFn(onchanged_fn)
-		wdg.spinner:SetPosition((total_width/2)-(width_spinner/2), 0)
-		wdg.spinner:SetSelected(initial_data)
-
-		return wdg
-	end
-
-	local items = {  }
-	table.insert(items, MakeSpinner("Sort by", sort_options, on_sort_fn, "alphabetical"))
-	table.insert(items, MakeSpinner("Filter by", filter_options, on_filter_fn, "all"))
-
-	self.spinners = {  }
-
-	for i, v in ipairs(items) do
-		local w = root:AddChild(v)
-
-		w:SetPosition(50, (#items - i + 1)*(height + 3))
-		table.insert(self.spinners, w.spinner)
-	end
-
-	return root
 end
 
 function BestiaryMonstersPage:_DoFocusHookups()
