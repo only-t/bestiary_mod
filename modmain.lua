@@ -80,50 +80,94 @@ end
 
 local CANT_TAGS = { "structure", "FX", "DECOR", "NOCLICK", "INLIMBO",  }
 local MUST_ONE_OF_TAGS = { "_health", "_combat", "character", "NET_workable", "king", "mermking" } -- Should cover about 99.3141% of all mobs
+local function CheckNearbyMobs(inst)
+	local radius = GLOBAL.TUNING.DISCOVER_MOB_RANGE
+	local mob = GLOBAL.FindEntity(
+		inst,
+		radius,
+		nil,
+		nil,
+		CANT_TAGS,
+		MUST_ONE_OF_TAGS
+	)
+
+	if mob and IsInMonstersTable(mob) then
+		inst.components.bestiaryupdater:DiscoverMob(mob.discoverable_prefab or mob.prefab)
+
+		if mob.prefab == "hermitcrab" or mob.prefab == "gestalt" or mob.prefab == "gestalt_guard" then -- There cannot be killed or interacted with really...
+			inst.components.bestiaryupdater:LearnMob(mob.discoverable_prefab or mob.prefab)
+		end
+	end
+end
+
+local function CheckCatchedMob(inst, data)
+	if data.target and data.action == GLOBAL.ACTIONS.NET then
+		inst.components.bestiaryupdater:DiscoverMob(data.target.discoverable_prefab or data.target.prefab) -- If catched without discovering first
+		inst.components.bestiaryupdater:LearnMob(data.target.discoverable_prefab or data.target.prefab)
+	end
+end
+
+local function CheckKilledMob(inst, data)
+	if data.victim then
+		inst.components.bestiaryupdater:DiscoverMob(data.victim.discoverable_prefab or data.victim.prefab) -- If killed without discovering first
+		inst.components.bestiaryupdater:LearnMob(data.victim.discoverable_prefab or data.victim.prefab)
+	end
+end
+
+local function onbecamehuman(inst)
+	if inst.CheckNearbyMobsTask then
+		inst.CheckNearbyMobsTask:Cancel()
+		inst.CheckNearbyMobsTask = nil
+	end
+
+	inst.CheckNearbyMobsTask = inst:DoPeriodicTask(2, CheckNearbyMobs)
+	inst:ListenForEvent("killed", CheckKilledMob)
+	inst:ListenForEvent("finishedwork", CheckCatchedMob)
+end
+
+local function onbecameghost(inst)
+	if inst.CheckNearbyMobsTask then
+		inst.CheckNearbyMobsTask:Cancel()
+		inst.CheckNearbyMobsTask = nil
+	end
+
+	inst:RemoveEventCallback("killed", CheckKilledMob)
+	inst:RemoveEventCallback("finishedwork", CheckCatchedMob)
+end
+
 AddPlayerPostInit(function(inst)
-	local function CheckNearbyMobs(inst)
-		local radius = GLOBAL.TUNING.DISCOVER_MOB_RANGE
-		local mob = GLOBAL.FindEntity(
-			inst,
-			radius,
-			nil,
-			nil,
-			CANT_TAGS,
-			MUST_ONE_OF_TAGS
-		)
-	
-		if mob and IsInMonstersTable(mob) then
-			inst.components.bestiaryupdater:DiscoverMob(mob.discoverable_prefab or mob.prefab)
-
-			if mob.prefab == "hermitcrab" or mob.prefab == "gestalt" or mob.prefab == "gestalt_guard" then -- There cannot be killed or interacted with really...
-				inst.components.bestiaryupdater:LearnMob(mob.discoverable_prefab or mob.prefab)
-			end
-		end
-	end
-	
-	local function CheckCatchedMob(inst, data)
-		if data.target and data.action == GLOBAL.ACTIONS.NET then
-			inst.components.bestiaryupdater:DiscoverMob(data.target.discoverable_prefab or data.target.prefab) -- If catched without discovering first
-			inst.components.bestiaryupdater:LearnMob(data.target.discoverable_prefab or data.target.prefab)
-		end
-	end
-
-	local function CheckKilledMob(inst, data)
-		if data.victim then
-			inst.components.bestiaryupdater:DiscoverMob(data.victim.discoverable_prefab or data.victim.prefab) -- If killed without discovering first
-			inst.components.bestiaryupdater:LearnMob(data.victim.discoverable_prefab or data.victim.prefab)
-		end
-	end
-
 	inst:AddComponent("bestiaryupdater") -- Client-sided
 
 	if not GLOBAL.TheWorld.ismastersim then
 		return inst
 	end
 
-	inst:DoPeriodicTask(2, CheckNearbyMobs)
-	inst:ListenForEvent("killed", CheckKilledMob)
-	inst:ListenForEvent("finishedwork", CheckCatchedMob)
+	local old_OnLoad = inst.OnLoad
+	inst.OnLoad = function(inst)
+		inst:ListenForEvent("ms_respawnedfromghost", onbecamehuman)
+		inst:ListenForEvent("ms_becameghost", onbecameghost)
+
+		if inst:HasTag("playerghost") then
+			onbecameghost(inst)
+		else
+			onbecamehuman(inst)
+		end
+
+		old_OnLoad(inst)
+	end
+
+	inst.OnNewSpawn = function(inst)
+		inst:ListenForEvent("ms_respawnedfromghost", onbecamehuman)
+		inst:ListenForEvent("ms_becameghost", onbecameghost)
+
+		if inst:HasTag("playerghost") then
+			onbecameghost(inst)
+		else
+			onbecamehuman(inst)
+		end
+
+		old_OnLoad(inst)
+	end
 end)
 
 AddPrefabPostInit("pigking", function(inst)
