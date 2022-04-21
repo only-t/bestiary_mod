@@ -183,4 +183,16 @@ Assets = {
 
 	Asset("ATLAS", "images/type_boss.xml"),
 	Asset("IMAGE", "images/type_boss.tex"),
+
+	Asset("ATLAS", "images/sort_rev_name.xml"),
+	Asset("IMAGE", "images/sort_rev_name.tex"),
+
+	Asset("ATLAS", "images/sort_health.xml"),
+	Asset("IMAGE", "images/sort_health.tex"),
+
+	Asset("ATLAS", "images/sort_dmg.xml"),
+	Asset("IMAGE", "images/sort_dmg.tex"),
+
+	Asset("ATLAS", "images/sort_speed.xml"),
+	Asset("IMAGE", "images/sort_speed.tex"),
 }
