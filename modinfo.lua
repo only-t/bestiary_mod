@@ -7,7 +7,7 @@ Current version: 1.0.0 󰀔
 ]]
 author = "-т-"
 version = "1.0.0"
-forumthread = "forums/topic/137812-the-bestiary-mod-beta-release"
+forumthread = "forums/topic/137812-the-bestiary-mod-full-release"
 icon_atlas = "icon.xml"
 icon = "icon.tex"
 client_only_mod = false
