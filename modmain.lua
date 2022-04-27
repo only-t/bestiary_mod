@@ -36,14 +36,6 @@ GLOBAL.TheBestiary:Load()
 
 GLOBAL.DISCOVERABLE_MOBS_CONFIG = GetModConfigData("Discoverable Mobs")
 
-AddPlayerPostInit(function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst:AddComponent("bestiaryreader")
-end)
-
 if not GLOBAL.DISCOVERABLE_MOBS_CONFIG then -- Skip all the 'discovering' part if it's disabled
 	return
 end
@@ -142,6 +134,8 @@ AddPlayerPostInit(function(inst)
 		return inst
 	end
 
+	inst:AddComponent("bestiaryreader")
+
 	local old_OnLoad = inst.OnLoad
 	inst.OnLoad = function(inst)
 		inst:ListenForEvent("ms_respawnedfromghost", onbecamehuman)
@@ -156,6 +150,7 @@ AddPlayerPostInit(function(inst)
 		old_OnLoad(inst)
 	end
 
+	local old_OnNewSpawn = inst.OnNewSpawn
 	inst.OnNewSpawn = function(inst)
 		inst:ListenForEvent("ms_respawnedfromghost", onbecamehuman)
 		inst:ListenForEvent("ms_becameghost", onbecameghost)
@@ -166,7 +161,7 @@ AddPlayerPostInit(function(inst)
 			onbecamehuman(inst)
 		end
 
-		old_OnLoad(inst)
+		old_OnNewSpawn(inst)
 	end
 end)
 
