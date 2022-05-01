@@ -6,7 +6,7 @@ If you want to have all the information from the start disable Discoverable Mobs
 Current version: 1.0.0 󰀔
 ]]
 author = "-т-"
-version = "1.0.0"
+version = "1.0.0 fix-2"
 forumthread = "forums/topic/137812-the-bestiary-mod-full-release"
 icon_atlas = "icon.xml"
 icon = "icon.tex"
