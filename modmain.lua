@@ -8,6 +8,8 @@ local require = GLOBAL.require
 GLOBAL.CHEATS_ENABLED = true
 require("debugkeys")
 
+GLOBAL.DISCOVERABLE_MOBS_CONFIG = GetModConfigData("Discoverable Mobs")
+
 --\/ INIT \/--
 
 modimport("init/init_assets")
@@ -26,6 +28,7 @@ modimport("scripts/addbestiaryaction")
 modimport("scripts/addstates")
 modimport("scripts/bestiarypopup")
 modimport("scripts/bestiaryhud")
+modimport("scripts/bossdiscovery")
 
 --/\ EXTERNAL CODE /\--
 
@@ -33,8 +36,6 @@ GLOBAL.global("TheBestiary")
 GLOBAL.TheBestiary = nil
 GLOBAL.TheBestiary = require("bestiarydata")()
 GLOBAL.TheBestiary:Load()
-
-GLOBAL.DISCOVERABLE_MOBS_CONFIG = GetModConfigData("Discoverable Mobs")
 
 AddPlayerPostInit(function(inst)
 	if not GLOBAL.TheWorld.ismastersim then
