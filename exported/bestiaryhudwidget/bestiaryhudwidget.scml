@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="bestiaryhudwidget">
+        <file id="0" name="bestiaryhudwidget/bestiary_hud_bg.png" width="228" height="220" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="bestiaryhudwidget/bestiary.png" width="64" height="64" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="2" name="bestiaryhudwidget/bestiary_entry_ray.png" width="448" height="550" pivot_x="0.5" pivot_y="0.99"/>
+        <file id="3" name="bestiaryhudwidget/bestiary_hud_bg2.png" width="122" height="85" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <entity id="0" name="bestiaryhudwidget">
+        <animation id="0" name="idle" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bestiary_hud_bg">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="0.70922" y="64.382979" angle="0" scale_x="0.6" scale_y="0.6"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="bestiary">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="1.73913" y="71.391304" angle="0" scale_x="1.2" scale_y="1.2"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="mouseover" length="600" interval="100" looping="false">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="0" z_index="4"/>
+                </key>
+                <key id="1" time="100">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="1" z_index="4"/>
+                </key>
+                <key id="2" time="130">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="2" z_index="4"/>
+                </key>
+                <key id="3" time="150">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="2" z_index="4"/>
+                </key>
+                <key id="4" time="300">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="2" z_index="4"/>
+                </key>
+                <key id="5" time="450">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="3" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="3" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="3" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="2" z_index="4"/>
+                </key>
+                <key id="6" time="600">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="4" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="4" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="4" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="3" z_index="4"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bestiary_hud_bg">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="0.70922" y="64.382979" angle="0" scale_x="0.6" scale_y="0.6"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="0" file="0" x="0.70922" y="75.382979" angle="0" scale_x="0.6" scale_y="0.6"/>
+                </key>
+                <key id="2" time="600" spin="0">
+                    <object folder="0" file="0" x="0.70922" y="75.382979" angle="0" scale_x="0.6" scale_y="0.6"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="bestiary">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="1.73913" y="71.391304" angle="0" scale_x="1.2" scale_y="1.2"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="0" file="1" x="1.73913" y="82.391304" angle="0" scale_x="1.2" scale_y="1.2"/>
+                </key>
+                <key id="2" time="130" spin="0">
+                    <object folder="0" file="1" x="1.73913" y="85.391304" angle="0" scale_x="1.2" scale_y="1.2"/>
+                </key>
+                <key id="3" time="600" spin="0">
+                    <object folder="0" file="1" x="1.73913" y="85.3913" angle="0" scale_x="1.2" scale_y="1.2"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="bestiary_entry_ray1">
+                <key id="0">
+                    <object folder="0" file="2" x="1.73913" y="71.3913" angle="0" scale_x="0.02" scale_y="0.03"/>
+                </key>
+                <key id="1" time="150">
+                    <object folder="0" file="2" x="1.73913" y="74.1413" angle="90" scale_x="0.04" scale_y="0.06"/>
+                </key>
+                <key id="2" time="300">
+                    <object folder="0" file="2" x="1.73913" y="76.8913" angle="180" scale_x="0.06" scale_y="0.09"/>
+                </key>
+                <key id="3" time="450">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="270" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="4" time="600">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" scale_x="0.08" scale_y="0.12"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="bestiary_entry_ray2">
+                <key id="0">
+                    <object folder="0" file="2" x="1.73913" y="71.3913" angle="235" scale_x="0.02" scale_y="0.03"/>
+                </key>
+                <key id="1" time="150">
+                    <object folder="0" file="2" x="1.73913" y="74.1413" angle="325" scale_x="0.04" scale_y="0.06"/>
+                </key>
+                <key id="2" time="300">
+                    <object folder="0" file="2" x="1.73913" y="76.8913" angle="55" scale_x="0.06" scale_y="0.09"/>
+                </key>
+                <key id="3" time="450">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="145" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="4" time="600" spin="0">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="235" scale_x="0.08" scale_y="0.12"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="bestiary_entry_ray3">
+                <key id="0">
+                    <object folder="0" file="2" x="1.73913" y="71.3913" angle="125" scale_x="0.02" scale_y="0.03"/>
+                </key>
+                <key id="1" time="150">
+                    <object folder="0" file="2" x="1.73913" y="74.1413" angle="215" scale_x="0.04" scale_y="0.06"/>
+                </key>
+                <key id="2" time="300">
+                    <object folder="0" file="2" x="1.73913" y="76.8913" angle="305" scale_x="0.06" scale_y="0.09"/>
+                </key>
+                <key id="3" time="450">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="35" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="4" time="600" spin="0">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="125" scale_x="0.08" scale_y="0.12"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="mouseover_loop" length="2000" interval="100" looping="false">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="0" z_index="4"/>
+                </key>
+                <key id="1" time="500">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="0" z_index="4"/>
+                </key>
+                <key id="2" time="1000">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="0" z_index="4"/>
+                </key>
+                <key id="3" time="1500">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="3" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="3" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="3" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="0" z_index="4"/>
+                </key>
+                <key id="4" time="2000">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="4" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="4" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="4" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="0" z_index="4"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bestiary_hud_bg">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="0.70922" y="75.382979" angle="0" scale_x="0.6" scale_y="0.6"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="bestiary">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="1.73913" y="85.3913" angle="0" scale_x="1.2" scale_y="1.2"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="bestiary_entry_ray1">
+                <key id="0">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="1" time="500">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="90" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="2" time="1000">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="180" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="3" time="1500">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="270" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="4" time="2000" spin="0">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" scale_x="0.08" scale_y="0.12"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="bestiary_entry_ray2">
+                <key id="0">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="235" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="1" time="500">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="325" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="2" time="1000">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="55" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="3" time="1500">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="145" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="4" time="2000" spin="0">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="235" scale_x="0.08" scale_y="0.12"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="bestiary_entry_ray3">
+                <key id="0">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="125" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="1" time="500">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="215" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="2" time="1000">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="305" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="3" time="1500">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="35" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="4" time="2000" spin="0">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="125" scale_x="0.08" scale_y="0.12"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="mouseover_stop" length="150" interval="100" looping="false">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="0" z_index="4"/>
+                </key>
+                <key id="1" time="100">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="1" z_index="4"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bestiary_hud_bg">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="0.70922" y="75.382979" angle="0" scale_x="0.6" scale_y="0.6"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="0" file="0" x="0.70922" y="64.382979" angle="0" scale_x="0.6" scale_y="0.6"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="bestiary">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="1.73913" y="85.3913" angle="0" scale_x="1.2" scale_y="1.2"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="0" file="1" x="1.73913" y="71.391304" angle="0" scale_x="1.2" scale_y="1.2"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="bestiary_entry_ray1">
+                <key id="0">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="1" time="100">
+                    <object folder="0" file="2" x="1.73913" y="71.3913" angle="0" scale_x="0.02" scale_y="0.03"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="bestiary_entry_ray2">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="235" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="0" file="2" x="1.73913" y="71.3913" angle="235" scale_x="0.02" scale_y="0.03"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="bestiary_entry_ray3">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="1.73913" y="79.6413" angle="125" scale_x="0.08" scale_y="0.12"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="0" file="2" x="1.73913" y="71.3913" angle="125" scale_x="0.02" scale_y="0.03"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

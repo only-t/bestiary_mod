@@ -9,6 +9,7 @@ GLOBAL.CHEATS_ENABLED = true
 require("debugkeys")
 
 GLOBAL.DISCOVERABLE_MOBS_CONFIG = GetModConfigData("Discoverable Mobs")
+GLOBAL.BESTIARY_ITEM_CONFIG = GetModConfigData("Bestiary as an Item")
 
 --\/ INIT \/--
 
@@ -29,6 +30,7 @@ modimport("scripts/addstates")
 modimport("scripts/bestiarypopup")
 modimport("scripts/bestiaryhud")
 modimport("scripts/bossdiscovery")
+modimport("scripts/discoverable_prefabs")
 
 --/\ EXTERNAL CODE /\--
 
@@ -44,6 +46,15 @@ AddPlayerPostInit(function(inst)
 
 	inst:AddComponent("bestiaryreader")
 end)
+
+if not GLOBAL.BESTIARY_ITEM_CONFIG then -- Skip all the 'discovering' part if it's disabled
+	local BestiaryHUDWidget = require("widgets/bestiaryhudwidget")
+	AddClassPostConstruct("widgets/controls", function(self)
+		local bestiary_HUD = self.bottom_root:AddChild(BestiaryHUDWidget(self.owner))
+		bestiary_HUD:SetPosition(-550, -15, 0)
+		bestiary_HUD:SetScale(0.6, 0.6)
+	end)
+end
 
 if not GLOBAL.DISCOVERABLE_MOBS_CONFIG then -- Skip all the 'discovering' part if it's disabled
 	return
@@ -67,6 +78,10 @@ end)
 
 AddModRPCHandler("bestiarymod", "ForgetBestiary", function(player)
 	player.components.bestiaryupdater:Forgor() -- Server sided
+end)
+
+AddModRPCHandler("bestiarymod", "OpenBestiary", function(player)
+	player.components.bestiaryreader:OpenBestiary() -- Server sided
 end)
 
 local function IsInMonstersTable(mob)
@@ -188,166 +203,6 @@ AddPrefabPostInit("mermking", function(inst)
 			data.giver.components.bestiaryupdater:LearnMob("mermking")
 		end
 	end)
-end)
-
-AddPrefabPostInit("killerbee", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "bee"
-end)
-
-AddPrefabPostInit("beeguard", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "bee"
-end)
-
-AddPrefabPostInit("canary_poisoned", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "canary"
-end)
-
-AddPrefabPostInit("crawlingnightmare", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "crawlinghorror"
-end)
-
-AddPrefabPostInit("nightmarebeak", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "terrorbeak"
-end)
-
-AddPrefabPostInit("bishop_nightmare", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "bishop"
-end)
-
-AddPrefabPostInit("knight_nightmare", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "knight"
-end)
-
-AddPrefabPostInit("rook_nightmare", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "rook"
-end)
-
-AddPrefabPostInit("firehound", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "hound"
-end)
-
-AddPrefabPostInit("icehound", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "hound"
-end)
-
-AddPrefabPostInit("koalefant_winter", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "koalefant_summer"
-end)
-
-AddPrefabPostInit("snurtle", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "slurtle"
-end)
-
-AddPrefabPostInit("toadstool_dark", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "toadstool"
-end)
-
-AddPrefabPostInit("wobybig", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "wobysmall"
-end)
-
-AddPrefabPostInit("alterguardian_phase2", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "alterguardian_phase1"
-end)
-
-AddPrefabPostInit("alterguardian_phase3", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "alterguardian_phase1"
-end)
-
-AddPrefabPostInit("stalker_minion2", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "stalker_minion1"
-end)
-
-AddPrefabPostInit("leif_sparse", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "leif"
-end)
-
-AddPrefabPostInit("wobster_sheller", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "wobster_sheller_land"
-end)
-
-AddPrefabPostInit("wobster_moonglass", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst.discoverable_prefab = "wobster_moonglass_land"
 end)
 
 local BestiaryEntry = require("widgets/bestiaryentry")

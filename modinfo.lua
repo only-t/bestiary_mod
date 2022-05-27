@@ -26,5 +26,14 @@ configuration_options = {
         },
 
         default = true,
+    },
+    {
+        name = "Bestiary as an Item",
+        options = {
+            { description = "Yes", data = true },
+            { description = "No", data = false }
+        },
+
+        default = true,
     }
 }
