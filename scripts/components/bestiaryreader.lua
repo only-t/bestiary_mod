@@ -9,6 +9,12 @@ function BestiaryReader:OnRemoveFromEntity()
 end
 
 function BestiaryReader:OpenBestiary(bestiary)
+	if not BESTIARY_ITEM_CONFIG then
+		self.inst:ShowPopUp(POPUPS.BESTIARY, true)
+		
+		return true
+	end
+
 	if bestiary then
 		self.inst:ShowPopUp(POPUPS.BESTIARY, true)
 		
