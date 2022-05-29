@@ -73,7 +73,7 @@ local BestiaryMonstersPage = Class(Widget, function(self, owner)
 
 	self.completion = self:AddChild(self:CreateCompletionStrip()) -- Needs to be above the page to display properly
 
-	if DISCOVERABLE_MOBS_CONFIG then -- Add the bestiary clear button only if discovering is enabled
+	if DISCOVERABLE_MOBS_CONFIG and TheNet:GetServerGameMode() ~= "" then -- Add the bestiary clear button only if discovering is enabled and the players not in compendium
 		self.dangly = self:AddChild(self:CreateDangly())
 	end
 
@@ -247,6 +247,12 @@ function BestiaryMonstersPage:CreateMonsterGrid()
 						widget.cell_root.monster:SetPosition(0, -40)
 					elseif data.prefab == "stalker_minion1" then
 						widget.cell_root.monster:SetPosition(0, -40)
+					elseif data.prefab == "rabbit" and data.build ~= "beard_monster" then
+						if TheWorld and TheWorld.state.iswinter then
+							widget.cell_root.monster:GetAnimState():SetBuild("rabbit_winter_build")
+						else
+							widget.cell_root.monster:GetAnimState():SetBuild(data.build)
+						end
 					end
 				end
 			else
@@ -465,6 +471,12 @@ function BestiaryMonstersPage:CreateTheMob(data)
 		self.monsterframe.monster:SetPosition(0, -60)
 	elseif data.prefab == "stalker_minion1" then
 		self.monsterframe.monster:SetPosition(0, -60)
+	elseif data.prefab == "rabbit" then
+		if TheWorld and TheWorld.state.iswinter then
+			self.monsterframe.monster:GetAnimState():SetBuild("rabbit_winter_build")
+		else
+			self.monsterframe.monster:GetAnimState():SetBuild(data.build)
+		end
 	end
 
 	if data.anim_action then
