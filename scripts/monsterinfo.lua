@@ -18,7 +18,9 @@ local omni_diet = {
     "goodies",
 }
 
-GLOBAL.MONSTERDATA_BESTIARY = {  }
+if GLOBAL.MONSTERDATA_BESTIARY == nil then
+    GLOBAL.MONSTERDATA_BESTIARY = {  }
+end
 
 local function LoadMonsterData(data)
     for i, data in ipairs(data) do
@@ -46,7 +48,7 @@ local MONSTERDATA_BESTIARY = {
                 intent = STRINGS.BESTIARY_AGGRESSIVE,
         
                 stats = {
-                    health = 4000,
+                    health = TUNING.DEERCLOPS_HEALTH,
                     damage = 75,
                     speed = 3,
                     diet = "none",
