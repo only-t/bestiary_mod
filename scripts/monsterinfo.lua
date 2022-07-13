@@ -18,9 +18,7 @@ local omni_diet = {
     "goodies",
 }
 
-if GLOBAL.MONSTERDATA_BESTIARY == nil then
-    GLOBAL.MONSTERDATA_BESTIARY = {  }
-end
+GLOBAL.MONSTERDATA_BESTIARY = {  }
 
 local function LoadMonsterData(data)
     for i, data in ipairs(data) do
