@@ -15,7 +15,8 @@ modimport("init/init_strings")
 modimport("init/init_tuning")
 modimport("init/init_recipes")
 
-modimport("scripts/monsterinfo")
+GLOBAL.MONSTERDATA_BESTIARY = {  }
+require("monsterinfo")
 
 local function InjectBestiaryMenuButton(screen)
     local offset = 38

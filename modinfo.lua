@@ -18,7 +18,7 @@ client_only_mod = false
 all_clients_require_mod = true
 dst_compatible = true
 dont_starve_compatible = false
-priority = 0
+priority = -99999999
 api_version = 10
 
 configuration_options = {

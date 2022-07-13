@@ -9,7 +9,6 @@ local Spinner = require "widgets/spinner"
 local TrueScrollArea = require "widgets/truescrollarea"
 local PopupDialogScreen = require "screens/popupdialog"
 
-local MonsterInfo = MONSTERDATA_BESTIARY
 local TEMPLATES = require "widgets/redux/templates"
 
 local function FindInTable(table, value)
@@ -35,7 +34,9 @@ local BestiaryMonstersPage = Class(Widget, function(self, owner)
 	local discovered_mobs = TheBestiary.discovered_mobs or {  }
 	local learned_mobs = TheBestiary.learned_mobs or {  }
 
-	for i, mob_data in ipairs(MonsterInfo) do
+	local MonsterInfo = MONSTERDATA_BESTIARY
+
+	for mob_prefab, mob_data in pairs(MonsterInfo) do
 		local data = {  }
 
 		if mob_data.forms then

@@ -24,7 +24,9 @@ modimport("init/init_recipes")
 
 --\/ EXTERNAL CODE \/--
 
-modimport("scripts/monsterinfo")
+GLOBAL.MONSTERDATA_BESTIARY = {  }
+require("monsterinfo")
+
 modimport("scripts/addbestiaryaction")
 modimport("scripts/addstates")
 modimport("scripts/bestiarypopup")
