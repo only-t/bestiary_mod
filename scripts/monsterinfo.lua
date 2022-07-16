@@ -5040,3 +5040,5 @@ function AddToBestiary(mob_data)
         end
     end
 end
+
+ReloadBestiaryData()
